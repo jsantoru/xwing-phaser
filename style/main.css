@@ -13,5 +13,7 @@ img {
 }
 
 body {
-    background-image: url("../img/wallpaper-deathstar2.jpg");
+    background-image: url("../img/wallpaper-xwing-tie-fa.jpg");
+    background-size: 150%;
+    background-repeat: no-repeat;
 }
