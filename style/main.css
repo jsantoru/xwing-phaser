@@ -1,14 +1,18 @@
-canvas {
-    margin: auto;
+.playArea {
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  margin: auto;
 }
 
 .dial {
     width: 200px;
-    /*position: absolute;*/
-    margin: auto;
+    margin-right:20px;
+    margin-left:20px;
 }
 
-img {
+
+#dialTie > img {
     width: 100%;
 }
 

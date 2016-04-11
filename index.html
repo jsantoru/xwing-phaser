@@ -15,9 +15,17 @@
     
     <body>
         <div id="header"/>
-        <div id="canvasDiv"></div>
-        <div id="dialTie" class="dial">
+        <div id="canvasDiv" class="playArea">
+            
+            <div id="dialTie" class="dial">
             <img src="img/dials/dial-tie-fo.png"/>
+            <select id="dialDistance">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
             <select id="movementTemplate">
                 <option value="straight">straight</option>
                 <option value="straight-2">straight-2</option>
@@ -25,7 +33,12 @@
                 <option value="right">right</option>
                 <option value="k-turn">k-turn</option>
             </select>
+            <span class="additionalInfo">Additional info...</span>
+            <span class="additionalInfo">Additional info...</span>
+            <span class="additionalInfo">Additional info...</span>
         </div>
+        </div>
+        
         <div id="footer"/>
     </body>
 </html>
