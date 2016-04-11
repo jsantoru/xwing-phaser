@@ -1,0 +1,13 @@
+canvas {
+    margin: auto;
+}
+
+.dial {
+    width: 200px;
+    /*position: absolute;*/
+    margin: auto;
+}
+
+img {
+    width: 100%;
+}
