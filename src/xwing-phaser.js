@@ -61,15 +61,15 @@ GameState.prototype.create = function() {
     var _this = this;
     
     _this.playmat = game.add.sprite(0, 0, 'playmat');
-    _this.playmat.height = 600;
-    _this.playmat.width = 600;
+    _this.playmat.height = 800;
+    _this.playmat.width = 800;
 
-    _this.zoneBottom = game.add.sprite(0, 500, 'zone');
-    _this.zoneBottom.width = 600;
+    _this.zoneBottom = game.add.sprite(0, 700, 'zone');
+    _this.zoneBottom.width = 800;
     _this.zoneBottom.height = 100;
 
     _this.zoneTop = game.add.sprite(0, 0, 'zone');
-    _this.zoneTop.width = 600;
+    _this.zoneTop.width = 800;
     _this.zoneTop.height = 100;
 
     _this.templateStraight2 = game.add.sprite(0, 500, 'template-straight-2');
@@ -78,7 +78,7 @@ GameState.prototype.create = function() {
     _this.templateStraight2.anchor.setTo(0.5, 0);
     _this.templateStraight2.visible = false;
 
-    _this.tieFighterBorder = game.add.sprite(300, 550, 'img-tie-fighter-border');
+    _this.tieFighterBorder = game.add.sprite(300, 750, 'img-tie-fighter-border');
     _this.tieFighterBorder.height = 50;
     _this.tieFighterBorder.width = 50;
     _this.tieFighterBorder.anchor.setTo(0.5, 0)
@@ -121,5 +121,5 @@ GameState.prototype.setTemplate = function(templateId) {
 }
 
 //This line instantiates a new Phaser Game and adds GameState as the default state.
-var game = new Phaser.Game(600, 600, Phaser.AUTO, 'canvasDiv');
+var game = new Phaser.Game(800, 800, Phaser.AUTO, 'canvasDiv');
 game.state.add('game', GameState, true);
