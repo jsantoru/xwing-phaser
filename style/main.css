@@ -11,3 +11,7 @@ canvas {
 img {
     width: 100%;
 }
+
+body {
+    background-image: url("../img/wallpaper-deathstar2.jpg");
+}
