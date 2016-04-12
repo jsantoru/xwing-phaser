@@ -34,6 +34,7 @@ GameState.prototype.preload = function() {
     game.load.image('zone', 'img/translucent.png');
     game.load.image('template-straight-2', 'img/move-templates/straight-2.png');
 
+    // TODO: when both dropdowns change, display the correct template
     // handlers
     $("#movementTemplate").change(function() {
         _this.movementTemplateVal = $("#movementTemplate").val();
