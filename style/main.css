@@ -1,0 +1,23 @@
+.playArea {
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  margin: auto;
+}
+
+.dial {
+    width: 200px;
+    margin-right:20px;
+    margin-left:20px;
+}
+
+
+#dialTie > img {
+    width: 100%;
+}
+
+body {
+    background-image: url("../img/wallpaper-xwing-tie-fa.jpg");
+    background-size: 150%;
+    background-repeat: no-repeat;
+}
