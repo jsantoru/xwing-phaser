@@ -1,5 +1,7 @@
 // cosntructor
 var GameState = function(game) {
+    this.game = game;
+    
     // sprites
     this.playmat;
     this.tieFighter;
@@ -31,19 +33,19 @@ GameState.prototype.preload = function() {
 
     //Here you can preload images, audio, spritesheets and so on.
     //game.load.baseURL = 'http://examples.phaser.io/assets/';
-    game.load.crossOrigin = 'anonymous';
-    game.load.image('playmat', 'img/playmats/playmat-bespin.jpg');
+    _this.game.load.crossOrigin = 'anonymous';
+    _this.game.load.image('playmat', 'img/playmats/playmat-bespin.jpg');
     
     // ships
-    game.load.image('img-tie-fighter', 'img/ships/tie-fo-fighter.png');
-    game.load.image('img-tie-fighter-border', 'img/ships/tie-fo-fighter-border.png');
-    game.load.image('img-base-tie', 'img/ships/base-tie.png');
+    _this.game.load.image('img-tie-fighter', 'img/ships/tie-fo-fighter.png');
+    _this.game.load.image('img-tie-fighter-border', 'img/ships/tie-fo-fighter-border.png');
+    _this.game.load.image('img-base-tie', 'img/ships/base-tie.png');
     
-    game.load.image('zone', 'img/translucent.png');
+    _this.game.load.image('zone', 'img/translucent.png');
     
     // move-templates
-    game.load.image('template-straight-3', 'img/move-templates/straight-3.png');
-    game.load.image('template-straight-2', 'img/move-templates/straight-2.png');
+    _this.game.load.image('template-straight-3', 'img/move-templates/straight-3.png');
+    _this.game.load.image('template-straight-2', 'img/move-templates/straight-2.png');
 
     // TODO: when both dropdowns change, display the correct template
     // handlers
