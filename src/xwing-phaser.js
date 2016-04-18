@@ -29,9 +29,15 @@ GameState.prototype.preload = function() {
     //game.load.baseURL = 'http://examples.phaser.io/assets/';
     game.load.crossOrigin = 'anonymous';
     game.load.image('playmat', 'img/playmats/playmat-bespin.jpg');
+    
+    // ships
     game.load.image('img-tie-fighter', 'img/ships/tie-fo-fighter.png');
     game.load.image('img-tie-fighter-border', 'img/ships/tie-fo-fighter-border.png');
+    game.load.image('img-base-tie', 'img/ships/base-tie.png');
+    
     game.load.image('zone', 'img/translucent.png');
+    
+    // move-templates
     game.load.image('template-straight-2', 'img/move-templates/straight-2.png');
 
     // TODO: when both dropdowns change, display the correct template

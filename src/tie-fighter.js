@@ -1,6 +1,6 @@
 var TieFighter = function(game) {
     // constructor
-    this.sprite = game.add.sprite(300, 750, 'img-tie-fighter');
+    this.sprite = game.add.sprite(300, 750, 'img-base-tie');
     this.sprite.height = 50;
     this.sprite.width = 50;
     this.sprite.inputEnabled = true;
