@@ -12,6 +12,9 @@ var TieFighter = function(game) {
     //tieFighter.events.onDragStart.add(onOut, this);
     this.sprite.events.onDragStop.add(this.onOut, this);
     //tieFighter.turn = false;
+    
+    this.sprite.tint = 0xcd0937;
+    this.tint = 0xcd0937;
 
 }
 //TieFighter.prototype.constructor = TieFighter;
