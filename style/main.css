@@ -21,3 +21,14 @@ body {
     background-size: 150%;
     background-repeat: no-repeat;
 }
+
+.board {
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.board > img {
+    height: 1000px;
+    width: 1000px;
+}
