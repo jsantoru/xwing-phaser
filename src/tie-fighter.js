@@ -7,7 +7,7 @@ var TieFighter = function() {
 
 TieFighter.prototype.addToBoard = function() {
     console.log("addToBoard()");
-    $('#board').prepend('<img id="tie" class="tie" src="' + this.imagePath + '"/>');
+    $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></tieDiv>');
 }
 
 TieFighter.prototype.onOver = function(sprite, pointer) {

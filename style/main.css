@@ -36,7 +36,7 @@ body {
     z-index: 1;
 }
 
-.board .tie { 
+.tieDiv > .tie { 
     position:absolute; 
     top: 900px; 
     left: 100px; 
