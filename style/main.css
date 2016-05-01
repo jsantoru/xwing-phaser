@@ -36,7 +36,7 @@ body {
     z-index: 1;
 }
 
-.tieDiv > .tie { 
+.tieDiv {
     position:absolute; 
     top: 900px; 
     left: 100px; 
@@ -44,4 +44,9 @@ body {
     
     height: 50px;
     width: 50px;
-} 
+}
+
+.tieDiv img {
+   height: 100%;
+   width: 100%;
+}
