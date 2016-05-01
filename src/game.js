@@ -15,6 +15,11 @@ Game.prototype.start = function() {
 
 Game.prototype.initialize = function() {
     console.log("initialize");
+    
+    // TODO: add the dial to the board, instead of in html?
+    // TODO: have the tie have a dial?
+    
+    // add the first tie to the board
     var tie1 = new TieFighter();
     tie1.addToBoard();
 }

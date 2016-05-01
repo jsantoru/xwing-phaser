@@ -6,14 +6,13 @@
 }
 
 .dial {
-    width: 200px;
-    margin-right:20px;
-    margin-left:20px;
+    position:absolute;
+    left: 1200px;
+    width: 100px;
 }
 
-
-#dialTie > img {
-    width: 100%;
+.dialImg {
+    width: 50px;
 }
 
 body {
@@ -33,12 +32,16 @@ body {
     height: 1000px;
     width: 1000px;
     
-    position:absolute; top: 25px; left: 25px; z-index: 1;
+    position:absolute; 
+    z-index: 1;
 }
 
 .board .tie { 
     position:absolute; 
-    top: 25px; 
-    left: 25px; 
-    z-index: 3; 
+    top: 900px; 
+    left: 100px; 
+    z-index: 3;
+    
+    height: 50px;
+    width: 50px;
 } 
