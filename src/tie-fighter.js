@@ -2,12 +2,12 @@ var TieFighter = function() {
     this.height = 10;
     this.weight = 10;
 
-    this.imagePath = "img/base-tie.png";
+    this.imagePath = "img/ships/base-tie.png";
 }
 
 TieFighter.prototype.addToBoard = function() {
     console.log("addToBoard()");
-    $('#board').prepend('<img id="tie" src="img/ships/base-tie.png" />');
+    $('#board').prepend('<img id="tie" class="tie" src="' + this.imagePath + '"/>');
 }
 
 TieFighter.prototype.onOver = function(sprite, pointer) {

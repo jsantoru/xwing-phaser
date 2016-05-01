@@ -32,4 +32,13 @@ body {
 .board .playmat {
     height: 1000px;
     width: 1000px;
+    
+    position:absolute; top: 25px; left: 25px; z-index: 1;
 }
+
+.board .tie { 
+    position:absolute; 
+    top: 25px; 
+    left: 25px; 
+    z-index: 3; 
+} 
