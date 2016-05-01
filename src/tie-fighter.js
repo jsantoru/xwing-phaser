@@ -1,25 +1,14 @@
-var TieFighter = function(game) {
-    this.game = game;
-    
-    // constructor
-    this.sprite = game.add.sprite(300, 750, 'img-base-tie');
-    this.sprite.height = 50;
-    this.sprite.width = 50;
-    this.sprite.inputEnabled = true;
-    this.sprite.input.enableDrag();
-    this.sprite.anchor.setTo(0.5, 0);
-    
-    //tieFighter.events.onInputOver.add(onOver, this);
-    //tieFighter.events.onInputOut.add(onOut, this);
-    //tieFighter.events.onDragStart.add(onOut, this);
-    this.sprite.events.onDragStop.add(this.onOut, this);
-    //tieFighter.turn = false;
-    
-    this.sprite.tint = 0xcd0937;
-    this.tint = 0xcd0937;
+var TieFighter = function() {
+    this.height = 10;
+    this.weight = 10;
 
+    this.imagePath = "img/base-tie.png";
 }
-//TieFighter.prototype.constructor = TieFighter;
+
+TieFighter.prototype.addToBoard = function() {
+    console.log("addToBoard()");
+    $('#board').prepend('<img id="tie" src="img/ships/base-tie.png" />');
+}
 
 TieFighter.prototype.onOver = function(sprite, pointer) {
     console.log("ON OVER");

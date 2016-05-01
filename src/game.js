@@ -10,4 +10,11 @@ var Game = function() {
 
 Game.prototype.start = function() {
     console.log("start");
+    this.initialize();
+}
+
+Game.prototype.initialize = function() {
+    console.log("initialize");
+    var tie1 = new TieFighter();
+    tie1.addToBoard();
 }
