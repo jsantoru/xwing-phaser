@@ -50,7 +50,7 @@ Game.prototype.initialize = function() {
     
     // add the first tie to the board
     var tie1 = new TieFighter();
-    tie1.addToBoard();
+    tie1.addToBoard(200, 900);
     
     this.tieFighter1 = tie1;
 }

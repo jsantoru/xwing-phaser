@@ -1,32 +1,34 @@
 var TieFighter = function() {
-    this.height = 10;
-    this.weight = 10;
+    this.x = 10;
+    this.y = 10;
 
     this.imagePath = "img/ships/base-tie.png";
     
     this.turnDegrees = 0;
 }
 
-TieFighter.prototype.addToBoard = function() {
+TieFighter.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
+    // TODO: should this be an html template?
     $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></tieDiv>');
     
-    //$('#tieDiv').rotate(270);
+    this.move(x, y);
+}
+
+TieFighter.prototype.move = function(x, y) {
+    console.log("move()");
+    
+    var xPixels = x + "px";
+    var yPixels = y + "px";
+    
+    $('#tieDiv').css("top", yPixels);
+    $('#tieDiv').css("left", xPixels);
 }
 
 TieFighter.prototype.turn = function(degrees) {
     console.log("turn()");
     this.turnDegrees += degrees;
     $('#tieDiv').rotate(this.turnDegrees);
-}
-
-TieFighter.prototype.onOver = function(sprite, pointer) {
-    console.log("ON OVER");
-
-    this.sprite.tint = 0xFF0000;
-    this.sprite.angle += 90;
-    this.sprite.turn = true;
-    console.log("turn: " + this.sprite.turn);
 }
 
 TieFighter.prototype.onOut = function(sprite, pointer) {

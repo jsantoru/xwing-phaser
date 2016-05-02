@@ -38,12 +38,14 @@ body {
 
 .tieDiv {
     position:absolute; 
-    top: 900px; 
-    left: 100px; 
     z-index: 3;
     
     height: 50px;
     width: 50px;
+    
+    /* TODO: set dynamically */
+    top: 900px; 
+    left: 100px;
 }
 
 .tieDiv img {
