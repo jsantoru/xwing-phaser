@@ -6,18 +6,47 @@
 }
 
 .dial {
-    width: 200px;
-    margin-right:20px;
-    margin-left:20px;
+    position:absolute;
+    left: 1200px;
+    width: 100px;
 }
 
-
-#dialTie > img {
-    width: 100%;
+.dialImg {
+    width: 50px;
 }
 
 body {
     background-image: url("../img/wallpaper-xwing-tie-fa.jpg");
     background-size: 150%;
     background-repeat: no-repeat;
+}
+
+.board {
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 10px solid rgba(0, 0, 0, .5);
+}
+
+.board .playmat {
+    height: 1000px;
+    width: 1000px;
+    
+    position:absolute; 
+    z-index: 1;
+}
+
+.tieDiv {
+    position:absolute; 
+    top: 900px; 
+    left: 100px; 
+    z-index: 3;
+    
+    height: 50px;
+    width: 50px;
+}
+
+.tieDiv img {
+   height: 100%;
+   width: 100%;
 }

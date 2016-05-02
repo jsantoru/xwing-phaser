@@ -1,5 +1,7 @@
 // cosntructor
 var GameState = function(game) {
+    this.game = game;
+    
     // sprites
     this.playmat;
     this.tieFighter;
@@ -8,10 +10,14 @@ var GameState = function(game) {
     this.zoneBottom;
     this.zoneTop;
 
+    // graphics
+    this.baseHighlight
+
     // other
 
     this.currentTemplate;
-    this.templateStraight2;
+    this.templateStraight2; // todo: make these objects
+    this.templateStraight3;
     this.dragPosition;
 
     this.movementTemplateVal;
@@ -27,21 +33,35 @@ GameState.prototype.preload = function() {
 
     //Here you can preload images, audio, spritesheets and so on.
     //game.load.baseURL = 'http://examples.phaser.io/assets/';
-    game.load.crossOrigin = 'anonymous';
-    game.load.image('playmat', 'img/playmats/playmat-bespin.jpg');
-    game.load.image('img-tie-fighter', 'img/ships/tie-fo-fighter.png');
-    game.load.image('img-tie-fighter-border', 'img/ships/tie-fo-fighter-border.png');
-    game.load.image('zone', 'img/translucent.png');
-    game.load.image('template-straight-2', 'img/move-templates/straight-2.png');
+    _this.game.load.crossOrigin = 'anonymous';
+    _this.game.load.image('playmat', 'img/playmats/playmat-bespin.jpg');
+    
+    // ships
+    _this.game.load.image('img-tie-fighter', 'img/ships/tie-fo-fighter.png');
+    _this.game.load.image('img-tie-fighter-border', 'img/ships/tie-fo-fighter-border.png');
+    _this.game.load.image('img-base-tie', 'img/ships/base-tie.png');
+    
+    _this.game.load.image('zone', 'img/translucent.png');
+    
+    // move-templates
+    _this.game.load.image('template-straight-3', 'img/move-templates/straight-3.png');
+    _this.game.load.image('template-straight-2', 'img/move-templates/straight-2.png');
 
+    // TODO: when both dropdowns change, display the correct template
     // handlers
     $("#movementTemplate").change(function() {
-        _this.movementTemplateVal = $("#movementTemplate").val();
+        _this.movementTemplateVal = $("#movementTemplate").val() + "-" + $("#dialDistance").val();
+        console.log("templateVal: " + _this.movementTemplateVal);
     });
 
+    $("#dialDistance").change(function() {
+        _this.movementTemplateVal = $("#movementTemplate").val() + "-" + $("#dialDistance").val();
+        console.log("templateVal: " + _this.movementTemplateVal);
+    });
+    
     $("#dialTie").click(function() {
-        $("#movementTemplate").val("straight-2");
-        _this.setTemplate("straight-2");
+        //$("#movementTemplate").val("straight-2");
+        _this.setTemplate(_this.movementTemplateVal);
 
         _this.tieFighterBorder.x = _this.tieFighter.x;
         _this.tieFighterBorder.y = _this.tieFighter.y;
@@ -72,6 +92,7 @@ GameState.prototype.create = function() {
     _this.zoneTop.width = 800;
     _this.zoneTop.height = 100;
 
+    // todo: make an object like the tie fighter
     _this.templateStraight2 = game.add.sprite(0, 500, 'template-straight-2');
     _this.templateStraight2.width = 25;
     _this.templateStraight2.height = 100;
@@ -91,6 +112,10 @@ GameState.prototype.create = function() {
     _this.downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
     _this.leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
     _this.rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+    
+    var baseHighlight = game.add.graphics(100, 100);
+    baseHighlight.lineStyle(4, 0x0000FF, 1);
+    baseHighlight.drawRect(500, 0, 50, 100);
 }
 
 GameState.prototype.update = function() {
@@ -113,10 +138,18 @@ GameState.prototype.update = function() {
 }
 
 GameState.prototype.setTemplate = function(templateId) {
+    console.log("templateId: " + templateId);
     var _this = this;
     
+    if(templateId == "straight-3") {
+        //_this.templateStraight3.visible = true;
+        _this.templateStraight2.visible = false;
+    }
     if (templateId == "straight-2") {
         _this.templateStraight2.visible = true;
+        //_this.templateStraight3.visible = false;
+    } else {
+        _this.templateStraight2.visible = false;
     }
 }
 

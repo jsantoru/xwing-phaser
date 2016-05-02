@@ -7,7 +7,8 @@
         <script src="lib/phaser.min.js"></script>
         <script src="lib/jquery-1.12.3.min.js"></script>
         <script src="src/tie-fighter.js"></script>
-        <script src="src/xwing-phaser.js"></script>
+        <!--<script src="src/xwing-phaser.js"></script>-->
+        <script src="src/game.js"></script>
     
         <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="style/main.css">
@@ -15,10 +16,11 @@
     
     <body>
         <div id="header"/>
-        <div id="canvasDiv" class="playArea">
-            
-            <div id="dialTie" class="dial">
-            <img src="img/dials/dial-tie-fo.png"/>
+        <div id="board" class="board">
+            <img id="playmat" src="img/playmats/playmat-bespin.jpg"/>
+        </div>
+        <div id="dial" class="dial">
+            <img id="dialImg" src="img/dials/dial-tie-fo.png"/>
             <select id="dialDistance">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -36,6 +38,11 @@
             <span class="additionalInfo">Additional info...</span>
             <span class="additionalInfo">Additional info...</span>
             <span class="additionalInfo">Additional info...</span>
+        </div>
+        
+        <div id="canvasDiv" class="playArea">
+            <div id="dialTie" class="dial">
+            
         </div>
         </div>
         
