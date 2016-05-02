@@ -42,6 +42,8 @@ body {
     
     height: 50px;
     width: 50px;
+    
+    border: 1px solid rgba(255, 255, 255, .5);
 }
 
 .tieDiv img {

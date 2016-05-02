@@ -4,7 +4,7 @@ var TieFighter = function() {
 
     this.imagePath = "img/ships/base-tie.png";
     
-    this.turnDegrees = 0;
+    this.rotation = 0;
 }
 
 TieFighter.prototype.addToBoard = function(x, y) {
@@ -30,8 +30,8 @@ TieFighter.prototype.move = function(x, y) {
 
 TieFighter.prototype.turn = function(degrees) {
     console.log("turn()");
-    this.turnDegrees += degrees;
-    $('#tieDiv').rotate(this.turnDegrees);
+    this.rotation += degrees;
+    $('#tieDiv').rotate(this.rotation);
 }
 
 TieFighter.prototype.onOut = function(sprite, pointer) {

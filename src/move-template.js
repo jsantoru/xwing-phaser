@@ -4,6 +4,11 @@ var MoveTemplate = function() {
     this.y = 0;
     
     this.imagePath = "img/move-templates/straight-2.png";
+    
+    // TODO: data object of move template configs
+    // - template image
+    // - height
+    // - width
 }
 
 MoveTemplate.prototype.addToBoard = function(x, y) {
@@ -11,6 +16,11 @@ MoveTemplate.prototype.addToBoard = function(x, y) {
     $('#board').prepend('<div id="moveTemplateDiv" class="moveTemplateDiv"><img id="moveTemplate" class="moveTemplate" src="' + this.imagePath + '"/></img>');
 
     this.move(x, y);
+}
+
+MoveTemplate.prototype.removeFromBoard = function() {
+    console.log("MoveTemplate.removeFromBoard()");
+    $("#moveTemplateDiv").remove();
 }
 
 MoveTemplate.prototype.move = function(x, y) {
