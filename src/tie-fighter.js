@@ -3,13 +3,21 @@ var TieFighter = function() {
     this.weight = 10;
 
     this.imagePath = "img/ships/base-tie.png";
+    
+    this.turnDegrees = 0;
 }
 
 TieFighter.prototype.addToBoard = function() {
     console.log("addToBoard()");
     $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></tieDiv>');
     
-    $('#tieDiv').rotate(270);
+    //$('#tieDiv').rotate(270);
+}
+
+TieFighter.prototype.turn = function(degrees) {
+    console.log("turn()");
+    this.turnDegrees += degrees;
+    $('#tieDiv').rotate(this.turnDegrees);
 }
 
 TieFighter.prototype.onOver = function(sprite, pointer) {
