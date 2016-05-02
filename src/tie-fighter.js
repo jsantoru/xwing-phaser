@@ -8,6 +8,8 @@ var TieFighter = function() {
 TieFighter.prototype.addToBoard = function() {
     console.log("addToBoard()");
     $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></tieDiv>');
+    
+    $('#tieDiv').rotate(270);
 }
 
 TieFighter.prototype.onOver = function(sprite, pointer) {

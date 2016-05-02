@@ -1,5 +1,16 @@
 $( document ).ready(function() {
     console.log( "ready!" );
+    
+    // helper function for rotation
+    // TODO: move out
+    jQuery.fn.rotate = function(degrees) {
+    $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
+                 '-moz-transform' : 'rotate('+ degrees +'deg)',
+                 '-ms-transform' : 'rotate('+ degrees +'deg)',
+                 'transform' : 'rotate('+ degrees +'deg)'});
+        return $(this);
+    };
+    
     var game = new Game();
     game.start();
 });
