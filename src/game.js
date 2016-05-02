@@ -26,7 +26,9 @@ var Game = function() {
         var movementTemplateVal = $("#movementTemplate").val() + "-" + $("#dialDistance").val();
         console.log("templateVal: " + movementTemplateVal);
         
-        _this.tieFighter1.turn(90);
+        //_this.tieFighter1.turn(90);
+        var moveTemplate = new MoveTemplate();
+        moveTemplate.addToBoard(_this.tieFighter1.x, _this.tieFighter1.y);
     });
 
     $("#dialDistance").change(function() {

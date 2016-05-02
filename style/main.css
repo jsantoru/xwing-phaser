@@ -42,13 +42,19 @@ body {
     
     height: 50px;
     width: 50px;
-    
-    /* TODO: set dynamically */
-    top: 900px; 
-    left: 100px;
 }
 
 .tieDiv img {
    height: 100%;
    width: 100%;
+}
+
+.moveTemplateDiv {
+    position:absolute;
+    z-index:99;
+}
+
+.moveTemplateDiv img {
+    height: 100%;
+    width: 100%;
 }

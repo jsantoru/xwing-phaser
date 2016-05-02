@@ -1,6 +1,6 @@
 var TieFighter = function() {
-    this.x = 10;
-    this.y = 10;
+    this.x = 0;
+    this.y = 0;
 
     this.imagePath = "img/ships/base-tie.png";
     
@@ -10,13 +10,16 @@ var TieFighter = function() {
 TieFighter.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
     // TODO: should this be an html template?
-    $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></tieDiv>');
+    $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></img>');
     
     this.move(x, y);
 }
 
 TieFighter.prototype.move = function(x, y) {
     console.log("move()");
+    
+    this.x = x;
+    this.y = y;
     
     var xPixels = x + "px";
     var yPixels = y + "px";
