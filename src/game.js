@@ -15,10 +15,13 @@ $( document ).ready(function() {
     game.start();
 });
 
+/** 
+ * Create a new Game.
+ */
 var Game = function() {
     var _this = this;
-    // constructor
     this.tieFighter1;
+    this.moveTemplate = null;
     
     // TODO: move out? they still need access to the tie in order to turn it
     // listeners
@@ -26,7 +29,16 @@ var Game = function() {
         var movementTemplateVal = $("#movementTemplate").val() + "-" + $("#dialDistance").val();
         console.log("templateVal: " + movementTemplateVal);
         
-        _this.tieFighter1.turn(90);
+        //_this.tieFighter1.turn(90);
+        
+        if(_this.moveTemplate != null) {
+            _this.moveTemplate.removeFromBoard();
+            _this.moveTemplate = null;
+        }
+        else {
+            _this.moveTemplate = new MoveTemplate();
+            _this.moveTemplate.addToBoard(_this.tieFighter1.x, _this.tieFighter1.y);
+        }
     });
 
     $("#dialDistance").change(function() {
@@ -50,7 +62,7 @@ Game.prototype.initialize = function() {
     
     // add the first tie to the board
     var tie1 = new TieFighter();
-    tie1.addToBoard();
+    tie1.addToBoard(200, 900);
     
     this.tieFighter1 = tie1;
 }

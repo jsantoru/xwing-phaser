@@ -38,15 +38,25 @@ body {
 
 .tieDiv {
     position:absolute; 
-    top: 900px; 
-    left: 100px; 
     z-index: 3;
     
     height: 50px;
     width: 50px;
+    
+    border: 1px solid rgba(255, 255, 255, .5);
 }
 
 .tieDiv img {
    height: 100%;
    width: 100%;
+}
+
+.moveTemplateDiv {
+    position:absolute;
+    z-index:99;
+}
+
+.moveTemplateDiv img {
+    height: 100%;
+    width: 100%;
 }
