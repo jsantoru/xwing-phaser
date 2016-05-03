@@ -9,12 +9,30 @@ var MoveTemplate = function() {
     // - template image
     // - height
     // - width
+    // - rotation (for k turns)
+    
+    this.templateConfig = {
+        "straight-2" : {
+            imagePath: "img/move-templates/straight-2.png",
+            height: 100,
+            width: 25
+        }
+        // TODO: the other templates...
+    }
+    
 }
 
-MoveTemplate.prototype.addToBoard = function(x, y) {
+MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
     console.log("MoveTemplate.addToBoard()");
-    $('#board').prepend('<div id="moveTemplateDiv" class="moveTemplateDiv"><img id="moveTemplate" class="moveTemplate" src="' + this.imagePath + '"/></img>');
-
+    
+    // get the template config
+    var templateConfig = this.templateConfig[templateId];
+    console.log("templateConfig: " + JSON.stringify(templateConfig));
+    
+    if(templateConfig) {
+        console.log("setting template");
+        $('#board').prepend('<div id="moveTemplateDiv" class="moveTemplateDiv"><img id="moveTemplate" class="moveTemplate" src="' + templateConfig.imagePath + '"/></img>');
+    }
     this.move(x, y);
 }
 
