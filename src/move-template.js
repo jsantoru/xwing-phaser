@@ -29,10 +29,15 @@ MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
     var templateConfig = this.templateConfig[templateId];
     console.log("templateConfig: " + JSON.stringify(templateConfig));
     
+    // create the image from the config
     if(templateConfig) {
         console.log("setting template");
-        $('#board').prepend('<div id="moveTemplateDiv" class="moveTemplateDiv"><img id="moveTemplate" class="moveTemplate" src="' + templateConfig.imagePath + '"/></img>');
+        $('#board').prepend('<div id="moveTemplateDiv" class="moveTemplateDiv">' + 
+            '<img id="moveTemplate" class="moveTemplate" src="' + templateConfig.imagePath + '"/></img>');
+        $('#moveTemplateDiv').height(templateConfig.height).width(templateConfig.width);
     }
+    
+    // move this template to the correct location
     this.move(x, y);
 }
 

@@ -54,10 +54,6 @@ body {
 .moveTemplateDiv {
     position:absolute;
     z-index:99;
-    
-    /* TODO: set this in the config object*/
-    height:100px;
-    width:25px;
 }
 
 .moveTemplateDiv img {
