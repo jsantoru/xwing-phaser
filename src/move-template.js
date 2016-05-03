@@ -38,7 +38,22 @@ MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
     }
     
     // move this template to the correct location
-    this.move(x, y);
+    
+    // TODO: this should be adjusted based on direction of the ship
+
+    var adjustedXY = this.determineAdjustedXY("up", templateConfig, x, y)
+
+    this.move(adjustedXY.x, adjustedXY.y);
+}
+
+MoveTemplate.prototype.determineAdjustedXY = function(direction, templateConfig, x, y) {
+    var adjustedX = x + templateConfig.width/2;
+    var adjustedY = y - templateConfig.height;
+    
+    return {
+        x: adjustedX,
+        y: adjustedY
+    }
 }
 
 MoveTemplate.prototype.removeFromBoard = function() {

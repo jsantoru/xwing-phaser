@@ -5,6 +5,8 @@ var TieFighter = function() {
     this.imagePath = "img/ships/base-tie.png";
     
     this.rotation = 0;
+    
+    this.direction = "up";
 }
 
 TieFighter.prototype.addToBoard = function(x, y) {
