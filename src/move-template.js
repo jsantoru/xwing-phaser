@@ -37,10 +37,8 @@ MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
         $('#moveTemplateDiv').height(templateConfig.height).width(templateConfig.width);
     }
     
-    // move this template to the correct location
-    
-    // TODO: this should be adjusted based on direction of the ship
-
+    // move this template to the correct location 
+    // relative to the location of the ship and the template size
     var adjustedXY = this.determineAdjustedXY("up", templateConfig, x, y)
 
     this.move(adjustedXY.x, adjustedXY.y);
