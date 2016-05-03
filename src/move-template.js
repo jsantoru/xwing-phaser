@@ -3,6 +3,11 @@ var MoveTemplate = function() {
     this.x = 0;
     this.y = 0;
     
+    // TODO: when to set? is this the right place to track?
+    // basically the location where to set the ship at the end of this template
+    this.destinationX = 0;
+    this.destinationY = 0;
+    
     this.imagePath = "img/move-templates/straight-2.png";
     
     // TODO: data object of move template configs
