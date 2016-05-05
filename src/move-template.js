@@ -18,32 +18,42 @@ var MoveTemplate = function() {
     
     this.config;
     
+    // externalize this
     this.templateConfig = {
         "straight-2" : {
             imagePath: "img/move-templates/straight-2.png",
             height: 100,
-            width: 25
+            width: 25,
+            direction: "straight",
+            rotation: 0
         },
         "straight-3" : {
             imagePath: "img/move-templates/straight-3.png",
             height: 150,
-            width: 25
+            width: 25,
+            direction: "straight",
+            rotation: 0
         },
         "straight-4" : {
             imagePath: "img/move-templates/straight-4.png",
             height: 200,
-            width: 25
+            width: 25,
+            direction: "straight",
+            rotation: 0
         },
         "straight-5" : {
             imagePath: "img/move-templates/straight-5.png",
             height: 250,
-            width: 25
+            width: 25,
+            direction: "straight",
+            rotation: 0
         }
         // TODO: the other templates...
     }
     
 }
 
+// TODO: move some of this logic to the constructor (templateId at least)
 MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
     console.log("MoveTemplate.addToBoard(), templateId: " + templateId + 
                 ", x: " + x + ", y: " + y);
