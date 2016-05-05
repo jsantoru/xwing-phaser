@@ -35,10 +35,9 @@ var Game = function() {
             _this.moveTemplate.removeFromBoard();
             _this.moveTemplate = null;
         }
-        else {
-            _this.moveTemplate = new MoveTemplate();
-            _this.moveTemplate.addToBoard(_this.tieFighter1.x, _this.tieFighter1.y);
-        }
+        
+        _this.moveTemplate = new MoveTemplate();
+        _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
     });
 
     $("#dialDistance").change(function() {
@@ -46,6 +45,27 @@ var Game = function() {
         console.log("templateVal: " + movementTemplateVal);
         
         _this.tieFighter1.turn(90);
+    });
+    
+    // new listeners for bootstrap button dropdowns
+    $('#directionBS li').on('click', function(){
+        console.log("selected: " + $(this).text());
+        // update the value
+        $('#directionBadge').text($(this).text());
+        
+        // add a template to the board based on what's selected
+        _this.addTemplateToBoard();
+    });
+    
+    $('#dialDistanceBS li').on('click', function(){
+        console.log("selected: " + $(this).text());
+        // update the value
+        $('#dialDistanceBadge').text($(this).text());
+        
+        // add a template to the board based on what's selected
+        _this.addTemplateToBoard();
+        
+        //_this.tieFighter1.turn(90);
     });
 }
 
@@ -62,7 +82,23 @@ Game.prototype.initialize = function() {
     
     // add the first tie to the board
     var tie1 = new TieFighter();
-    tie1.addToBoard(200, 900);
+    tie1.addToBoard(500, 500);
     
     this.tieFighter1 = tie1;
+}
+
+Game.prototype.addTemplateToBoard = function() {
+    var _this = this;
+    // TODO: should these values just be properties on this class?
+    var movementTemplateVal = $('#directionBadge').text() + "-" + $('#dialDistanceBadge').text();
+        console.log("templateVal: " + movementTemplateVal);
+        
+        // if there's already a template out there, remove it
+        if(_this.moveTemplate != null) {
+            _this.moveTemplate.removeFromBoard();
+            _this.moveTemplate = null;
+        }
+        
+        _this.moveTemplate = new MoveTemplate();
+        _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
 }

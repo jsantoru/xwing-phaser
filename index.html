@@ -11,34 +11,54 @@
         <script src="src/game.js"></script>
         <script src="src/move-template.js"></script>
         
-        <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="style/main.css">
+        
+        <!-- bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </head>
     
     <body>
         <div id="header"/>
+        
         <div id="board" class="board">
             <img id="playmat" src="img/playmats/playmat-bespin.jpg"/>
         </div>
-        <div id="dial" class="dial">
+        
+        <div id="dial" class="dial panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Movement Dial</h3>
+            </div>
             <img id="dialImg" src="img/dials/dial-tie-fo.png"/>
-            <select id="dialDistance">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <select id="movementTemplate">
-                <option value="straight">straight</option>
-                <option value="straight-2">straight-2</option>
-                <option value="left">left</option>
-                <option value="right">right</option>
-                <option value="k-turn">k-turn</option>
-            </select>
-            <span class="additionalInfo">Additional info...</span>
-            <span class="additionalInfo">Additional info...</span>
-            <span class="additionalInfo">Additional info...</span>
+            <!-- bootstrap dropdown -->
+            <div id="directionBS" class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Direction <span id="directionBadge" class="badge"></span><span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">straight</a></li>
+                <li><a href="#">left</a></li>
+                <li><a href="#">right</a></li>
+              </ul>
+            </div>
+            <div id="dialDistanceBS" class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Distance <span id="dialDistanceBadge" class="badge"></span><span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+              </ul>
+            </div>
         </div>
         
         <div id="canvasDiv" class="playArea">

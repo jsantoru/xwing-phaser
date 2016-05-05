@@ -7,12 +7,19 @@
 
 .dial {
     position:absolute;
-    left: 1200px;
-    width: 100px;
+    left: 1060px;
+    margin-top:20px;
+    width: 300px;
 }
 
-.dialImg {
-    width: 50px;
+.dial img {
+    width: 100%;
+    padding-bottom: 2px;
+}
+
+#directionBS, #dialDistanceBS {
+    padding-bottom: 5px;
+    padding-left: 5px;
 }
 
 body {
@@ -59,4 +66,5 @@ body {
 .moveTemplateDiv img {
     height: 100%;
     width: 100%;
+    opacity:0.6;
 }
