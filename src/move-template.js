@@ -1,3 +1,4 @@
+// TODO: initialize with templateId and x and y
 var MoveTemplate = function() {
     // constructor
     this.x = 0;
@@ -10,15 +11,9 @@ var MoveTemplate = function() {
     
     this.imagePath = "img/move-templates/straight-2.png";
     
-    // TODO: data object of move template configs
-    // - template image
-    // - height
-    // - width
-    // - rotation (for k turns)
-    
     this.config;
     
-    // externalize this
+    // TODO: externalize this
     this.templateConfig = {
         "straight-2" : {
             imagePath: "img/move-templates/straight-2.png",
