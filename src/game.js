@@ -102,3 +102,10 @@ Game.prototype.addTemplateToBoard = function() {
         _this.moveTemplate = new MoveTemplate();
         _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
 }
+
+Game.prototype.moveTieWithTemplate = function() {
+    var _this = this;
+ 
+    //_this.moveTemplate.config
+    
+}
