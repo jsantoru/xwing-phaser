@@ -45,7 +45,8 @@ var MoveTemplate = function() {
 }
 
 MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
-    console.log("MoveTemplate.addToBoard(), templateId: " + templateId);
+    console.log("MoveTemplate.addToBoard(), templateId: " + templateId + 
+                ", x: " + x + ", y: " + y);
     
     // get the template config
     this.config = this.templateConfig[templateId];

@@ -25,29 +25,6 @@ var Game = function() {
     
     // TODO: move out? they still need access to the tie in order to turn it
     // listeners
-    $("#movementTemplate").change(function() {
-        var movementTemplateVal = $("#movementTemplate").val() + "-" + $("#dialDistance").val();
-        console.log("templateVal: " + movementTemplateVal);
-        
-        //_this.tieFighter1.turn(90);
-        
-        if(_this.moveTemplate != null) {
-            _this.moveTemplate.removeFromBoard();
-            _this.moveTemplate = null;
-        }
-        
-        _this.moveTemplate = new MoveTemplate();
-        _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
-    });
-
-    $("#dialDistance").change(function() {
-        var movementTemplateVal = $("#movementTemplate").val() + "-" + $("#dialDistance").val();
-        console.log("templateVal: " + movementTemplateVal);
-        
-        _this.tieFighter1.turn(90);
-    });
-    
-    // new listeners for bootstrap button dropdowns
     $('#directionBS li').on('click', function(){
         console.log("selected: " + $(this).text());
         // update the value
@@ -87,9 +64,15 @@ Game.prototype.initialize = function() {
     
     // add the first tie to the board
     var tie1 = new TieFighter();
-    tie1.addToBoard(500, 500);
+    tie1.addToBoard(500, 850);
     
     this.tieFighter1 = tie1;
+}
+
+Game.prototype.clearDialValues = function() {
+    console.log("clearDialValues()");
+    $('#directionBadge').text("");
+    $('#dialDistanceBadge').text("");
 }
 
 Game.prototype.addTemplateToBoard = function() {
@@ -117,8 +100,14 @@ Game.prototype.moveTieWithTemplate = function() {
     console.log("tie direction: " + _this.tieFighter1.direction);
     
     // assume we're moving straight and up, so x doesnt change
-    var x = _this.tieFighter1
+    var x = _this.tieFighter1.x;
     var y = _this.tieFighter1.y - _this.tieFighter1.height - _this.moveTemplate.config.height;
     
+    // move the tie
     _this.tieFighter1.move(x, y);
+    
+    // clear the dial badges and remove the template
+    _this.clearDialValues();
+    _this.moveTemplate.removeFromBoard();
+    _this.moveTemplate = null;
 }
