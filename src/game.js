@@ -47,6 +47,7 @@ var Game = function() {
     
     $('#moveOK').on('click', function(){
         console.log("moveOK()");
+        // TODO: log term, move 'selectedTie' instead of just moving tie1
         _this.moveTieWithTemplate();
     });
 }
@@ -91,22 +92,12 @@ Game.prototype.addTemplateToBoard = function() {
     _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
 }
 
-
 // TODO: this method needs to be on TieFighter.js
 Game.prototype.moveTieWithTemplate = function() {
     var _this = this;
  
-    //_this.moveTemplate.config
-    
-    // assume the ship is facing up
-    console.log("tie direction: " + _this.tieFighter1.direction);
-    
-    // assume we're moving straight and up, so x doesnt change
-    var x = _this.tieFighter1.x;
-    var y = _this.tieFighter1.y - _this.tieFighter1.height - _this.moveTemplate.config.height;
-    
     // move the tie
-    _this.tieFighter1.move(x, y);
+    _this.tieFighter1.moveWithTemplate(_this.moveTemplate);
     
     // clear the dial badges and remove the template
     _this.clearDialValues();
