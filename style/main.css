@@ -12,8 +12,9 @@
     width: 300px;
 }
 
-#dialImg {
-    width: 300px;
+.dial img {
+    width: 275px;
+    padding-bottom: 10px;
 }
 
 body {
