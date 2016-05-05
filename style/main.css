@@ -8,11 +8,12 @@
 .dial {
     position:absolute;
     left: 1200px;
-    width: 100px;
+    margin-top:20px;
+    width: 300px;
 }
 
-.dialImg {
-    width: 50px;
+#dialImg {
+    width: 300px;
 }
 
 body {
