@@ -25,29 +25,6 @@ var Game = function() {
     
     // TODO: move out? they still need access to the tie in order to turn it
     // listeners
-    $("#movementTemplate").change(function() {
-        var movementTemplateVal = $("#movementTemplate").val() + "-" + $("#dialDistance").val();
-        console.log("templateVal: " + movementTemplateVal);
-        
-        //_this.tieFighter1.turn(90);
-        
-        if(_this.moveTemplate != null) {
-            _this.moveTemplate.removeFromBoard();
-            _this.moveTemplate = null;
-        }
-        
-        _this.moveTemplate = new MoveTemplate();
-        _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
-    });
-
-    $("#dialDistance").change(function() {
-        var movementTemplateVal = $("#movementTemplate").val() + "-" + $("#dialDistance").val();
-        console.log("templateVal: " + movementTemplateVal);
-        
-        _this.tieFighter1.turn(90);
-    });
-    
-    // new listeners for bootstrap button dropdowns
     $('#directionBS li').on('click', function(){
         console.log("selected: " + $(this).text());
         // update the value
@@ -67,6 +44,12 @@ var Game = function() {
         
         //_this.tieFighter1.turn(90);
     });
+    
+    $('#moveOK').on('click', function(){
+        console.log("moveOK()");
+        // TODO: log term, move 'selectedTie' instead of just moving tie1
+        _this.moveTieWithTemplate();
+    });
 }
 
 Game.prototype.start = function() {
@@ -82,23 +65,42 @@ Game.prototype.initialize = function() {
     
     // add the first tie to the board
     var tie1 = new TieFighter();
-    tie1.addToBoard(500, 500);
+    tie1.addToBoard(500, 850);
     
     this.tieFighter1 = tie1;
+}
+
+Game.prototype.clearDialValues = function() {
+    console.log("clearDialValues()");
+    $('#directionBadge').text("");
+    $('#dialDistanceBadge').text("");
 }
 
 Game.prototype.addTemplateToBoard = function() {
     var _this = this;
     // TODO: should these values just be properties on this class?
     var movementTemplateVal = $('#directionBadge').text() + "-" + $('#dialDistanceBadge').text();
-        console.log("templateVal: " + movementTemplateVal);
+    console.log("templateVal: " + movementTemplateVal);
         
-        // if there's already a template out there, remove it
-        if(_this.moveTemplate != null) {
-            _this.moveTemplate.removeFromBoard();
-            _this.moveTemplate = null;
-        }
+    // if there's already a template out there, remove it
+    if(_this.moveTemplate != null) {
+       _this.moveTemplate.removeFromBoard();
+        _this.moveTemplate = null;
+    }
         
-        _this.moveTemplate = new MoveTemplate();
-        _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
+    _this.moveTemplate = new MoveTemplate();
+    _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
+}
+
+// TODO: this method needs to be on TieFighter.js
+Game.prototype.moveTieWithTemplate = function() {
+    var _this = this;
+ 
+    // move the tie
+    _this.tieFighter1.moveWithTemplate(_this.moveTemplate);
+    
+    // clear the dial badges and remove the template
+    _this.clearDialValues();
+    _this.moveTemplate.removeFromBoard();
+    _this.moveTemplate = null;
 }

@@ -1,3 +1,4 @@
+// TODO: initialize with templateId and x and y
 var MoveTemplate = function() {
     // constructor
     this.x = 0;
@@ -10,55 +11,62 @@ var MoveTemplate = function() {
     
     this.imagePath = "img/move-templates/straight-2.png";
     
-    // TODO: data object of move template configs
-    // - template image
-    // - height
-    // - width
-    // - rotation (for k turns)
+    this.config;
     
+    // TODO: externalize this
     this.templateConfig = {
         "straight-2" : {
             imagePath: "img/move-templates/straight-2.png",
             height: 100,
-            width: 25
+            width: 25,
+            direction: "straight",
+            rotation: 0
         },
         "straight-3" : {
             imagePath: "img/move-templates/straight-3.png",
             height: 150,
-            width: 25
+            width: 25,
+            direction: "straight",
+            rotation: 0
         },
         "straight-4" : {
             imagePath: "img/move-templates/straight-4.png",
             height: 200,
-            width: 25
+            width: 25,
+            direction: "straight",
+            rotation: 0
         },
         "straight-5" : {
             imagePath: "img/move-templates/straight-5.png",
             height: 250,
-            width: 25
+            width: 25,
+            direction: "straight",
+            rotation: 0
         }
         // TODO: the other templates...
     }
     
 }
 
+// TODO: move some of this logic to the constructor (templateId at least)
 MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
-    console.log("MoveTemplate.addToBoard(), templateId: " + templateId);
+    console.log("MoveTemplate.addToBoard(), templateId: " + templateId + 
+                ", x: " + x + ", y: " + y);
     
     // get the template config
-    var templateConfig = this.templateConfig[templateId];
-    console.log("templateConfig: " + JSON.stringify(templateConfig));
+    this.config = this.templateConfig[templateId];
+    console.log("templateConfig: " + JSON.stringify(this.config));
     
     // create the image from the config
-    if(templateConfig) {
+    if(this.config) {
         console.log("setting template");
         $('#board').prepend('<div id="moveTemplateDiv" class="moveTemplateDiv">' + 
-            '<img id="moveTemplate" class="moveTemplate" src="' + templateConfig.imagePath + '"/></img>');
-        $('#moveTemplateDiv').height(templateConfig.height).width(templateConfig.width);
+            '<img id="moveTemplate" class="moveTemplate" src="' + this.config.imagePath + '"/></img>');
+        $('#moveTemplateDiv').height(this.config.height).width(this.config.width);
         
         // move this template to the correct location 
         // relative to the location of the ship and the template size
-        var adjustedXY = this.determineAdjustedXY("up", templateConfig, x, y)
+        var adjustedXY = this.determineAdjustedXY("up", this.config, x, y)
 
         this.move(adjustedXY.x, adjustedXY.y);
     }
@@ -77,6 +85,7 @@ MoveTemplate.prototype.determineAdjustedXY = function(direction, templateConfig,
 MoveTemplate.prototype.removeFromBoard = function() {
     console.log("MoveTemplate.removeFromBoard()");
     $("#moveTemplateDiv").remove();
+    this.selectedTemplateConfig = null;
 }
 
 MoveTemplate.prototype.move = function(x, y) {

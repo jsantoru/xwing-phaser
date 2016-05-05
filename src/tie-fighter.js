@@ -7,6 +7,11 @@ var TieFighter = function() {
     this.rotation = 0;
     
     this.direction = "up";
+    
+    // TODO: this is needed when calculating move target.
+    // TODO: should be in one place, not in css and here
+    this.height = 50;
+    this.width = 50;
 }
 
 TieFighter.prototype.addToBoard = function(x, y) {
@@ -30,25 +35,24 @@ TieFighter.prototype.move = function(x, y) {
     $('#tieDiv').css("left", xPixels);
 }
 
+TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
+    console.log("moveWithTemplate");
+    
+    // assume the ship is facing up
+    console.log("tie direction: " + this.direction);
+    
+    // assume we're moving straight and up, so x doesnt change
+    var x = this.x;
+    var y = this.y - this.height - moveTemplate.config.height;
+    
+    // TODO: actually handle directions and other move templates
+    
+    // move the tie
+    this.move(x, y);
+}
+
 TieFighter.prototype.turn = function(degrees) {
     console.log("turn()");
     this.rotation += degrees;
     $('#tieDiv').rotate(this.rotation);
-}
-
-TieFighter.prototype.onOut = function(sprite, pointer) {
-    //_this.tieFighter.tint = Math.random() * 0xffffff;
-    var movementTemplateVal = $("#movementTemplate").val();
-    console.log("movementTemplate: " + movementTemplateVal);
-
-    if (movementTemplateVal === "right") {
-        console.log("IN RIGHT");
-        this.sprite.angle += 90;
-    }
-    else if (movementTemplateVal === "left") {
-        this.sprite.angle += 270;
-    }
-    else if (movementTemplateVal === "k-turn") {
-        this.sprite.angle += 180;
-    }
 }
