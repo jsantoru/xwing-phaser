@@ -28,7 +28,7 @@ var MoveTemplate = function() {
 }
 
 MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
-    console.log("MoveTemplate.addToBoard()");
+    console.log("MoveTemplate.addToBoard(), templateId: " + templateId);
     
     // get the template config
     var templateConfig = this.templateConfig[templateId];
@@ -40,13 +40,13 @@ MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
         $('#board').prepend('<div id="moveTemplateDiv" class="moveTemplateDiv">' + 
             '<img id="moveTemplate" class="moveTemplate" src="' + templateConfig.imagePath + '"/></img>');
         $('#moveTemplateDiv').height(templateConfig.height).width(templateConfig.width);
-    }
-    
-    // move this template to the correct location 
-    // relative to the location of the ship and the template size
-    var adjustedXY = this.determineAdjustedXY("up", templateConfig, x, y)
+        
+        // move this template to the correct location 
+        // relative to the location of the ship and the template size
+        var adjustedXY = this.determineAdjustedXY("up", templateConfig, x, y)
 
-    this.move(adjustedXY.x, adjustedXY.y);
+        this.move(adjustedXY.x, adjustedXY.y);
+    }
 }
 
 MoveTemplate.prototype.determineAdjustedXY = function(direction, templateConfig, x, y) {

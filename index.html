@@ -39,17 +39,17 @@
             <!-- bootstrap dropdown -->
             <div id="directionBS" class="btn-group">
               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Move <span class="badge">Straight</span><span class="caret"></span>
+                Move <span id="directionBadge" class="badge"></span><span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                <li><a href="#">Straight</a></li>
-                <li><a href="#">Left</a></li>
-                <li><a href="#">Right</a></li>
+                <li><a href="#">straight</a></li>
+                <li><a href="#">left</a></li>
+                <li><a href="#">right</a></li>
               </ul>
             </div>
             <div id="dialDistanceBS" class="btn-group">
               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Distance <span class="badge">4</span><span class="caret"></span>
+                Distance <span id="dialDistanceBadge" class="badge"></span><span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
                 <li><a href="#">1</a></li>
@@ -59,24 +59,6 @@
                 <li><a href="#">5</a></li>
               </ul>
             </div>
-            <select id="dialDistance">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <select id="movementTemplate">
-                <option value="straight">straight</option>
-                <option value="straight-2">straight-2</option>
-                <option value="left">left</option>
-                <option value="right">right</option>
-                <option value="k-turn">k-turn</option>
-            </select>
-            <span class="additionalInfo">Additional info...</span>
-            <span class="additionalInfo">Additional info...</span>
-            <span class="additionalInfo">Additional info...</span>
-            
         </div>
         
         <div id="canvasDiv" class="playArea">
