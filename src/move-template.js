@@ -21,6 +21,21 @@ var MoveTemplate = function() {
             imagePath: "img/move-templates/straight-2.png",
             height: 100,
             width: 25
+        },
+        "straight-3" : {
+            imagePath: "img/move-templates/straight-3.png",
+            height: 150,
+            width: 25
+        },
+        "straight-4" : {
+            imagePath: "img/move-templates/straight-4.png",
+            height: 200,
+            width: 25
+        },
+        "straight-5" : {
+            imagePath: "img/move-templates/straight-5.png",
+            height: 250,
+            width: 25
         }
         // TODO: the other templates...
     }
