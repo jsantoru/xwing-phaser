@@ -67,10 +67,6 @@ var Game = function() {
         
         //_this.tieFighter1.turn(90);
     });
-    
-    var addMoveTemplate = function() {
-        
-    }
 }
 
 Game.prototype.start = function() {
@@ -86,16 +82,18 @@ Game.prototype.initialize = function() {
     
     // add the first tie to the board
     var tie1 = new TieFighter();
-    tie1.addToBoard(200, 900);
+    tie1.addToBoard(500, 500);
     
     this.tieFighter1 = tie1;
 }
 
 Game.prototype.addTemplateToBoard = function() {
     var _this = this;
+    // TODO: should these values just be properties on this class?
     var movementTemplateVal = $('#directionBadge').text() + "-" + $('#dialDistanceBadge').text();
         console.log("templateVal: " + movementTemplateVal);
         
+        // if there's already a template out there, remove it
         if(_this.moveTemplate != null) {
             _this.moveTemplate.removeFromBoard();
             _this.moveTemplate = null;
