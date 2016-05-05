@@ -67,6 +67,11 @@ var Game = function() {
         
         //_this.tieFighter1.turn(90);
     });
+    
+    $('#moveOK').on('click', function(){
+        console.log("moveOK()");
+        _this.moveTieWithTemplate();
+    });
 }
 
 Game.prototype.start = function() {
@@ -91,16 +96,16 @@ Game.prototype.addTemplateToBoard = function() {
     var _this = this;
     // TODO: should these values just be properties on this class?
     var movementTemplateVal = $('#directionBadge').text() + "-" + $('#dialDistanceBadge').text();
-        console.log("templateVal: " + movementTemplateVal);
+    console.log("templateVal: " + movementTemplateVal);
         
-        // if there's already a template out there, remove it
-        if(_this.moveTemplate != null) {
-            _this.moveTemplate.removeFromBoard();
-            _this.moveTemplate = null;
-        }
+    // if there's already a template out there, remove it
+    if(_this.moveTemplate != null) {
+       _this.moveTemplate.removeFromBoard();
+        _this.moveTemplate = null;
+    }
         
-        _this.moveTemplate = new MoveTemplate();
-        _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
+    _this.moveTemplate = new MoveTemplate();
+    _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
 }
 
 Game.prototype.moveTieWithTemplate = function() {
@@ -108,4 +113,12 @@ Game.prototype.moveTieWithTemplate = function() {
  
     //_this.moveTemplate.config
     
+    // assume the ship is facing up
+    console.log("tie direction: " + _this.tieFighter1.direction);
+    
+    // assume we're moving straight and up, so x doesnt change
+    var x = _this.tieFighter1
+    var y = _this.tieFighter1.y - _this.tieFighter1.height - _this.moveTemplate.config.height;
+    
+    _this.tieFighter1.move(x, y);
 }

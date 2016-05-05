@@ -7,6 +7,11 @@ var TieFighter = function() {
     this.rotation = 0;
     
     this.direction = "up";
+    
+    // TODO: this is needed when calculating move target.
+    // TODO: should be in one place, not in css and here
+    this.height = 50;
+    this.width = 50;
 }
 
 TieFighter.prototype.addToBoard = function(x, y) {
