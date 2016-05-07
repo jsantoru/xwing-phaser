@@ -1,17 +1,7 @@
 // TODO: initialize with templateId and x and y
-var MoveTemplate = function() {
+var MoveTemplate = function(templateId) {
     // constructor
-    this.x = 0;
-    this.y = 0;
-    
-    // TODO: when to set? is this the right place to track?
-    // basically the location where to set the ship at the end of this template
-    this.destinationX = 0;
-    this.destinationY = 0;
-    
-    this.imagePath = "img/move-templates/straight-2.png";
-    
-    this.config;
+    console.log("MoveTemplate.constructor(), templateId: " + templateId);
     
     // TODO: externalize this
     this.templateConfig = {
@@ -46,16 +36,17 @@ var MoveTemplate = function() {
         // TODO: the other templates...
     }
     
+    // set the template config
+    this.config = this.templateConfig[templateId];
+    console.log("templateConfig: " + JSON.stringify(this.config));
+    
+    this.x = 0;
+    this.y = 0;
 }
 
 // TODO: move some of this logic to the constructor (templateId at least)
-MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
-    console.log("MoveTemplate.addToBoard(), templateId: " + templateId + 
-                ", x: " + x + ", y: " + y);
-    
-    // get the template config
-    this.config = this.templateConfig[templateId];
-    console.log("templateConfig: " + JSON.stringify(this.config));
+MoveTemplate.prototype.addToBoard = function(x, y) {
+    console.log("MoveTemplate.addToBoard(): x: " + x + ", y: " + y);
     
     // create the image from the config
     if(this.config) {

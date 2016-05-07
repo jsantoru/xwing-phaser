@@ -88,8 +88,8 @@ Game.prototype.addTemplateToBoard = function() {
         _this.moveTemplate = null;
     }
         
-    _this.moveTemplate = new MoveTemplate();
-    _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
+    _this.moveTemplate = new MoveTemplate(movementTemplateVal);
+    _this.moveTemplate.addToBoard(_this.tieFighter1.x, _this.tieFighter1.y);
 }
 
 // TODO: this method needs to be on TieFighter.js
