@@ -67,6 +67,10 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
             x = this.x - moveTemplate.config.width - 25/2;
             y = this.y + moveTemplate.config.height + 25/2;
         }
+        else if(moveTemplate.config.direction == "left") {
+            x = this.x + moveTemplate.config.width + 25/2;
+            y = this.y + moveTemplate.config.height + 25/2;
+        }
     }
     else if(this.direction == "right") {
         if(moveTemplate.config.direction == "straight") {
