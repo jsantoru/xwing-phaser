@@ -75,6 +75,12 @@ MoveTemplate.prototype.determineAdjustedXY = function(direction, templateConfig,
         adjustedX = x + templateConfig.width/2;
         adjustedY = y + 50; // TODO: the height of the ship base is 50, should not be hardcoded here
     }
+    else if(direction == "right") {
+        // TODO
+    }
+    else if(direction == "left") {
+        // TODO
+    }
     
     return {
         x: adjustedX,
