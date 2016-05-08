@@ -96,8 +96,8 @@ TieFighter.prototype.turn = function(degrees) {
     console.log("turn()");
     this.rotation += degrees;
     
-    if(this.rotation == 360) {
-        this.rotation = 0;
+    if(this.rotation >= 360) {
+        this.rotation = this.rotation - 360;
     }
     console.log("rotation: " + this.rotation);
     $('#tieDiv').rotate(this.rotation);

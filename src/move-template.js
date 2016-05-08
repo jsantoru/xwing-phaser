@@ -39,6 +39,13 @@ var MoveTemplate = function(templateId) {
             width: 50,
             direction: "right",
             endRotation: 90
+        },
+        "left-1" : {
+            imagePath: "img/move-templates/turn-1-left.png",
+            height: 50,
+            width: 50,
+            direction: "left",
+            endRotation: 270
         }
         // TODO: the other templates...
     }
@@ -73,28 +80,34 @@ MoveTemplate.prototype.addToBoard = function(direction, x, y) {
     }
 }
 
-MoveTemplate.prototype.determineAdjustedXY = function(direction, templateConfig, x, y) {
+MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateConfig, x, y) {
     var adjustedX;
     var adjustedY;
     
-    if(direction == "up") {
-        adjustedX = x + 25/2;
-        adjustedY = y - templateConfig.height; 
+    if(shipDirection == "up") {
+        if(templateConfig.direction == "left") {
+            adjustedX = x + 25/2 - 25;
+            adjustedY = y - templateConfig.height;
+        }
+        else {
+            adjustedX = x + 25/2;
+            adjustedY = y - templateConfig.height; 
+        }
     }
-    else if(direction == "down") {
+    else if(shipDirection == "down") {
         adjustedX = x + 25 + 25/2;
         adjustedY = y + templateConfig.height + 50;
         
         // also rotate this template
         this.turn(180);
     }
-    else if(direction == "right") {
+    else if(shipDirection == "right") {
         adjustedX = x + templateConfig.height + 50;
         adjustedY = y + 25/2
         
         this.turn(90);
     }
-    else if(direction == "left") {
+    else if(shipDirection == "left") {
         adjustedX = x - templateConfig.height;
         adjustedY = y + 25 + 25/2;
         
