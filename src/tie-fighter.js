@@ -41,11 +41,23 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     // assume the ship is facing up
     console.log("tie direction: " + this.direction);
     
-    // assume we're moving straight and up, so x doesnt change
-    var x = this.x;
-    var y = this.y - this.height - moveTemplate.config.height;
+    var x; 
+    var y;
     
-    // TODO: actually handle directions and other move templates
+    if(this.direction == "up") {
+        x = this.x;
+        y = this.y - this.height - moveTemplate.config.height;
+    }
+    else if(this.direction == "down") {
+        x = this.x;
+        y = this.y + this.height + moveTemplate.config.height;
+    }
+    else if(this.direction == "right") {
+        // TODO
+    }
+    else if(this.direction == "left") {
+        // TODO
+    }
     
     // move the tie
     this.move(x, y);
@@ -54,5 +66,24 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
 TieFighter.prototype.turn = function(degrees) {
     console.log("turn()");
     this.rotation += degrees;
+    
+    if(this.rotation == 360) {
+        this.rotation = 0;
+    }
+    console.log("rotation: " + this.rotation);
     $('#tieDiv').rotate(this.rotation);
+    
+    // set the direction based on the rotation
+    if(this.rotation == 0) {
+        this.direction = "up";
+    } 
+    else if(this.rotation == 90) {
+        this.direction = "right";
+    }
+    else if(this.rotation == 180) {
+        this.direction = "down";
+    }
+    else if(this.rotation == 270) {
+        this.direction = "left";
+    }
 }

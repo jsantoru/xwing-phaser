@@ -46,9 +46,15 @@ var Game = function() {
     });
     
     $('#moveOK').on('click', function(){
-        console.log("moveOK()");
+        console.log("moveOK");
         // TODO: log term, move 'selectedTie' instead of just moving tie1
         _this.moveTieWithTemplate();
+    });
+    
+    $('#rotate').on('click', function(){
+        console.log("rotate");
+        // TODO: log term, move 'selectedTie' instead of just moving tie1
+        _this.tieFighter1.turn(90);
     });
 }
 
@@ -59,9 +65,6 @@ Game.prototype.start = function() {
 
 Game.prototype.initialize = function() {
     console.log("initialize");
-    
-    // TODO: add the dial to the board, instead of in html?
-    // TODO: have the tie have a dial?
     
     // add the first tie to the board
     var tie1 = new TieFighter();
@@ -88,8 +91,8 @@ Game.prototype.addTemplateToBoard = function() {
         _this.moveTemplate = null;
     }
         
-    _this.moveTemplate = new MoveTemplate();
-    _this.moveTemplate.addToBoard(movementTemplateVal, _this.tieFighter1.x, _this.tieFighter1.y);
+    _this.moveTemplate = new MoveTemplate(movementTemplateVal);
+    _this.moveTemplate.addToBoard(_this.tieFighter1.direction, _this.tieFighter1.x, _this.tieFighter1.y);
 }
 
 // TODO: this method needs to be on TieFighter.js

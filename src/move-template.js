@@ -1,17 +1,7 @@
 // TODO: initialize with templateId and x and y
-var MoveTemplate = function() {
+var MoveTemplate = function(templateId) {
     // constructor
-    this.x = 0;
-    this.y = 0;
-    
-    // TODO: when to set? is this the right place to track?
-    // basically the location where to set the ship at the end of this template
-    this.destinationX = 0;
-    this.destinationY = 0;
-    
-    this.imagePath = "img/move-templates/straight-2.png";
-    
-    this.config;
+    console.log("MoveTemplate.constructor(), templateId: " + templateId);
     
     // TODO: externalize this
     this.templateConfig = {
@@ -46,16 +36,17 @@ var MoveTemplate = function() {
         // TODO: the other templates...
     }
     
+    // set the template config
+    this.config = this.templateConfig[templateId];
+    console.log("templateConfig: " + JSON.stringify(this.config));
+    
+    this.x = 0;
+    this.y = 0;
 }
 
 // TODO: move some of this logic to the constructor (templateId at least)
-MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
-    console.log("MoveTemplate.addToBoard(), templateId: " + templateId + 
-                ", x: " + x + ", y: " + y);
-    
-    // get the template config
-    this.config = this.templateConfig[templateId];
-    console.log("templateConfig: " + JSON.stringify(this.config));
+MoveTemplate.prototype.addToBoard = function(direction, x, y) {
+    console.log("MoveTemplate.addToBoard(): direction: " + direction + ", x: " + x + ", y: " + y);
     
     // create the image from the config
     if(this.config) {
@@ -66,15 +57,30 @@ MoveTemplate.prototype.addToBoard = function(templateId, x, y) {
         
         // move this template to the correct location 
         // relative to the location of the ship and the template size
-        var adjustedXY = this.determineAdjustedXY("up", this.config, x, y)
+        var adjustedXY = this.determineAdjustedXY(direction, this.config, x, y)
 
         this.move(adjustedXY.x, adjustedXY.y);
     }
 }
 
 MoveTemplate.prototype.determineAdjustedXY = function(direction, templateConfig, x, y) {
-    var adjustedX = x + templateConfig.width/2;
-    var adjustedY = y - templateConfig.height;
+    var adjustedX;
+    var adjustedY;
+    
+    if(direction == "up") {
+        adjustedX = x + templateConfig.width/2;
+        adjustedY = y - templateConfig.height; 
+    }
+    else if(direction == "down") {
+        adjustedX = x + templateConfig.width/2;
+        adjustedY = y + 50; // TODO: the height of the ship base is 50, should not be hardcoded here
+    }
+    else if(direction == "right") {
+        // TODO
+    }
+    else if(direction == "left") {
+        // TODO
+    }
     
     return {
         x: adjustedX,
