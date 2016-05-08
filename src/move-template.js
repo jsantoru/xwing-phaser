@@ -45,8 +45,8 @@ var MoveTemplate = function(templateId) {
 }
 
 // TODO: move some of this logic to the constructor (templateId at least)
-MoveTemplate.prototype.addToBoard = function(x, y) {
-    console.log("MoveTemplate.addToBoard(): x: " + x + ", y: " + y);
+MoveTemplate.prototype.addToBoard = function(direction, x, y) {
+    console.log("MoveTemplate.addToBoard(): direction: " + direction + ", x: " + x + ", y: " + y);
     
     // create the image from the config
     if(this.config) {
@@ -57,15 +57,23 @@ MoveTemplate.prototype.addToBoard = function(x, y) {
         
         // move this template to the correct location 
         // relative to the location of the ship and the template size
-        var adjustedXY = this.determineAdjustedXY("up", this.config, x, y)
+        var adjustedXY = this.determineAdjustedXY(direction, this.config, x, y)
 
         this.move(adjustedXY.x, adjustedXY.y);
     }
 }
 
 MoveTemplate.prototype.determineAdjustedXY = function(direction, templateConfig, x, y) {
-    var adjustedX = x + templateConfig.width/2;
-    var adjustedY = y - templateConfig.height;
+    var adjustedX;
+    var adjustedY;
+    
+    if(direction == "up") {
+        adjustedX = x + templateConfig.width/2;
+        adjustedY = y - templateConfig.height; 
+    }
+    else if(direction == "down") {
+        // TODO:
+    }
     
     return {
         x: adjustedX,

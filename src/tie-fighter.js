@@ -42,6 +42,7 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     console.log("tie direction: " + this.direction);
     
     // assume we're moving straight and up, so x doesnt change
+    // TODO: handle other directions
     var x = this.x;
     var y = this.y - this.height - moveTemplate.config.height;
     
