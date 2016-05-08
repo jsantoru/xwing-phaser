@@ -54,5 +54,24 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
 TieFighter.prototype.turn = function(degrees) {
     console.log("turn()");
     this.rotation += degrees;
+    
+    if(this.rotation == 360) {
+        this.rotation = 0;
+    }
+    console.log("rotation: " + this.rotation);
     $('#tieDiv').rotate(this.rotation);
+    
+    // set the direction based on the rotation
+    if(this.rotation == 0) {
+        this.direction = "up";
+    } 
+    else if(this.rotation == 90) {
+        this.direction = "right";
+    }
+    else if(this.rotation == 180) {
+        this.direction = "down";
+    }
+    else if(this.rotation == 270) {
+        this.direction = "left";
+    }
 }
