@@ -87,7 +87,7 @@ Game.prototype.addTemplateToBoard = function() {
         
     // if there's already a template out there, remove it
     if(_this.moveTemplate != null) {
-       _this.moveTemplate.removeFromBoard();
+        _this.moveTemplate.removeFromBoard();
         _this.moveTemplate = null;
     }
         
