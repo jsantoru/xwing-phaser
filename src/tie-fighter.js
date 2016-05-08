@@ -75,8 +75,14 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
         }
     }
     else if(this.direction == "left") {
-        x = this.x - this.height - moveTemplate.config.height;
-        y = this.y;
+        if(moveTemplate.config.direction == "straight") {
+            x = this.x - this.height - moveTemplate.config.height;
+            y = this.y;
+        }
+        else if(moveTemplate.config.direction == "right") {
+            x = this.x - moveTemplate.config.height - 25/2;
+            y = this.y - moveTemplate.config.height - 25/2;
+        }
     }
     
     // move the tie
