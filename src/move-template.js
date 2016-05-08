@@ -10,28 +10,28 @@ var MoveTemplate = function(templateId) {
             height: 100,
             width: 25,
             direction: "straight",
-            rotation: 0
+            endRotation: 0
         },
         "straight-3" : {
             imagePath: "img/move-templates/straight-3.png",
             height: 150,
             width: 25,
             direction: "straight",
-            rotation: 0
+            endRotation: 0
         },
         "straight-4" : {
             imagePath: "img/move-templates/straight-4.png",
             height: 200,
             width: 25,
             direction: "straight",
-            rotation: 0
+            endRotation: 0
         },
         "straight-5" : {
             imagePath: "img/move-templates/straight-5.png",
             height: 250,
             width: 25,
             direction: "straight",
-            rotation: 0
+            endRotation: 0
         }
         // TODO: the other templates...
     }
@@ -42,6 +42,9 @@ var MoveTemplate = function(templateId) {
     
     this.x = 0;
     this.y = 0;
+    
+    this.rotation = 0;
+    this.direction = "up";
 }
 
 // TODO: move some of this logic to the constructor (templateId at least)
@@ -68,18 +71,27 @@ MoveTemplate.prototype.determineAdjustedXY = function(direction, templateConfig,
     var adjustedY;
     
     if(direction == "up") {
-        adjustedX = x + templateConfig.width/2;
+        adjustedX = x + 25/2;
         adjustedY = y - templateConfig.height; 
     }
     else if(direction == "down") {
-        adjustedX = x + templateConfig.width/2;
-        adjustedY = y + 50; // TODO: the height of the ship base is 50, should not be hardcoded here
+        adjustedX = x + 25 + 25/2;
+        adjustedY = y + templateConfig.height + 50;
+        
+        // also rotate this template
+        this.turn(180);
     }
     else if(direction == "right") {
-        // TODO
+        adjustedX = x + templateConfig.height + 50;
+        adjustedY = y + 25/2
+        
+        this.turn(90);
     }
     else if(direction == "left") {
-        // TODO
+        adjustedX = x - templateConfig.height;
+        adjustedY = y + 25 + 25/2;
+        
+        this.turn(270);
     }
     
     return {
@@ -105,4 +117,31 @@ MoveTemplate.prototype.move = function(x, y) {
     
     $('#moveTemplateDiv').css("top", yPixels);
     $('#moveTemplateDiv').css("left", xPixels);
+}
+
+
+MoveTemplate.prototype.turn = function(degrees) {
+    console.log("MoveTemplate.turn()");
+    this.rotation += degrees;
+    
+    if(this.rotation == 360) {
+        this.rotation = 0;
+    }
+    
+    console.log("rotation: " + this.rotation);
+    $('#moveTemplateDiv').rotate(this.rotation);
+    
+    // set the direction based on the rotation
+    if(this.rotation == 0) {
+        this.direction = "up";
+    } 
+    else if(this.rotation == 90) {
+        this.direction = "right";
+    }
+    else if(this.rotation == 180) {
+        this.direction = "down";
+    }
+    else if(this.rotation == 270) {
+        this.direction = "left";
+    }
 }
