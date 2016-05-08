@@ -45,32 +45,75 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     var y;
     
     if(this.direction == "up") {
-        x = this.x;
-        y = this.y - this.height - moveTemplate.config.height;
+        if(moveTemplate.config.direction == "straight") {
+            x = this.x;
+            y = this.y - this.height - moveTemplate.config.height;
+        } 
+        else if(moveTemplate.config.direction == "right") {
+            x = this.x + moveTemplate.config.width + 25/2;
+            y = this.y - moveTemplate.config.height - 25/2;
+        } 
+        else if(moveTemplate.config.direction == "left") {
+            x = this.x - moveTemplate.config.width - 25/2;
+            y = this.y - moveTemplate.config.height - 25/2;
+        }
     }
     else if(this.direction == "down") {
-        x = this.x;
-        y = this.y + this.height + moveTemplate.config.height;
+        if(moveTemplate.config.direction == "straight") {
+            x = this.x;
+            y = this.y + this.height + moveTemplate.config.height;
+        }
+        else if(moveTemplate.config.direction == "right") {
+            x = this.x - moveTemplate.config.width - 25/2;
+            y = this.y + moveTemplate.config.height + 25/2;
+        }
+        else if(moveTemplate.config.direction == "left") {
+            x = this.x + moveTemplate.config.width + 25/2;
+            y = this.y + moveTemplate.config.height + 25/2;
+        }
     }
     else if(this.direction == "right") {
-        x = this.x + this.height + moveTemplate.config.height;
-        y = this.y;
+        if(moveTemplate.config.direction == "straight") {
+            x = this.x + this.height + moveTemplate.config.height;
+            y = this.y;
+        }
+        else if(moveTemplate.config.direction == "right") {
+            x = this.x + moveTemplate.config.height + 25/2;
+            y = this.y + moveTemplate.config.width + 25/2;
+        }
+        else if(moveTemplate.config.direction == "left") {
+            x = this.x + moveTemplate.config.height + 25/2;
+            y = this.y - moveTemplate.config.width - 25/2;
+        }
     }
     else if(this.direction == "left") {
-        x = this.x - this.height - moveTemplate.config.height;
-        y = this.y;
+        if(moveTemplate.config.direction == "straight") {
+            x = this.x - this.height - moveTemplate.config.height;
+            y = this.y;
+        }
+        else if(moveTemplate.config.direction == "right") {
+            x = this.x - moveTemplate.config.height - 25/2;
+            y = this.y - moveTemplate.config.height - 25/2;
+        }
+        else if(moveTemplate.config.direction == "left") {
+            x = this.x - moveTemplate.config.height - 25/2;
+            y = this.y + moveTemplate.config.height + 25/2;
+        }
     }
     
     // move the tie
     this.move(x, y);
+    
+    // turn the ship (if necessary -- rotation will be 0 for straight moves)
+    this.turn(moveTemplate.config.endRotation);
 }
 
 TieFighter.prototype.turn = function(degrees) {
     console.log("turn()");
     this.rotation += degrees;
     
-    if(this.rotation == 360) {
-        this.rotation = 0;
+    if(this.rotation >= 360) {
+        this.rotation = this.rotation - 360;
     }
     console.log("rotation: " + this.rotation);
     $('#tieDiv').rotate(this.rotation);
