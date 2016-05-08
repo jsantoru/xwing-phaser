@@ -46,9 +46,15 @@ var Game = function() {
     });
     
     $('#moveOK').on('click', function(){
-        console.log("moveOK()");
+        console.log("moveOK");
         // TODO: log term, move 'selectedTie' instead of just moving tie1
         _this.moveTieWithTemplate();
+    });
+    
+    $('#rotate').on('click', function(){
+        console.log("rotate");
+        // TODO: log term, move 'selectedTie' instead of just moving tie1
+        _this.tieFighter1.turn(90);
     });
 }
 
