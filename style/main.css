@@ -71,6 +71,9 @@ body {
 .moveTemplateDiv {
     position:absolute;
     z-index:99;
+    
+    /* rotate on the top left corner instead of the center */
+    transform-origin: top left; 
 }
 
 .moveTemplateDiv img {
