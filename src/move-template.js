@@ -126,7 +126,6 @@ MoveTemplate.prototype.move = function(x, y) {
     $('#moveTemplateDiv').css("left", xPixels);
 }
 
-
 MoveTemplate.prototype.turn = function(degrees) {
     console.log("MoveTemplate.turn()");
     this.rotation += degrees;
