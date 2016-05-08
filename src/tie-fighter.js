@@ -45,8 +45,7 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     var y;
     
     if(this.direction == "up") {
-        
-        // now handle the different template
+        // handle the different templates
         if(moveTemplate.config.direction == "straight") {
             x = this.x;
             y = this.y - this.height - moveTemplate.config.height;
@@ -54,7 +53,6 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
         else if(moveTemplate.config.direction == "right") {
             x = this.x + moveTemplate.config.width + 25/2;
             y = this.y - moveTemplate.config.height - 25/2;
-            this.turn(moveTemplate.config.endRotation);
         } 
     }
     else if(this.direction == "down") {
@@ -62,8 +60,14 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
         y = this.y + this.height + moveTemplate.config.height;
     }
     else if(this.direction == "right") {
-        x = this.x + this.height + moveTemplate.config.height;
-        y = this.y;
+        if(moveTemplate.config.direction == "straight") {
+            x = this.x + this.height + moveTemplate.config.height;
+            y = this.y;
+        }
+        else if(moveTemplate.config.direction == "right") {
+            x = this.x + moveTemplate.config.height + 25/2;
+            y = this.y + moveTemplate.config.width + 25/2;
+        }
     }
     else if(this.direction == "left") {
         x = this.x - this.height - moveTemplate.config.height;
@@ -72,6 +76,9 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     
     // move the tie
     this.move(x, y);
+    
+    // turn the ship (if necessary -- rotation will be 0 for straight moves)
+    this.turn(moveTemplate.config.endRotation);
 }
 
 TieFighter.prototype.turn = function(degrees) {
