@@ -45,7 +45,6 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     var y;
     
     if(this.direction == "up") {
-        // handle the different templates
         if(moveTemplate.config.direction == "straight") {
             x = this.x;
             y = this.y - this.height - moveTemplate.config.height;
@@ -56,8 +55,14 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
         } 
     }
     else if(this.direction == "down") {
-        x = this.x;
-        y = this.y + this.height + moveTemplate.config.height;
+        if(moveTemplate.config.direction == "straight") {
+            x = this.x;
+            y = this.y + this.height + moveTemplate.config.height;
+        }
+        else if(moveTemplate.config.direction == "right") {
+            x = this.x - moveTemplate.config.width - 25/2;
+            y = this.y + moveTemplate.config.height + 25/2;
+        }
     }
     else if(this.direction == "right") {
         if(moveTemplate.config.direction == "straight") {
