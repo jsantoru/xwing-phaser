@@ -116,8 +116,14 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
         this.turn(90);
     }
     else if(shipDirection == "left") {
-        adjustedX = x - templateConfig.height;
-        adjustedY = y + 25 + 25/2;
+        if(templateConfig.direction == "left") {
+            adjustedX = x - templateConfig.height;
+            adjustedY = y + 25 + 25/2 + 25;
+        }
+        else {
+            adjustedX = x - templateConfig.height;
+            adjustedY = y + 25 + 25/2;
+        }
         
         this.turn(270);
     }
