@@ -10,6 +10,7 @@ var MoveTemplate = function(templateId) {
             height: 100,
             width: 25,
             direction: "straight",
+            distance: 2,
             endRotation: 0
         },
         "straight-3" : {
@@ -17,6 +18,7 @@ var MoveTemplate = function(templateId) {
             height: 150,
             width: 25,
             direction: "straight",
+            distance: 3,
             endRotation: 0
         },
         "straight-4" : {
@@ -24,6 +26,7 @@ var MoveTemplate = function(templateId) {
             height: 200,
             width: 25,
             direction: "straight",
+            distance: 4,
             endRotation: 0
         },
         "straight-5" : {
@@ -31,6 +34,7 @@ var MoveTemplate = function(templateId) {
             height: 250,
             width: 25,
             direction: "straight",
+            distance: 5,
             endRotation: 0
         },
         "right-1" : {
@@ -38,6 +42,7 @@ var MoveTemplate = function(templateId) {
             height: 50,
             width: 50,
             direction: "right",
+            distance: 1,
             endRotation: 90
         },
         "left-1" : {
@@ -45,20 +50,23 @@ var MoveTemplate = function(templateId) {
             height: 50,
             width: 50,
             direction: "left",
+            distance: 1,
             endRotation: 270
         },
         "right-2" : {
             imagePath: "img/move-templates/turn-2-right.png",
-            height: 100,
-            width: 100,
+            height: 75,
+            width: 75,
             direction: "right",
+            distance: 2,
             endRotation: 90
         },
         "left-2" : {
             imagePath: "img/move-templates/turn-2-left.png",
-            height: 100,
-            width: 100,
+            height: 75,
+            width: 75,
             direction: "left",
+            distance: 2,
             endRotation: 270
         }
         // TODO: the other templates...
@@ -102,6 +110,9 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
         if(templateConfig.direction == "left") {
             adjustedX = x + 25/2 - 25;
             adjustedY = y - templateConfig.height;
+            if(templateConfig.distance == 2) {
+                adjustedX = adjustedX - 25;
+            }
         }
         else {
             adjustedX = x + 25/2;
@@ -112,6 +123,9 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
         if(templateConfig.direction == "left") {
             adjustedX = x + 25 + 25/2 + 25;
             adjustedY = y + templateConfig.height + 50;
+            if(templateConfig.distance == 2) {
+                adjustedX = adjustedX + 25;
+            }
         } else {
             adjustedX = x + 25 + 25/2;
             adjustedY = y + templateConfig.height + 50;
@@ -123,6 +137,9 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
         if(templateConfig.direction == "left") {
             adjustedX = x + templateConfig.height + 50;
             adjustedY = y + 25/2 - 25;
+            if(templateConfig.distance == 2) {
+                adjustedY = adjustedY - 25;
+            }
         } else {
             adjustedX = x + templateConfig.height + 50;
             adjustedY = y + 25/2;
@@ -133,6 +150,9 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
         if(templateConfig.direction == "left") {
             adjustedX = x - templateConfig.height;
             adjustedY = y + 25 + 25/2 + 25;
+            if(templateConfig.distance == 2) {
+                adjustedY = adjustedY + 25;
+            }
         }
         else {
             adjustedX = x - templateConfig.height;
