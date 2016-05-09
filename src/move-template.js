@@ -68,6 +68,22 @@ var MoveTemplate = function(templateId) {
             direction: "left",
             distance: 2,
             endRotation: 270
+        },
+        "right-3" : {
+            imagePath: "img/move-templates/turn-3-right.png",
+            height: 100,
+            width: 100,
+            direction: "right",
+            distance: 3,
+            endRotation: 90
+        },
+        "left-3" : {
+            imagePath: "img/move-templates/turn-3-left.png",
+            height: 100,
+            width: 100,
+            direction: "left",
+            distance: 3,
+            endRotation: 270
         }
         // TODO: the other templates...
     }
