@@ -10,6 +10,7 @@ var MoveTemplate = function(templateId) {
             height: 100,
             width: 25,
             direction: "straight",
+            distance: 2,
             endRotation: 0
         },
         "straight-3" : {
@@ -17,6 +18,7 @@ var MoveTemplate = function(templateId) {
             height: 150,
             width: 25,
             direction: "straight",
+            distance: 3,
             endRotation: 0
         },
         "straight-4" : {
@@ -24,6 +26,7 @@ var MoveTemplate = function(templateId) {
             height: 200,
             width: 25,
             direction: "straight",
+            distance: 4,
             endRotation: 0
         },
         "straight-5" : {
@@ -31,6 +34,7 @@ var MoveTemplate = function(templateId) {
             height: 250,
             width: 25,
             direction: "straight",
+            distance: 5,
             endRotation: 0
         },
         "right-1" : {
@@ -38,6 +42,7 @@ var MoveTemplate = function(templateId) {
             height: 50,
             width: 50,
             direction: "right",
+            distance: 1,
             endRotation: 90
         },
         "left-1" : {
@@ -45,6 +50,39 @@ var MoveTemplate = function(templateId) {
             height: 50,
             width: 50,
             direction: "left",
+            distance: 1,
+            endRotation: 270
+        },
+        "right-2" : {
+            imagePath: "img/move-templates/turn-2-right.png",
+            height: 75,
+            width: 75,
+            direction: "right",
+            distance: 2,
+            endRotation: 90
+        },
+        "left-2" : {
+            imagePath: "img/move-templates/turn-2-left.png",
+            height: 75,
+            width: 75,
+            direction: "left",
+            distance: 2,
+            endRotation: 270
+        },
+        "right-3" : {
+            imagePath: "img/move-templates/turn-3-right.png",
+            height: 100,
+            width: 100,
+            direction: "right",
+            distance: 3,
+            endRotation: 90
+        },
+        "left-3" : {
+            imagePath: "img/move-templates/turn-3-left.png",
+            height: 100,
+            width: 100,
+            direction: "left",
+            distance: 3,
             endRotation: 270
         }
         // TODO: the other templates...
@@ -62,8 +100,8 @@ var MoveTemplate = function(templateId) {
 }
 
 // TODO: move some of this logic to the constructor (templateId at least)
-MoveTemplate.prototype.addToBoard = function(direction, x, y) {
-    console.log("MoveTemplate.addToBoard(): direction: " + direction + ", x: " + x + ", y: " + y);
+MoveTemplate.prototype.addToBoard = function(ship) { //(direction, x, y) {
+    console.log("MoveTemplate.addToBoard(): direction: " + ship.direction + ", x: " + ship.x + ", y: " + ship.y);
     
     // create the image from the config
     if(this.config) {
@@ -74,55 +112,57 @@ MoveTemplate.prototype.addToBoard = function(direction, x, y) {
         
         // move this template to the correct location 
         // relative to the location of the ship and the template size
-        var adjustedXY = this.determineAdjustedXY(direction, this.config, x, y)
+        var adjustedXY = this.determineAdjustedXY(ship.width, ship.direction, this.config, ship.x, ship.y)
 
         this.move(adjustedXY.x, adjustedXY.y);
     }
 }
 
-MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateConfig, x, y) {
+MoveTemplate.prototype.determineAdjustedXY = function(shipWidth, shipDirection, templateConfig, x, y) {
     var adjustedX;
     var adjustedY;
     
+    // the offset to position the template in the middle of the ship base
+    var offset = shipWidth/4;
+    
     if(shipDirection == "up") {
         if(templateConfig.direction == "left") {
-            adjustedX = x + 25/2 - 25;
+            adjustedX = x + offset - (templateConfig.width - 25);
             adjustedY = y - templateConfig.height;
         }
         else {
-            adjustedX = x + 25/2;
+            adjustedX = x + offset;
             adjustedY = y - templateConfig.height; 
         }
     }
     else if(shipDirection == "down") {
         if(templateConfig.direction == "left") {
-            adjustedX = x + 25 + 25/2 + 25;
-            adjustedY = y + templateConfig.height + 50;
+            adjustedX = x + offset + templateConfig.width;
+            adjustedY = y + templateConfig.height + shipWidth;
         } else {
-            adjustedX = x + 25 + 25/2;
-            adjustedY = y + templateConfig.height + 50;
+            adjustedX = x + offset + 25;
+            adjustedY = y + templateConfig.height + shipWidth;
         }
-        // also rotate this template
         this.turn(180);
     }
     else if(shipDirection == "right") {
         if(templateConfig.direction == "left") {
-            adjustedX = x + templateConfig.height + 50;
-            adjustedY = y + 25/2 - 25;
+            adjustedX = x + templateConfig.height + shipWidth;
+            adjustedY = y + offset - (templateConfig.width - 25);
         } else {
-            adjustedX = x + templateConfig.height + 50;
-            adjustedY = y + 25/2;
+            adjustedX = x + templateConfig.height + shipWidth;
+            adjustedY = y + offset;
         }
         this.turn(90);
     }
     else if(shipDirection == "left") {
         if(templateConfig.direction == "left") {
             adjustedX = x - templateConfig.height;
-            adjustedY = y + 25 + 25/2 + 25;
+            adjustedY = y + offset + templateConfig.height;
         }
         else {
             adjustedX = x - templateConfig.height;
-            adjustedY = y + 25 + 25/2;
+            adjustedY = y + offset + 25;
         }
         
         this.turn(270);

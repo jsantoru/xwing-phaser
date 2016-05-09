@@ -37,67 +37,68 @@ TieFighter.prototype.move = function(x, y) {
 
 TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     console.log("moveWithTemplate");
-    
-    // assume the ship is facing up
     console.log("tie direction: " + this.direction);
     
     var x; 
     var y;
     
+    // the offset for the template to be in the middle of the ship base
+    var offset = this.width/4;
+    
     if(this.direction == "up") {
         if(moveTemplate.config.direction == "straight") {
             x = this.x;
-            y = this.y - this.height - moveTemplate.config.height;
+            y = this.y - moveTemplate.config.height - this.height;
         } 
         else if(moveTemplate.config.direction == "right") {
-            x = this.x + moveTemplate.config.width + 25/2;
-            y = this.y - moveTemplate.config.height - 25/2;
+            x = this.x + moveTemplate.config.width + offset;
+            y = this.y - moveTemplate.config.height - offset;
         } 
         else if(moveTemplate.config.direction == "left") {
-            x = this.x - moveTemplate.config.width - 25/2;
-            y = this.y - moveTemplate.config.height - 25/2;
+            x = this.x - moveTemplate.config.width - offset;
+            y = this.y - moveTemplate.config.height - offset;
         }
     }
     else if(this.direction == "down") {
         if(moveTemplate.config.direction == "straight") {
             x = this.x;
-            y = this.y + this.height + moveTemplate.config.height;
+            y = this.y + moveTemplate.config.height + this.height;
         }
         else if(moveTemplate.config.direction == "right") {
-            x = this.x - moveTemplate.config.width - 25/2;
-            y = this.y + moveTemplate.config.height + 25/2;
+            x = this.x - moveTemplate.config.width - offset;
+            y = this.y + moveTemplate.config.height + offset;
         }
         else if(moveTemplate.config.direction == "left") {
-            x = this.x + moveTemplate.config.width + 25/2;
-            y = this.y + moveTemplate.config.height + 25/2;
+            x = this.x + moveTemplate.config.width + offset;
+            y = this.y + moveTemplate.config.height + offset;
         }
     }
     else if(this.direction == "right") {
         if(moveTemplate.config.direction == "straight") {
-            x = this.x + this.height + moveTemplate.config.height;
+            x = this.x + moveTemplate.config.height + this.height;
             y = this.y;
         }
         else if(moveTemplate.config.direction == "right") {
-            x = this.x + moveTemplate.config.height + 25/2;
-            y = this.y + moveTemplate.config.width + 25/2;
+            x = this.x + moveTemplate.config.height + offset;
+            y = this.y + moveTemplate.config.width + offset;
         }
         else if(moveTemplate.config.direction == "left") {
-            x = this.x + moveTemplate.config.height + 25/2;
-            y = this.y - moveTemplate.config.width - 25/2;
+            x = this.x + moveTemplate.config.height + offset;
+            y = this.y - moveTemplate.config.width - offset;
         }
     }
     else if(this.direction == "left") {
         if(moveTemplate.config.direction == "straight") {
-            x = this.x - this.height - moveTemplate.config.height;
+            x = this.x - moveTemplate.config.height - this.height;
             y = this.y;
         }
         else if(moveTemplate.config.direction == "right") {
-            x = this.x - moveTemplate.config.height - 25/2;
-            y = this.y - moveTemplate.config.height - 25/2;
+            x = this.x - moveTemplate.config.height - offset;
+            y = this.y - moveTemplate.config.height - offset;
         }
         else if(moveTemplate.config.direction == "left") {
-            x = this.x - moveTemplate.config.height - 25/2;
-            y = this.y + moveTemplate.config.height + 25/2;
+            x = this.x - moveTemplate.config.height - offset;
+            y = this.y + moveTemplate.config.height + offset;
         }
     }
     
