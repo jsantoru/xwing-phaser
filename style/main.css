@@ -4,34 +4,6 @@ body {
     background-repeat: no-repeat;
 }
 
-/* dial */
-
-.dial {
-    position:absolute;
-    left: 1060px;
-    margin-top:20px;
-    width: 300px;
-}
-
-.dial img {
-    width: 100%;
-    padding-bottom: 2px;
-}
-
-#directionBS, #dialDistanceBS {
-    position: relative;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    float:left;
-}
-
-#moveOK, #rotate {
-    position: relative;
-    padding-bottom:5px;
-    padding-left:5px;
-    float: bottom;
-}
-
 /* board */
 
 .board {
@@ -47,37 +19,4 @@ body {
     
     position:absolute; 
     z-index: 1;
-}
-
-/* tie */
-
-.tieDiv {
-    position:absolute; 
-    z-index: 3;
-    
-    height: 50px;
-    width: 50px;
-    
-    border: 1px solid rgba(255, 255, 255, .5);
-}
-
-.tieDiv img {
-   height: 100%;
-   width: 100%;
-}
-
-/* move template */
-
-.moveTemplateDiv {
-    position:absolute;
-    z-index:99;
-    
-    /* rotate on the top left corner instead of the center */
-    transform-origin: top left; 
-}
-
-.moveTemplateDiv img {
-    height: 100%;
-    width: 100%;
-    opacity:0.6;
 }
