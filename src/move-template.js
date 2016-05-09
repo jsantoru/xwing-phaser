@@ -84,8 +84,8 @@ var MoveTemplate = function(templateId) {
 }
 
 // TODO: move some of this logic to the constructor (templateId at least)
-MoveTemplate.prototype.addToBoard = function(direction, x, y) {
-    console.log("MoveTemplate.addToBoard(): direction: " + direction + ", x: " + x + ", y: " + y);
+MoveTemplate.prototype.addToBoard = function(ship) { //(direction, x, y) {
+    console.log("MoveTemplate.addToBoard(): direction: " + ship.direction + ", x: " + ship.x + ", y: " + ship.y);
     
     // create the image from the config
     if(this.config) {
@@ -96,7 +96,7 @@ MoveTemplate.prototype.addToBoard = function(direction, x, y) {
         
         // move this template to the correct location 
         // relative to the location of the ship and the template size
-        var adjustedXY = this.determineAdjustedXY(direction, this.config, x, y)
+        var adjustedXY = this.determineAdjustedXY(ship.direction, this.config, ship.x, ship.y)
 
         this.move(adjustedXY.x, adjustedXY.y);
     }
@@ -106,28 +106,25 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
     var adjustedX;
     var adjustedY;
     
+    // the offset to position the template in the middle of the ship base
+    var offset = 25/2;
+    
     if(shipDirection == "up") {
         if(templateConfig.direction == "left") {
-            adjustedX = x + 25/2 - 25;
+            adjustedX = x + offset - (templateConfig.width - 25);
             adjustedY = y - templateConfig.height;
-            if(templateConfig.distance == 2) {
-                adjustedX = adjustedX - 25;
-            }
         }
         else {
-            adjustedX = x + 25/2;
+            adjustedX = x + offset;
             adjustedY = y - templateConfig.height; 
         }
     }
     else if(shipDirection == "down") {
         if(templateConfig.direction == "left") {
-            adjustedX = x + 25 + 25/2 + 25;
+            adjustedX = x + offset + templateConfig.width;
             adjustedY = y + templateConfig.height + 50;
-            if(templateConfig.distance == 2) {
-                adjustedX = adjustedX + 25;
-            }
         } else {
-            adjustedX = x + 25 + 25/2;
+            adjustedX = x + offset + 25;
             adjustedY = y + templateConfig.height + 50;
         }
         // also rotate this template
@@ -136,27 +133,27 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
     else if(shipDirection == "right") {
         if(templateConfig.direction == "left") {
             adjustedX = x + templateConfig.height + 50;
-            adjustedY = y + 25/2 - 25;
+            adjustedY = y + offset - 25;
             if(templateConfig.distance == 2) {
                 adjustedY = adjustedY - 25;
             }
         } else {
             adjustedX = x + templateConfig.height + 50;
-            adjustedY = y + 25/2;
+            adjustedY = y + offset;
         }
         this.turn(90);
     }
     else if(shipDirection == "left") {
         if(templateConfig.direction == "left") {
             adjustedX = x - templateConfig.height;
-            adjustedY = y + 25 + 25/2 + 25;
+            adjustedY = y + offset + 50;
             if(templateConfig.distance == 2) {
                 adjustedY = adjustedY + 25;
             }
         }
         else {
             adjustedX = x - templateConfig.height;
-            adjustedY = y + 25 + 25/2;
+            adjustedY = y + offset + 25;
         }
         
         this.turn(270);
