@@ -10,6 +10,8 @@ $( document ).ready(function() {
  */
 var Game = function() {
     var _this = this;
+    
+    // TODO: ships[] instead of hardcoded tie
     this.tieFighter1;
     this.moveTemplate = null;
     
