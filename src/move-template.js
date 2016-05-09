@@ -96,18 +96,18 @@ MoveTemplate.prototype.addToBoard = function(ship) { //(direction, x, y) {
         
         // move this template to the correct location 
         // relative to the location of the ship and the template size
-        var adjustedXY = this.determineAdjustedXY(ship.direction, this.config, ship.x, ship.y)
+        var adjustedXY = this.determineAdjustedXY(ship.width, ship.direction, this.config, ship.x, ship.y)
 
         this.move(adjustedXY.x, adjustedXY.y);
     }
 }
 
-MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateConfig, x, y) {
+MoveTemplate.prototype.determineAdjustedXY = function(shipWidth, shipDirection, templateConfig, x, y) {
     var adjustedX;
     var adjustedY;
     
     // the offset to position the template in the middle of the ship base
-    var offset = 25/2;
+    var offset = shipWidth/4;
     
     if(shipDirection == "up") {
         if(templateConfig.direction == "left") {
@@ -122,23 +122,19 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
     else if(shipDirection == "down") {
         if(templateConfig.direction == "left") {
             adjustedX = x + offset + templateConfig.width;
-            adjustedY = y + templateConfig.height + 50;
+            adjustedY = y + templateConfig.height + shipWidth;
         } else {
             adjustedX = x + offset + 25;
-            adjustedY = y + templateConfig.height + 50;
+            adjustedY = y + templateConfig.height + shipWidth;
         }
-        // also rotate this template
         this.turn(180);
     }
     else if(shipDirection == "right") {
         if(templateConfig.direction == "left") {
-            adjustedX = x + templateConfig.height + 50;
-            adjustedY = y + offset - 25;
-            if(templateConfig.distance == 2) {
-                adjustedY = adjustedY - 25;
-            }
+            adjustedX = x + templateConfig.height + shipWidth;
+            adjustedY = y + offset - (templateConfig.width - 25);
         } else {
-            adjustedX = x + templateConfig.height + 50;
+            adjustedX = x + templateConfig.height + shipWidth;
             adjustedY = y + offset;
         }
         this.turn(90);
@@ -146,10 +142,7 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipDirection, templateCon
     else if(shipDirection == "left") {
         if(templateConfig.direction == "left") {
             adjustedX = x - templateConfig.height;
-            adjustedY = y + offset + 50;
-            if(templateConfig.distance == 2) {
-                adjustedY = adjustedY + 25;
-            }
+            adjustedY = y + offset + templateConfig.height;
         }
         else {
             adjustedX = x - templateConfig.height;
