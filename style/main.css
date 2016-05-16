@@ -4,12 +4,13 @@ body {
     background-repeat: no-repeat;
 }
 
+
 /* board */
 
 .board {
     position: absolute;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
     border: 10px solid rgba(0, 0, 0, .5);
 }
 
@@ -19,4 +20,19 @@ body {
     
     position:absolute; 
     z-index: 1;
+}
+
+/* navbar */
+
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:4px !important; padding-bottom:4px !important;
+    height: 30px;
+}
+.navbar {min-height:30px !important;}
+
+.navbar-inverse { min-height:30px; height: 30px; }
+
+/* TODO: doesnt work */
+.navbar-default {
+    background: rgba(0,0,0,0.2);
 }
