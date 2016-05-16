@@ -10,7 +10,7 @@ var MoveTemplate = function(templateId) {
     this.imagePath = config.imagePath;
     this.height = config.height;
     this.width = config.width;
-    this.direction = config.direction;
+    this.type = config.type;
     this.distance = config.distance;
     this.endRotation = config.endRotation;
     
@@ -48,7 +48,7 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipWidth, shipDirection, 
     var offset = shipWidth/4;
     
     if(shipDirection == "up") {
-        if(this.direction == "left") {
+        if(this.type == "left") {
             adjustedX = x + offset - (this.width - 25);
             adjustedY = y - this.height;
         }
@@ -58,7 +58,7 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipWidth, shipDirection, 
         }
     }
     else if(shipDirection == "down") {
-        if(this.direction == "left") {
+        if(this.type == "left") {
             adjustedX = x + offset + this.width;
             adjustedY = y + this.height + shipWidth;
         } else {
@@ -68,7 +68,7 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipWidth, shipDirection, 
         this.turn(180);
     }
     else if(shipDirection == "right") {
-        if(this.direction == "left") {
+        if(this.type == "left") {
             adjustedX = x + this.height + shipWidth;
             adjustedY = y + offset - (this.width - 25);
         } else {
@@ -78,7 +78,7 @@ MoveTemplate.prototype.determineAdjustedXY = function(shipWidth, shipDirection, 
         this.turn(90);
     }
     else if(shipDirection == "left") {
-        if(this.direction == "left") {
+        if(this.type == "left") {
             adjustedX = x - this.height;
             adjustedY = y + offset + this.height;
         }
@@ -128,15 +128,15 @@ MoveTemplate.prototype.turn = function(degrees) {
     
     // set the direction based on the rotation
     if(this.rotation == 0) {
-        //this.direction = "up"; // TODO: these don't line up with the direction from the config
+        this.direction = "up";
     } 
     else if(this.rotation == 90) {
-        //this.direction = "right";
+        this.direction = "right";
     }
     else if(this.rotation == 180) {
-        //this.direction = "down";
+        this.direction = "down";
     }
     else if(this.rotation == 270) {
-        //this.direction = "left";
+        this.direction = "left";
     }
 }

@@ -4,7 +4,7 @@ var Config = function() {
             imagePath: "img/move-templates/straight-2.png",
             height: 100,
             width: 25,
-            direction: "straight",
+            type: "straight",
             distance: 2,
             endRotation: 0
         },
@@ -12,7 +12,7 @@ var Config = function() {
             imagePath: "img/move-templates/straight-3.png",
             height: 150,
             width: 25,
-            direction: "straight",
+            type: "straight",
             distance: 3,
             endRotation: 0
         },
@@ -20,7 +20,7 @@ var Config = function() {
             imagePath: "img/move-templates/straight-4.png",
             height: 200,
             width: 25,
-            direction: "straight",
+            type: "straight",
             distance: 4,
             endRotation: 0
         },
@@ -28,7 +28,7 @@ var Config = function() {
             imagePath: "img/move-templates/straight-5.png",
             height: 250,
             width: 25,
-            direction: "straight",
+            type: "straight",
             distance: 5,
             endRotation: 0
         },
@@ -36,7 +36,7 @@ var Config = function() {
             imagePath: "img/move-templates/turn-1-right.png",
             height: 50,
             width: 50,
-            direction: "right",
+            type: "right",
             distance: 1,
             endRotation: 90
         },
@@ -44,7 +44,7 @@ var Config = function() {
             imagePath: "img/move-templates/turn-1-left.png",
             height: 50,
             width: 50,
-            direction: "left",
+            type: "left",
             distance: 1,
             endRotation: 270
         },
@@ -52,7 +52,7 @@ var Config = function() {
             imagePath: "img/move-templates/turn-2-right.png",
             height: 75,
             width: 75,
-            direction: "right",
+            type: "right",
             distance: 2,
             endRotation: 90
         },
@@ -60,7 +60,7 @@ var Config = function() {
             imagePath: "img/move-templates/turn-2-left.png",
             height: 75,
             width: 75,
-            direction: "left",
+            type: "left",
             distance: 2,
             endRotation: 270
         },
@@ -68,7 +68,7 @@ var Config = function() {
             imagePath: "img/move-templates/turn-3-right.png",
             height: 100,
             width: 100,
-            direction: "right",
+            type: "right",
             distance: 3,
             endRotation: 90
         },
@@ -76,7 +76,7 @@ var Config = function() {
             imagePath: "img/move-templates/turn-3-left.png",
             height: 100,
             width: 100,
-            direction: "left",
+            type: "left",
             distance: 3,
             endRotation: 270
         }

@@ -45,61 +45,58 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     // the offset for the template to be in the middle of the ship base
     var offset = this.width/4;
     
-    console.log("template.direction: " + moveTemplate.direction);
-    console.log("template.direction: " + moveTemplate.direction);
-    
     if(this.direction == "up") {
-        if(moveTemplate.direction == "straight") {
+        if(moveTemplate.type == "straight") {
             x = this.x;
             y = this.y - moveTemplate.height - this.height;
         } 
-        else if(moveTemplate.direction == "right") {
+        else if(moveTemplate.type == "right") {
             x = this.x + moveTemplate.width + offset;
             y = this.y - moveTemplate.height - offset;
         } 
-        else if(moveTemplate.direction == "left") {
+        else if(moveTemplate.type == "left") {
             x = this.x - moveTemplate.width - offset;
             y = this.y - moveTemplate.height - offset;
         }
     }
     else if(this.direction == "down") {
-        if(moveTemplate.direction == "straight") {
+        if(moveTemplate.type == "straight") {
             x = this.x;
             y = this.y + moveTemplate.height + this.height;
         }
-        else if(moveTemplate.direction == "right") {
+        else if(moveTemplate.type == "right") {
             x = this.x - moveTemplate.width - offset;
             y = this.y + moveTemplate.height + offset;
         }
-        else if(moveTemplate.direction == "left") {
+        else if(moveTemplate.type == "left") {
             x = this.x + moveTemplate.width + offset;
             y = this.y + moveTemplate.height + offset;
         }
     }
     else if(this.direction == "right") {
-        if(moveTemplate.direction == "straight") {
+        if(moveTemplate.type == "straight") {
             x = this.x + moveTemplate.height + this.height;
             y = this.y;
         }
-        else if(moveTemplate.direction == "right") {
+        else if(moveTemplate.type == "right") {
             x = this.x + moveTemplate.height + offset;
             y = this.y + moveTemplate.width + offset;
         }
-        else if(moveTemplate.direction == "left") {
+        else if(moveTemplate.type == "left") {
             x = this.x + moveTemplate.height + offset;
             y = this.y - moveTemplate.width - offset;
         }
     }
     else if(this.direction == "left") {
-        if(moveTemplate.direction == "straight") {
+        if(moveTemplate.type == "straight") {
             x = this.x - moveTemplate.height - this.height;
             y = this.y;
         }
-        else if(moveTemplate.direction == "right") {
+        else if(moveTemplate.type == "right") {
             x = this.x - moveTemplate.height - offset;
             y = this.y - moveTemplate.height - offset;
         }
-        else if(moveTemplate.direction == "left") {
+        else if(moveTemplate.type == "left") {
             x = this.x - moveTemplate.height - offset;
             y = this.y + moveTemplate.height + offset;
         }
