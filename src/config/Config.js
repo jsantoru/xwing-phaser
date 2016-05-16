@@ -5,6 +5,7 @@ var Config = function() {
             imagePath: "img/ships/base-tie.png",
             height: 50,
             width: 50
+            // TODO: ship actions
         }
     }
     

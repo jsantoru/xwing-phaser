@@ -1,5 +1,5 @@
-var TieFighter = function() {
-    var config = new Config().ships["tie-fo-fighter"];
+var TieFighter = function(shipId) {
+    var config = new Config().ships[shipId];
 
     this.imagePath = config.imagePath;
     this.height = config.height;
