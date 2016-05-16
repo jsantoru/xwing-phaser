@@ -1,16 +1,6 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     
-    // helper function for rotation
-    // TODO: move out
-    jQuery.fn.rotate = function(degrees) {
-    $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
-                 '-moz-transform' : 'rotate('+ degrees +'deg)',
-                 '-ms-transform' : 'rotate('+ degrees +'deg)',
-                 'transform' : 'rotate('+ degrees +'deg)'});
-        return $(this);
-    };
-    
     var game = new Game();
     game.start();
 });
@@ -20,6 +10,8 @@ $( document ).ready(function() {
  */
 var Game = function() {
     var _this = this;
+    
+    // TODO: ships[] instead of hardcoded tie
     this.tieFighter1;
     this.moveTemplate = null;
     
@@ -67,7 +59,7 @@ Game.prototype.initialize = function() {
     console.log("initialize");
     
     // add the first tie to the board
-    var tie1 = new TieFighter();
+    var tie1 = new Ship("tie-fo-fighter");
     tie1.addToBoard(500, 850);
     
     this.tieFighter1 = tie1;
@@ -104,6 +96,6 @@ Game.prototype.moveTieWithTemplate = function() {
     
     // clear the dial badges and remove the template
     _this.clearDialValues();
-    //_this.moveTemplate.removeFromBoard();
+    _this.moveTemplate.removeFromBoard();
     _this.moveTemplate = null;
 }

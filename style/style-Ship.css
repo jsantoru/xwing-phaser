@@ -1,0 +1,13 @@
+/* ship */
+
+.shipDiv {
+    position:absolute; 
+    z-index: 3;
+    
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+
+.shipDiv img {
+   height: 100%;
+   width: 100%;
+}
