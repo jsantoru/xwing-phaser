@@ -96,6 +96,6 @@ Game.prototype.moveTieWithTemplate = function() {
     
     // clear the dial badges and remove the template
     _this.clearDialValues();
-    //_this.moveTemplate.removeFromBoard();
+    _this.moveTemplate.removeFromBoard();
     _this.moveTemplate = null;
 }
