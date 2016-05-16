@@ -13,6 +13,8 @@ var Ship = function(shipId) {
 
     this.rotation = 0;
     this.direction = "up";
+    
+    // todo: assign uuid to this ship and add to div id as well
 }
 
 Ship.prototype.addToBoard = function(x, y) {
