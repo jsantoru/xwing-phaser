@@ -1,4 +1,7 @@
-var TieFighter = function(shipId) {
+var Ship = function(shipId) {
+    // constructor
+    console.log("Ship.constructor(), shipId: " + shipId);
+    
     var config = new Config().ships[shipId];
 
     this.imagePath = config.imagePath;
@@ -12,7 +15,7 @@ var TieFighter = function(shipId) {
     this.direction = "up";
 }
 
-TieFighter.prototype.addToBoard = function(x, y) {
+Ship.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
     // TODO: should this be an html template?
     $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></img>');
@@ -20,7 +23,7 @@ TieFighter.prototype.addToBoard = function(x, y) {
     this.move(x, y);
 }
 
-TieFighter.prototype.move = function(x, y) {
+Ship.prototype.move = function(x, y) {
     console.log("move()");
     
     this.x = x;
@@ -33,7 +36,7 @@ TieFighter.prototype.move = function(x, y) {
     $('#tieDiv').css("left", xPixels);
 }
 
-TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
+Ship.prototype.moveWithTemplate = function(moveTemplate) {
     console.log("moveWithTemplate");
     console.log("tie direction: " + this.direction);
     
@@ -107,7 +110,7 @@ TieFighter.prototype.moveWithTemplate = function(moveTemplate) {
     this.turn(moveTemplate.endRotation);
 }
 
-TieFighter.prototype.turn = function(degrees) {
+Ship.prototype.turn = function(degrees) {
     console.log("turn()");
     this.rotation += degrees;
     
