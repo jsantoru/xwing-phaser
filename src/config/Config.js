@@ -1,4 +1,13 @@
 var Config = function() {
+    
+    this.ships = {
+        "tie-fo-fighter": {
+            imagePath: "img/ships/base-tie.png",
+            height: 50,
+            width: 50
+        }
+    }
+    
     this.templates = {
         "straight-2": {
             imagePath: "img/move-templates/straight-2.png",

@@ -1,24 +1,22 @@
 var TieFighter = function() {
+    var config = new Config().ships["tie-fo-fighter"];
+
+    this.imagePath = config.imagePath;
+    this.height = config.height;
+    this.width = config.width;
+    
     this.x = 0;
     this.y = 0;
 
-    this.imagePath = "img/ships/base-tie.png";
-    
     this.rotation = 0;
-    
     this.direction = "up";
-    
-    // TODO: this is needed when calculating move target.
-    // TODO: should be in one place, not in css and here
-    this.height = 50;
-    this.width = 50;
 }
 
 TieFighter.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
     // TODO: should this be an html template?
     $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></img>');
-    
+    $('#tieDiv').height(this.height).width(this.width);
     this.move(x, y);
 }
 
