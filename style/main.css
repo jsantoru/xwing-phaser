@@ -82,10 +82,17 @@ body {
     opacity:0.6;
 }
 
+/* navbar */
+
 .navbar-nav > li > a, .navbar-brand {
     padding-top:4px !important; padding-bottom:4px !important;
     height: 30px;
 }
 .navbar {min-height:30px !important;}
 
-.navbar-default { min-height:30px; height: 30px; }
+.navbar-inverse { min-height:30px; height: 30px; }
+
+/* TODO: doesnt work */
+.navbar-default {
+    background: rgba(0,0,0,0.2);
+}
