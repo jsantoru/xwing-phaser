@@ -1,13 +1,13 @@
-/* tie */
+/* ship */
 
-.tieDiv {
+.shipDiv {
     position:absolute; 
     z-index: 3;
     
     border: 1px solid rgba(255, 255, 255, .5);
 }
 
-.tieDiv img {
+.shipDiv img {
    height: 100%;
    width: 100%;
 }

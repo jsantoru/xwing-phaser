@@ -14,14 +14,21 @@ var Ship = function(shipId) {
     this.rotation = 0;
     this.direction = "up";
     
-    // todo: assign uuid to this ship and add to div id as well
+    // TODO: assign uuid to this ship and add to div id as well
+    
+    // TODO: structure
+    //  Dial object
+    //  Pilot object
+    //  Available actions
+    //  Available add on slots in config?
+    //  Add on cards
 }
 
 Ship.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
     // TODO: should this be an html template?
-    $('#board').prepend('<div id="tieDiv" class="tieDiv"><img id="tie" class="tie" src="' + this.imagePath + '"/></img>');
-    $('#tieDiv').height(this.height).width(this.width);
+    $('#board').prepend('<div id="shipDiv" class="shipDiv"><img id="ship" class="ship" src="' + this.imagePath + '"/></img>');
+    $('#shipDiv').height(this.height).width(this.width);
     this.move(x, y);
 }
 
@@ -34,13 +41,13 @@ Ship.prototype.move = function(x, y) {
     var xPixels = x + "px";
     var yPixels = y + "px";
     
-    $('#tieDiv').css("top", yPixels);
-    $('#tieDiv').css("left", xPixels);
+    $('#shipDiv').css("top", yPixels);
+    $('#shipDiv').css("left", xPixels);
 }
 
 Ship.prototype.moveWithTemplate = function(moveTemplate) {
     console.log("moveWithTemplate");
-    console.log("tie direction: " + this.direction);
+    console.log("ship direction: " + this.direction);
     
     var x; 
     var y;
@@ -105,7 +112,7 @@ Ship.prototype.moveWithTemplate = function(moveTemplate) {
         }
     }
     
-    // move the tie
+    // move the ship
     this.move(x, y);
     
     // turn the ship (if necessary -- rotation will be 0 for straight moves)
@@ -120,7 +127,7 @@ Ship.prototype.turn = function(degrees) {
         this.rotation = this.rotation - 360;
     }
     console.log("rotation: " + this.rotation);
-    $('#tieDiv').rotate(this.rotation);
+    $('#shipDiv').rotate(this.rotation);
     
     // set the direction based on the rotation
     if(this.rotation == 0) {
