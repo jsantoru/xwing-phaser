@@ -18,7 +18,7 @@ var MoveTemplate = function(templateId) {
     this.y = 0;
     
     this.rotation = 0;
-    //this.direction = "up";
+    this.direction = "up";
 }
 
 // TODO: move some of this logic to the constructor (templateId at least)
