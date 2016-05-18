@@ -4,11 +4,20 @@ body {
     background-repeat: no-repeat;
 }
 
+/* phases */
+
+.phases {
+    position: absolute;
+    margin-left: 10px;
+    z-index: 2;
+    opacity: .8;
+}
 
 /* board */
 
 .board {
     position: absolute;
+    left: 100px;
     margin-left: 20px;
     margin-top: 0px;
     border: 10px solid rgba(0, 0, 0, .5);
