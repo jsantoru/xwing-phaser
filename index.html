@@ -9,10 +9,11 @@
         <script src="lib/rotate.js"></script>
         
         <!-- bootstrap - css -->
-        <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css"></link>
-
+        <!--<link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css"></link>-->
+        <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css"></link>
+        
         <!-- bootstrap - optional theme -->
-        <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css"></link>
+        <!--<link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css"></link>-->
 
         <!-- bootstrap - javascript -->
         <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
@@ -31,7 +32,7 @@
     </head>
     
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar ">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -68,46 +69,66 @@
             </div>
           </div>
         </nav>
+        
+        <!-- <div id="phases" class="phases">
+          <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><button type="button" class="btn btn-primary">planning</button><a href="#">Planning</a></li>
+            <li role="presentation"><a href="#">Activation</a></li>
+            <li role="presentation"><a href="#">Combat</a></li>
+            <li role="presentation"><a href="#">End</a></li>
+          </ul>
+        </div>  -->
+        <div id="phases" class="phases panel" role="group" aria-label="...">
+          <div class="panel-heading">
+                <h3 class="panel-title">phases</h3>
+            </div>
+           <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="#">Planning</a></li>
+            <li role="presentation"><a href="#">Activation</a></li>
+            <li role="presentation"><a href="#">Combat</a></li>
+            <li role="presentation"><a href="#">End</a></li>
+          </ul>
+        </div>
+        
         <div id="board" class="board">
             <img id="playmat" src="img/playmats/playmat-bespin.jpg"/>
         </div>
         
-        <div id="dial" class="dial panel panel-primary">
+        <div id="dial" class="dial panel">
             <div class="panel-heading">
                 <h3 class="panel-title">Ship Reference Card and Movement</h3>
             </div>
             <img id="dialImg" src="img/refcards/refcard-tie-fo-fighter.png"/>
             
-            <!-- bootstrap dropdown -->
-            <div id="directionBS" class="btn-group">
-              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Direction <span id="directionBadge" class="badge"></span><span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="#">straight</a></li>
-                <li><a href="#">left</a></li>
-                <li><a href="#">right</a></li>
-              </ul>
+            <div class="btn-group-vertical btn-block" role="group" aria-label="...">
+              <div id="directionBS" class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Direction <span id="directionBadge" class="badge"></span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">straight</a></li>
+                  <li><a href="#">left</a></li>
+                  <li><a href="#">right</a></li>
+                </ul>
+              </div>
+              <div id="dialDistanceBS" class="btn-group">
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Distance <span id="dialDistanceBadge" class="badge"></span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                </ul>
+              </div>
+              <button id="moveOK" type="button" class="moveOK btn btn-default">Move</button>
+              
+              <!-- TODO: move rotate button to "utility" component/container -->
+              <button id="rotate" type="button" class="rotate btn btn-default">Rotate</button>
             </div>
-            <div id="dialDistanceBS" class="btn-group">
-              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Distance <span id="dialDistanceBadge" class="badge"></span><span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-              </ul>
-            </div>
-            <div id="moveOK" class="btn-group">
-              <button type="button" class="btn btn-primary">Move</button>
-            </div>
-            <div id="rotate" class="btn-group">
-              <button type="button" class="btn btn-primary">Rotate</button>
-            </div>
-        </div>
+          </div>
         <div id="footer"/>
     </body>
 </html>
