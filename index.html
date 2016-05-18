@@ -99,34 +99,35 @@
                 <h3 class="panel-title">Ship Reference Card and Movement</h3>
             </div>
             <img id="dialImg" src="img/refcards/refcard-tie-fo-fighter.png"/>
-            <!--<div><ul class="list-group"></ul><li class="list-group-item" role="presentation"> : </li></div>-->
-
-              <div class="btn-group-vertical btn-block" role="group" aria-label="...">
-                <div id="directionBS" class="btn-group" role="group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Direction <span id="directionBadge" class="badge"></span><span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">straight</a></li>
-                    <li><a href="#">left</a></li>
-                    <li><a href="#">right</a></li>
-                  </ul>
-                </div>
-                <div id="dialDistanceBS" class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Distance <span id="dialDistanceBadge" class="badge"></span><span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                  </ul>
-                </div>
-                <button id="moveOK" type="button" class="moveOK btn btn-default">Move</button>
-                <button id="rotate" type="button" class="rotate btn btn-default">Rotate</button>
+            
+            <div class="btn-group-vertical btn-block" role="group" aria-label="...">
+              <div id="directionBS" class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Direction <span id="directionBadge" class="badge"></span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">straight</a></li>
+                  <li><a href="#">left</a></li>
+                  <li><a href="#">right</a></li>
+                </ul>
               </div>
+              <div id="dialDistanceBS" class="btn-group">
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Distance <span id="dialDistanceBadge" class="badge"></span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                </ul>
+              </div>
+              <button id="moveOK" type="button" class="moveOK btn btn-default">Move</button>
+              
+              <!-- TODO: move rotate button to "utility" component/container -->
+              <button id="rotate" type="button" class="rotate btn btn-default">Rotate</button>
+            </div>
           </div>
         <div id="footer"/>
     </body>
