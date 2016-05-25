@@ -7,24 +7,18 @@ var Config = function() {
             width: 50,
             actions: ["focus", "target-lock", "barrel-roll", "evade"],
             stats : { attack: 2, agility: 3, hull: 3, shield: 1 },
-            dial: {
-                straight: [
-                    {distance:2, color:"green"},
-                    {distance:3, color:"white"},
-                    {distance:4, color:"white"},
-                    {distance:5, color:"white"}
-                ],
-                left: [
-                    {distance:1, color:"white"},
-                    {distance:2, color:"green"},
-                    {distance:3, color:"white"}
-                ],
-                right: [
-                    {distance:1, color:"white"},
-                    {distance:2, color:"green"},
-                    {distance:3, color:"white"}
-                ]
-            },
+            dial: [
+                {direction:"straight", distance:2, color:"green"},
+                {direction:"straight", distance:3, color:"white"},
+                {direction:"straight", distance:4, color:"white"},
+                {direction:"straight", distance:5, color:"white"},
+                {direction:"left", distance:1, color:"white"},
+                {direction:"left", distance:2, color:"green"},
+                {direction:"left", distance:3, color:"white"},
+                {direction:"right", distance:1, color:"white"},
+                {direction:"right", distance:2, color:"green"},
+                {direction:"right", distance:3, color:"white"}
+            ],
             refcardImagePath: "img/refcards/refcard-tie-fo-fighter.png"
         }
     }
