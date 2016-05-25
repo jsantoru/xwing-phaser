@@ -2,26 +2,33 @@ var Ship = function(shipId) {
     // constructor
     console.log("Ship.constructor(), shipId: " + shipId);
     
+    // TODO: assign uuid to this ship and add to div id as well
+    
+    /* 
+     * state
+     */
+    this.x = 0;
+    this.y = 0;
+    this.rotation = 0;
+    this.direction = "up";
+    
+    /*
+     * config
+     */
     var config = new Config().ships[shipId];
 
     this.imagePath = config.imagePath;
     this.height = config.height;
     this.width = config.width;
     
-    this.x = 0;
-    this.y = 0;
-
-    this.rotation = 0;
-    this.direction = "up";
+    this.refcardImagePath = config.refcardImagePath;
+    this.dial = new Dial(config.dial);
+    this.actions = config.dial;
+    this.pilot;
+    this.upgradeCards;
     
-    // TODO: assign uuid to this ship and add to div id as well
-    
-    // TODO: structure
-    //  Dial object
-    //  Pilot object
-    //  Available actions
-    //  Available add on slots in config?
-    //  Add on cards
+    console.log("Tie directions: " + this.dial.getDirections());
+    console.log("Tie straight distances: " + this.dial.getDistances("straight"));
 }
 
 Ship.prototype.addToBoard = function(x, y) {

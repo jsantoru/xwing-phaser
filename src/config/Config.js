@@ -2,10 +2,24 @@ var Config = function() {
     
     this.ships = {
         "tie-fo-fighter": {
-            imagePath: "img/ships/base-tie-fo-fighter.png",//"img/ships/base-tie.png",
+            imagePath: "img/ships/base-tie-fo-fighter.png",
             height: 50,
-            width: 50
-            // TODO: ship actions
+            width: 50,
+            actions: ["focus", "target-lock", "barrel-roll", "evade"],
+            stats : { attack: 2, agility: 3, hull: 3, shield: 1 },
+            dial: [
+                {direction:"straight", distance:2, color:"green"},
+                {direction:"straight", distance:3, color:"green"},
+                {direction:"straight", distance:4, color:"white"},
+                {direction:"straight", distance:5, color:"white"},
+                {direction:"left", distance:1, color:"white"},
+                {direction:"left", distance:2, color:"green"},
+                {direction:"left", distance:3, color:"white"},
+                {direction:"right", distance:1, color:"white"},
+                {direction:"right", distance:2, color:"green"},
+                {direction:"right", distance:3, color:"white"}
+            ],
+            refcardImagePath: "img/refcards/refcard-tie-fo-fighter.png"
         }
     }
     
