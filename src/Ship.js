@@ -22,20 +22,13 @@ var Ship = function(shipId) {
     this.width = config.width;
     
     this.refcardImagePath = config.refcardImagePath;
-    this.dial = config.dial;
+    this.dial = new Dial(config.dial);
     this.actions = config.dial;
     this.pilot;
     this.upgradeCards;
     
-    console.log("dial: " + JSON.stringify(this.dial.straight));
-    
-    $(this.dial.straight).each( function(index) {
-        var value = this;
-        console.log("index: " + index + 
-                    ", value: " + JSON.stringify(value) +
-                    ", distance: " + JSON.stringify(value.distance) +
-                    ", color: " + JSON.stringify(value.color));
-    });
+    console.log("Tie directions: " + this.dial.getDirections());
+    console.log("Tie straight distances: " + this.dial.getDistances("straight"));
 }
 
 Ship.prototype.addToBoard = function(x, y) {
