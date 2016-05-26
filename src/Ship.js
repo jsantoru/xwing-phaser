@@ -44,18 +44,7 @@ Ship.prototype.addToBoard = function(x, y) {
     // add the click handler when the ship is added to the board
     $('#shipDiv').click(function() {
         var $ship = $(this);
-        // need to remove this when anything else is clicked...
         $ship.toggleClass("shipSelected");
-        
-        // if the ship is selected. set the dial values
-        if($ship.hasClass("shipSelected")) {
-            // set the dial direction dropdown options
-            $("#directionBS .dropdown-menu").empty();
-            
-            // set the dialDistance dropdown options
-            $("#dialDistanceBS .dropdown-menu").empty();
-            
-        }
     });
 }
 
