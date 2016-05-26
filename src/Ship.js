@@ -37,6 +37,12 @@ Ship.prototype.addToBoard = function(x, y) {
     $('#board').prepend('<div id="shipDiv" class="shipDiv"><img id="ship" class="ship" src="' + this.imagePath + '"/></img>');
     $('#shipDiv').height(this.height).width(this.width);
     this.move(x, y);
+    
+    // add the click handler when the ship is added to the board
+    $('#shipDiv').click(function() {
+        // need to remove this when anything else is clicked...
+        $(this).toggleClass("shipSelected");
+    });
 }
 
 Ship.prototype.move = function(x, y) {
