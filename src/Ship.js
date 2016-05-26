@@ -33,10 +33,17 @@ var Ship = function(shipId) {
 
 Ship.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
+    
     // TODO: should this be an html template?
     $('#board').prepend('<div id="shipDiv" class="shipDiv"><img id="ship" class="ship" src="' + this.imagePath + '"/></img>');
     $('#shipDiv').height(this.height).width(this.width);
     this.move(x, y);
+    
+    // add the click handler when the ship is added to the board
+    $('#shipDiv').click(function() {
+        var $ship = $(this);
+        $ship.toggleClass("shipSelected");
+    });
 }
 
 Ship.prototype.move = function(x, y) {
