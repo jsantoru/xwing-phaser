@@ -33,6 +33,9 @@ var Ship = function(shipId) {
 
 Ship.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
+    
+    var _this = this;
+    
     // TODO: should this be an html template?
     $('#board').prepend('<div id="shipDiv" class="shipDiv"><img id="ship" class="ship" src="' + this.imagePath + '"/></img>');
     $('#shipDiv').height(this.height).width(this.width);
@@ -40,8 +43,19 @@ Ship.prototype.addToBoard = function(x, y) {
     
     // add the click handler when the ship is added to the board
     $('#shipDiv').click(function() {
+        var $ship = $(this);
         // need to remove this when anything else is clicked...
-        $(this).toggleClass("shipSelected");
+        $ship.toggleClass("shipSelected");
+        
+        // if the ship is selected. set the dial values
+        if($ship.hasClass("shipSelected")) {
+            // set the dial direction dropdown options
+            $("#directionBS .dropdown-menu").empty();
+            
+            // set the dialDistance dropdown options
+            $("#dialDistanceBS .dropdown-menu").empty();
+            
+        }
     });
 }
 
