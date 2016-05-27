@@ -20,7 +20,13 @@
     float:left;
 }
 
-.moveOK, .rotate {
+#selectedTemplateVal {
+    font-size: large;
+    padding-bottom: 7px;
+    padding-left: 7px;
+}
+
+#moveOK, #rotate {
     position: relative;
     padding-bottom:5px;
     padding-left:5px;

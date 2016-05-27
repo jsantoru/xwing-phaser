@@ -15,26 +15,14 @@ var Game = function() {
     this.tieFighter1;
     this.moveTemplate = null;
     
-    // TODO: move out? they still need access to the tie in order to turn it
     // listeners
-    $('#directionBS li').on('click', function(){
-        console.log("selected: " + $(this).text());
-        // update the value
-        $('#directionBadge').text($(this).text());
-        
-        // add a template to the board based on what's selected
-        _this.addTemplateToBoard();
-    });
     
-    $('#dialDistanceBS li').on('click', function(){
-        console.log("selected: " + $(this).text());
-        // update the value
-        $('#dialDistanceBadge').text($(this).text());
-        
+    // add a template to the board when the selected dial value changes
+    $("#selectedDirection, #selectedDistance").on('DOMSubtreeModified', function () {
         // add a template to the board based on what's selected
-        _this.addTemplateToBoard();
-        
-        //_this.tieFighter1.turn(90);
+        if($('#selectedDirection').text() && $('#selectedDistance').text()) {
+            _this.addTemplateToBoard();
+        }
     });
     
     $('#moveOK').on('click', function(){
@@ -65,16 +53,10 @@ Game.prototype.initialize = function() {
     this.tieFighter1 = tie1;
 }
 
-Game.prototype.clearDialValues = function() {
-    console.log("clearDialValues()");
-    $('#directionBadge').text("");
-    $('#dialDistanceBadge').text("");
-}
-
 Game.prototype.addTemplateToBoard = function() {
     var _this = this;
     // TODO: should these values just be properties on this class?
-    var movementTemplateVal = $('#directionBadge').text() + "-" + $('#dialDistanceBadge').text();
+    var movementTemplateVal = $('#selectedDirection').text() + "-" + $('#selectedDistance').text();
     console.log("templateVal: " + movementTemplateVal);
         
     // if there's already a template out there, remove it
@@ -95,7 +77,7 @@ Game.prototype.moveTieWithTemplate = function() {
     _this.tieFighter1.moveWithTemplate(_this.moveTemplate);
     
     // clear the dial badges and remove the template
-    _this.clearDialValues();
+    _this.tieFighter1.dial.clearSelectedValues();
     _this.moveTemplate.removeFromBoard();
     _this.moveTemplate = null;
 }

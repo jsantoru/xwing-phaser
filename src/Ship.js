@@ -33,6 +33,7 @@ var Ship = function(shipId) {
 
 Ship.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
+    var _this = this;
     
     // TODO: should this be an html template?
     $('#board').prepend('<div id="shipDiv" class="shipDiv"><img id="ship" class="ship" src="' + this.imagePath + '"/></img>');
@@ -43,6 +44,18 @@ Ship.prototype.addToBoard = function(x, y) {
     $('#shipDiv').click(function() {
         var $ship = $(this);
         $ship.toggleClass("shipSelected");
+        
+        // setup the dial now that this ship is selected
+        _this.dial.setupDial($ship.hasClass("shipSelected"));
+        
+        // set refcard image
+        if($ship.hasClass("shipSelected")) {
+            $('#dialImg').attr('src', _this.refcardImagePath);
+        } 
+        // ship is not selected, clear out the image
+        else {
+            $('#dialImg').attr('src', '');
+        }
     });
 }
 
