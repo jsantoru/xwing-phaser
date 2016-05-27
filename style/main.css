@@ -55,14 +55,22 @@ body {
     width:200px;
 }
 
-#shipInfo, #performAction, #performAttack, #util {
+#shipInfo {
+    position:relative;
     float:left;
+    width:100%;
+}
+
+#performMove, #performAttack, #util {
+    position:relative;
+    float:left;
+    clear:left;
     width:100%;
 }
 
 #rightPane2 {
     position:absolute;
-    left: 1480px;
+    left: 1380px;
     opacity:0.9;
     width:200px;
 }
