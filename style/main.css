@@ -55,17 +55,9 @@ body {
     width:200px;
 }
 
-#shipInfo {
+#shipInfo, #performAction, #performAttack, #util {
     float:left;
-    width:300px;
-}
-
-#actions {
-    clear:left;
-}
-
-#util {
-    clear:left;
+    width:100%;
 }
 
 #rightPane2 {
@@ -78,8 +70,14 @@ body {
 /* far right pane*/
 
 #farRightPane {
-    position:absolute;
-    left: 1710px;
+    position:relative;
+    float:right;
     opacity:0.9;
-    width:300px;
+    width:200px;
+    padding-right:20px;
+}
+
+#refCard img {
+    width: 100%;
+    padding-bottom: 2px;
 }
