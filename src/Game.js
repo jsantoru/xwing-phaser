@@ -16,19 +16,8 @@ var Game = function() {
     this.moveTemplate = null;
     
     // listeners
-    $('#directionBS li').on('click', function(){
-        console.log("selected: " + $(this).text());
-        // update the value
-        $('#selectedDirection').text($(this).text());
-    });
     
-    $('#dialDistanceBS li').on('click', function(){
-        console.log("selected: " + $(this).text());
-        // update the value
-        $('#selectedDistance').text($(this).text());
-
-    });
-    
+    // add a template to the board when the selected dial value changes
     $("#selectedDirection, #selectedDistance").on('DOMSubtreeModified', function () {
         // add a template to the board based on what's selected
         if($('#selectedDirection').text() && $('#selectedDistance').text()) {
@@ -64,12 +53,6 @@ Game.prototype.initialize = function() {
     this.tieFighter1 = tie1;
 }
 
-Game.prototype.clearDialValues = function() {
-    console.log("clearDialValues()");
-    $('#selectedDirection').text("");
-    $('#selectedDistance').text("");
-}
-
 Game.prototype.addTemplateToBoard = function() {
     var _this = this;
     // TODO: should these values just be properties on this class?
@@ -94,7 +77,7 @@ Game.prototype.moveTieWithTemplate = function() {
     _this.tieFighter1.moveWithTemplate(_this.moveTemplate);
     
     // clear the dial badges and remove the template
-    _this.clearDialValues();
+    _this.tieFighter1.dial.clearSelectedValues();
     _this.moveTemplate.removeFromBoard();
     _this.moveTemplate = null;
 }

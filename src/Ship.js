@@ -45,7 +45,8 @@ Ship.prototype.addToBoard = function(x, y) {
         var $ship = $(this);
         $ship.toggleClass("shipSelected");
         
-        _this.dial.setDialValues($ship.hasClass("shipSelected"));
+        // setup the dial now that this ship is selected
+        _this.dial.setupDial($ship.hasClass("shipSelected"));
         
         // set refcard image
         if($ship.hasClass("shipSelected")) {
