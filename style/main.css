@@ -52,27 +52,34 @@ body {
     position:absolute;
     left: 1160px;
     opacity:0.9;
+    width:200px;
 }
 
 #shipInfo {
     float:left;
-    width:200px;
+    width:300px;
 }
 
 #actions {
     clear:left;
-    width:200px;
 }
 
 #util {
     clear:left;
-    width: 200px;
+}
+
+#rightPane2 {
+    position:absolute;
+    left: 1480px;
+    opacity:0.9;
+    width:200px;
 }
 
 /* far right pane*/
 
 #farRightPane {
     position:absolute;
-    left: 1480px;
+    left: 1710px;
     opacity:0.9;
+    width:300px;
 }
