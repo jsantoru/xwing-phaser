@@ -1,9 +1,9 @@
 /* dial */
 
 .dial {
-    width: 300px;
+    width: 200px;
     opacity:0.9;
-    float:left;
+    clear:left;
     z-index:99;
     position:relative;
 }
