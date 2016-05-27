@@ -89,14 +89,14 @@
             <img id="playmat" src="img/playmats/playmat-bespin.jpg"/>
         </div>
         
-        <div id="dial" class="dial panel">
+        <div id="rightPane">
+          <div id="dial" class="dial panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Ship Reference Card and Movement</h3>
+                <h3 class="panel-title">Ship Dial</h3>
             </div>
-            <img id="dialImg" src=""/>
             
             <div id="selectedTemplateVal">
-              <span id="selectedValLabel" class="label ">Template:</span>
+              <span id="selectedValLabel" class="label">Dial Value:</span>
               <span id="selectedDirection" class="label label-success"></span>
               <span id="selectedDistance" class="label label-success"></span>
             </div>
@@ -114,12 +114,29 @@
                 </button>
                 <ul class="dropdown-menu"></ul>
               </div>
-              <button id="moveOK" type="button" class="moveOK btn btn-default">Move</button>
+            </div>
+          </div>
+          
+          <div id="util" class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Utility</h3>
+            </div>
+            <div class="btn-group-vertical btn-block" role="group" aria-label="...">
+                          <button id="moveOK" type="button" class="moveOK btn btn-default">Move</button>
               
               <!-- TODO: move rotate button to "utility" component/container -->
               <button id="rotate" type="button" class="rotate btn btn-default">Rotate</button>
-            </div>
+              </div>
           </div>
+        </div>
+        <div id="farRightPane">
+          <div id="refCard" class="dial panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ship Reference Card</h3>
+            </div>
+            <img id="refCardImg" src=""/>
+          </div>
+        </div>
         <div id="footer"/>
     </body>
 </html>

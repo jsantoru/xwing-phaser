@@ -45,3 +45,22 @@ body {
 .navbar-default {
     background: rgba(0,0,0,0.2);
 }
+
+/* right pane */
+
+#rightPane {
+    position:absolute;
+    left: 1160px;
+    opacity:0.9;
+}
+
+#util {
+    clear:left;
+    width: 300px;
+}
+
+#farRightPane {
+    position:absolute;
+    left: 1480px;
+    opacity:0.9;
+}

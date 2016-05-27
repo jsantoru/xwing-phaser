@@ -1,11 +1,11 @@
 /* dial */
 
 .dial {
-    position:absolute;
-    left: 1160px;
-    margin-top:0px;
     width: 300px;
     opacity:0.9;
+    float:left;
+    z-index:99;
+    position:relative;
 }
 
 .dial img {

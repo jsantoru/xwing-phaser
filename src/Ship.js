@@ -50,11 +50,11 @@ Ship.prototype.addToBoard = function(x, y) {
         
         // set refcard image
         if($ship.hasClass("shipSelected")) {
-            $('#dialImg').attr('src', _this.refcardImagePath);
+            $('#refCardImg').attr('src', _this.refcardImagePath);
         } 
         // ship is not selected, clear out the image
         else {
-            $('#dialImg').attr('src', '');
+            $('#refCardImg').attr('src', '');
         }
     });
 }
