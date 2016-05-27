@@ -4,10 +4,19 @@ body {
     background-repeat: no-repeat;
 }
 
-/* phases */
+/* left panel */
+
+#roundNumber {
+    position:absolute;
+    width: 95px;
+    margin-left:10px;
+    opacity: .8;
+    text-align:center;
+}
 
 .phases {
     position: absolute;
+    margin-top: 100px;
     margin-left: 10px;
     z-index: 2;
     opacity: .8;

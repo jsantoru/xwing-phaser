@@ -73,18 +73,23 @@
         </nav>
         
         <!-- left bar -->
-        <div id="phases" class="phases panel" role="group" aria-label="...">
-          <div class="panel-heading">
-                <h3 class="panel-title">phases</h3>
-            </div>
-           <ul class="nav nav-pills nav-stacked">
-            <li role="presentation"><a href="#">Planning</a></li>
-            <li role="presentation"><a href="#">Activation</a></li>
-            <li role="presentation"><a href="#">Combat</a></li>
-            <li role="presentation"><a href="#">End</a></li>
-          </ul>
+        <div id="leftPane">
+          <div id="roundNumber">
+            <h1><span id="roundNumberVal" class="label label-info">1</span></h1>
+            <h4><span id="roundNumberVal" class="label label-info">Round</span></h4>
+          </div>
+          <div id="phases" class="phases panel" role="group" aria-label="...">
+            <div class="panel-heading">
+                  <h3 class="panel-title">phases</h3>
+              </div>
+             <ul class="nav nav-pills nav-stacked">
+              <li role="presentation"><a href="#">Planning</a></li>
+              <li role="presentation"><a href="#">Activation</a></li>
+              <li role="presentation"><a href="#">Combat</a></li>
+              <li role="presentation"><a href="#">End</a></li>
+            </ul>
+          </div>
         </div>
-        
         <div id="board" class="board">
             <img id="playmat" src="img/playmats/playmat-bespin.jpg"/>
         </div>
@@ -219,20 +224,20 @@
                 <h3 class="panel-title">Ship Ref</h3>
             </div>
             <h4>
-              <span id="shipInfoType" class="label">Attack:</span>
               <span id="shipInfoTypeVal" class="label label-danger">2</span>
+              <span id="shipInfoType" class="label">Attack</span>
             </h4>
             <h4>
-              <span id="shipInfoType" class="label">Evade:</span>
               <span id="shipInfoTypeVal" class="label label-success">3</span>
+              <span id="shipInfoType" class="label">Evade</span>
             </h4>
             <h4>
-              <span id="shipInfoType" class="label">Hull:</span>
               <span id="shipInfoTypeVal" class="label label-warning">3</span>
+              <span id="shipInfoType" class="label">Hull</span>
             </h4>
             <h4>
-              <span id="shipInfoType" class="label">Shield:</span>
               <span id="shipInfoTypeVal" class="label label-info">1</span>
+              <span id="shipInfoType" class="label">Shield</span>
             </h4>
           </div>
           <div id="actionsRef" class="panel">
