@@ -57,12 +57,30 @@ Dial.prototype.setupDial = function(isShipSelected) {
                 $('#selectedDistance').text($(this).text());
             });
         });
+        
+        // enable the dropdowns
+        _this.enableDropdowns();
     }
     // ship is not selected, empty out the values
     else {
         _this.clearDropdowns();
         _this.clearSelectedValues();
+        
+        // disable the dropdowns
+        _this.disableDropdowns();
     }
+}
+
+Dial.prototype.enableDropdowns = function() {
+    this.enableDisableDropdowns(false);
+}
+
+Dial.prototype.disableDropdowns = function() {
+    this.enableDisableDropdowns(true);
+}
+
+Dial.prototype.enableDisableDropdowns = function(isDisabled) {
+    $("#directionBS > button, #dialDistanceBS > button").prop("disabled", isDisabled);
 }
 
 Dial.prototype.clearDropdowns = function() {
