@@ -12,8 +12,12 @@ var Game = function() {
     var _this = this;
     
     // TODO: ships[] instead of hardcoded tie
+    this.ships = []
+    
     this.tieFighter1;
     this.moveTemplate = null;
+    
+    this.selectedShip;
     
     // listeners
     
@@ -47,15 +51,30 @@ Game.prototype.initialize = function() {
     console.log("initialize");
     
     // add the first tie to the board
-    var tie1 = new Ship("tie-fo-fighter");
+    var tie1 = new Ship("tie-fo-fighter", "tie1");
     tie1.addToBoard(500, 850);
+    
+    var tie2 = new Ship("tie-fo-fighter", "tie2");
+    tie2.addToBoard(200, 850);
+    
+    this.ships.push(tie1);
+    this.ships.push(tie2);
     
     this.tieFighter1 = tie1;
 }
 
 Game.prototype.addTemplateToBoard = function() {
     var _this = this;
-    // TODO: should these values just be properties on this class?
+    
+    // determine the selected ship
+    $.each(_this.ships, function(index, element) {
+        if(element.isSelected) {
+            _this.selectedShip = element;
+            //alert("SELECTED: " + _this.selectedShip.shipName);
+        }
+    });
+    
+    // TODO: these should be set on the dial on the ship object
     var movementTemplateVal = $('#selectedDirection').text() + "-" + $('#selectedDistance').text();
     console.log("templateVal: " + movementTemplateVal);
         
@@ -66,18 +85,18 @@ Game.prototype.addTemplateToBoard = function() {
     }
         
     _this.moveTemplate = new MoveTemplate(movementTemplateVal);
-    _this.moveTemplate.addToBoard(this.tieFighter1);
+    _this.moveTemplate.addToBoard(_this.selectedShip);
 }
 
 // TODO: this method needs to be on TieFighter.js
 Game.prototype.moveTieWithTemplate = function() {
     var _this = this;
- 
-    // move the tie
-    _this.tieFighter1.moveWithTemplate(_this.moveTemplate);
+    //alert("selected: " + _this.selectedShip.shipName);
+    // move the selectedShip
+    _this.selectedShip.moveWithTemplate(_this.moveTemplate);
     
     // clear the dial badges and remove the template
-    _this.tieFighter1.dial.clearSelectedValues();
+    _this.selectedShip.dial.clearSelectedValues();
     _this.moveTemplate.removeFromBoard();
     _this.moveTemplate = null;
 }
