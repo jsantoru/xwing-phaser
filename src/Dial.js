@@ -59,7 +59,7 @@ Dial.prototype.setupDial = function(isShipSelected) {
         });
         
         // enable the dropdowns
-        _this.enableDisableDropdowns(false);
+        _this.enableDropdowns();
     }
     // ship is not selected, empty out the values
     else {
@@ -67,8 +67,16 @@ Dial.prototype.setupDial = function(isShipSelected) {
         _this.clearSelectedValues();
         
         // disable the dropdowns
-        _this.enableDisableDropdowns(true);
+        _this.disableDropdowns();
     }
+}
+
+Dial.prototype.enableDropdowns = function() {
+    this.enableDisableDropdowns(false);
+}
+
+Dial.prototype.disableDropdowns = function() {
+    this.enableDisableDropdowns(true);
 }
 
 Dial.prototype.enableDisableDropdowns = function(isDisabled) {
