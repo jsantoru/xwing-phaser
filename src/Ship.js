@@ -24,7 +24,7 @@ var Ship = function(shipId) {
     this.refcardImagePath = config.refcardImagePath;
     this.dial = new Dial(config.dial);
     this.stats = config.stats;
-    this.actions = config.dial;
+    this.actions = config.actions;
     this.pilot;
     this.upgradeCards;
     
@@ -49,14 +49,20 @@ Ship.prototype.addToBoard = function(x, y) {
         // setup the dial now that this ship is selected
         _this.dial.setupDial($ship.hasClass("shipSelected"));
         
-        // set refcard image
+        // set ship ref
         if($ship.hasClass("shipSelected")) {
             // setup the shipRef
             $('#refCardImg').attr('src', _this.refcardImagePath);
+            
             $('#shipRefAttackVal').text(_this.stats.attack);
             $('#shipRefAgilityVal').text(_this.stats.agility);
             $('#shipRefHullVal').text(_this.stats.hull);
             $('#shipRefShieldVal').text(_this.stats.shield);
+            
+            $.each(_this.actions, function(index, element) {
+                $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
+            });
+            
         } 
         // ship is not selected, clear out the ship ref
         else {
@@ -65,8 +71,17 @@ Ship.prototype.addToBoard = function(x, y) {
             $('#shipRefAgilityVal').text("");
             $('#shipRefHullVal').text("");
             $('#shipRefShieldVal').text("");
+            
+            $('#actions').empty();
         }
     });
+}
+
+Ship.prototype.buildActionsValue = function(value, actionsList) {
+    if($.inArray(value, actionsList) !== -1) {
+        return "Yes";
+    }
+    return "No";
 }
 
 Ship.prototype.move = function(x, y) {
