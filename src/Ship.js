@@ -53,26 +53,33 @@ Ship.prototype.addToBoard = function(x, y) {
         if($ship.hasClass("shipSelected")) {
             // setup the shipRef
             $('#refCardImg').attr('src', _this.refcardImagePath);
+            $('#refCardImg').show();
             
             $('#shipRefAttackVal').text(_this.stats.attack);
             $('#shipRefAgilityVal').text(_this.stats.agility);
             $('#shipRefHullVal').text(_this.stats.hull);
             $('#shipRefShieldVal').text(_this.stats.shield);
+            $('#stats').show();
             
             $.each(_this.actions, function(index, element) {
                 $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
             });
+            $('#actions').show();
             
         } 
         // ship is not selected, clear out the ship ref
         else {
+            $('#refCardImg').hide();
             $('#refCardImg').attr('src', '');
+            
             $('#shipRefAttackVal').text("");
             $('#shipRefAgilityVal').text("");
             $('#shipRefHullVal').text("");
             $('#shipRefShieldVal').text("");
+            $('#stats').hide();
             
             $('#actions').empty();
+            $('#actions').hide();
         }
     });
 }
