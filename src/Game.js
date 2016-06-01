@@ -29,13 +29,11 @@ var Game = function() {
     
     $('#moveOK').on('click', function(){
         console.log("moveOK");
-        // TODO: log term, move 'selectedTie' instead of just moving tie1
         _this.moveTieWithTemplate();
     });
     
     $('#rotate').on('click', function(){
         console.log("rotate");
-        // TODO: log term, move 'selectedTie' instead of just moving tie1
         _this._selectedShip.turn(90);
     });
 }
@@ -63,6 +61,7 @@ Game.prototype.addTemplateToBoard = function() {
     var _this = this;
     
     // determine the selected ship
+    // TODO: better time to set selected? any way to do it when the ship is actually selected?
     $.each(_this.ships, function(index, element) {
         if(element.isSelected) {
             _this.selectedShip = element;
