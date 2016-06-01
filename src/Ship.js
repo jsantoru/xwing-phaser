@@ -23,6 +23,7 @@ var Ship = function(shipId) {
     
     this.refcardImagePath = config.refcardImagePath;
     this.dial = new Dial(config.dial);
+    this.stats = config.stats;
     this.actions = config.dial;
     this.pilot;
     this.upgradeCards;
@@ -50,11 +51,20 @@ Ship.prototype.addToBoard = function(x, y) {
         
         // set refcard image
         if($ship.hasClass("shipSelected")) {
+            // setup the shipRef
             $('#refCardImg').attr('src', _this.refcardImagePath);
+            $('#shipRefAttackVal').text(_this.stats.attack);
+            $('#shipRefAgilityVal').text(_this.stats.agility);
+            $('#shipRefHullVal').text(_this.stats.hull);
+            $('#shipRefShieldVal').text(_this.stats.shield);
         } 
-        // ship is not selected, clear out the image
+        // ship is not selected, clear out the ship ref
         else {
             $('#refCardImg').attr('src', '');
+            $('#shipRefAttackVal').text("");
+            $('#shipRefAgilityVal').text("");
+            $('#shipRefHullVal').text("");
+            $('#shipRefShieldVal').text("");
         }
     });
 }
