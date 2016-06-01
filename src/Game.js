@@ -11,10 +11,8 @@ $( document ).ready(function() {
 var Game = function() {
     var _this = this;
     
-    // TODO: ships[] instead of hardcoded tie
     this.ships = []
     
-    this.tieFighter1;
     this.moveTemplate = null;
     
     this.selectedShip;
@@ -38,7 +36,7 @@ var Game = function() {
     $('#rotate').on('click', function(){
         console.log("rotate");
         // TODO: log term, move 'selectedTie' instead of just moving tie1
-        _this.tieFighter1.turn(90);
+        _this._selectedShip.turn(90);
     });
 }
 
@@ -55,12 +53,10 @@ Game.prototype.initialize = function() {
     tie1.addToBoard(500, 850);
     
     var tie2 = new Ship("tie-fo-fighter", "tie2");
-    tie2.addToBoard(200, 850);
+    tie2.addToBoard(400, 850);
     
     this.ships.push(tie1);
     this.ships.push(tie2);
-    
-    this.tieFighter1 = tie1;
 }
 
 Game.prototype.addTemplateToBoard = function() {
