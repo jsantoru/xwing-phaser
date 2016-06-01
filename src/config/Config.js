@@ -2,6 +2,7 @@ var Config = function() {
     
     this.ships = {
         "tie-fo-fighter": {
+            type: "Tie/Fo Fighter",
             imagePath: "img/ships/base-tie-fo-fighter.png",
             height: 50,
             width: 50,

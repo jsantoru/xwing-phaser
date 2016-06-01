@@ -23,6 +23,7 @@
         <script src="src/Ship.js"></script>
         <script src="src/MoveTemplate.js"></script>
         <script src="src/Dial.js"></script>
+        <script src="src/ShipRef.js"></script>
         <script src="src/config/Config.js"></script>
         
         <!-- app style -->
@@ -73,30 +74,35 @@
         </nav>
         
         <!-- left bar -->
-        <div id="phases" class="phases panel" role="group" aria-label="...">
-          <div class="panel-heading">
-                <h3 class="panel-title">phases</h3>
-            </div>
-           <ul class="nav nav-pills nav-stacked">
-            <li role="presentation"><a href="#">Planning</a></li>
-            <li role="presentation"><a href="#">Activation</a></li>
-            <li role="presentation"><a href="#">Combat</a></li>
-            <li role="presentation"><a href="#">End</a></li>
-          </ul>
+        <div id="leftPane">
+          <div id="roundNumber">
+            <h1><span id="roundNumberVal" class="label label-info">1</span></h1>
+            <h4><span id="roundNumberVal" class="label label-info">Round</span></h4>
+          </div>
+          <div id="phases" class="phases panel" role="group" aria-label="...">
+            <div class="panel-heading">
+                  <h3 class="panel-title">phases</h3>
+              </div>
+             <ul class="nav nav-pills nav-stacked">
+              <li role="presentation"><a href="#">Planning</a></li>
+              <li role="presentation"><a href="#">Activation</a></li>
+              <li role="presentation"><a href="#">Combat</a></li>
+              <li role="presentation"><a href="#">End</a></li>
+            </ul>
+          </div>
         </div>
-        
         <div id="board" class="board">
             <img id="playmat" src="img/playmats/playmat-bespin.jpg"/>
         </div>
         
-        <div id="dial" class="dial panel">
+        <div id="rightPane">
+          <div id="dial" class="dial panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Ship Reference Card and Movement</h3>
+                <h3 class="panel-title">Set Dial</h3>
             </div>
-            <img id="dialImg" src=""/>
             
             <div id="selectedTemplateVal">
-              <span id="selectedValLabel" class="label ">Template:</span>
+              <span id="selectedValLabel" class="label">Dial Value:</span>
               <span id="selectedDirection" class="label label-success"></span>
               <span id="selectedDistance" class="label label-success"></span>
             </div>
@@ -114,12 +120,140 @@
                 </button>
                 <ul class="dropdown-menu"></ul>
               </div>
-              <button id="moveOK" type="button" class="moveOK btn btn-default">Move</button>
-              
-              <!-- TODO: move rotate button to "utility" component/container -->
-              <button id="rotate" type="button" class="rotate btn btn-default">Rotate</button>
             </div>
           </div>
+          
+          <div id="performMove" class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Perform Move</h3>
+            </div>
+            <div class="btn-group-vertical btn-block" role="group" aria-label="...">
+              <button id="moveOK" type="button" class="moveOK btn btn-default">Move</button>
+            
+              <div id="selectActionDropdown" class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Action <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Focus</a></li>
+                  <li><a href="#">Target Lock</a></li>
+                  <li><a href="#">Barrel Roll</a></li>
+                  <li><a href="#">Evade</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div id="performAttack" class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Perform Attack</h3>
+            </div>
+          </div>
+          
+          <div id="util" class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Utility</h3>
+            </div>
+            <div class="btn-group-vertical btn-block" role="group" aria-label="...">
+              
+              <button id="rotate" type="button" class="rotate btn btn-default">Rotate</button>
+              </div>
+          </div>
+        </div>
+        
+        <div id="rightPane2">
+          <div id="shipInfo" class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a data-toggle="collapse" href="#shipInfoCollapse">Ship Info</a></h3>
+            </div>
+            <div id="shipInfoCollapse">
+              <h4>
+                <span id="shipInfoId" class="label">Id:</span>
+                <span id="shipInfoIdVal" class="label label-default">I1234</span>
+              </h4>
+              <h4>
+                <span id="shipInfoType" class="label">Type:</span>
+                <span id="shipInfoTypeVal" class="label label-default">Tie Fighter</span>
+              </h4>
+              <h4>
+                <span id="shipInfoType" class="label">Pilot:</span>
+                <span id="shipInfoTypeVal" class="label label-default">Bad Ass Tie Dude</span>
+              </h4>
+              <hr/>
+              <h4>
+                <span id="shipInfoId" class="label">Moved this round:</span>
+                <span id="shipInfoIdVal" class="label label-default">No</span>
+              </h4>
+              <h4>
+                <span id="shipInfoType" class="label">Attacked this round:</span>
+                <span id="shipInfoTypeVal" class="label label-default">No</span>
+              </h4>
+              <hr/>
+              <h4>
+                <span id="shipInfoType" class="label">Shield Remaining:</span>
+                <span id="shipInfoTypeVal" class="label label-default">1</span>
+              </h4>
+              <h4>
+                <span id="shipInfoType" class="label">Hull Remaining:</span>
+                <span id="shipInfoTypeVal" class="label label-default">3</span>
+              </h4>
+              <hr/>
+              <h4>
+                <span id="shipInfoType" class="label">Focus Tokens:</span>
+                <span id="shipInfoTypeVal" class="label label-default">0</span>
+              </h4>
+              <h4>
+                <span id="shipInfoType" class="label">Stress Tokens:</span>
+                <span id="shipInfoTypeVal" class="label label-default">0</span>
+              </h4>
+              <h4>
+                <span id="shipInfoType" class="label">Evade Tokens:</span>
+                <span id="shipInfoTypeVal" class="label label-default">0</span>
+              </h4>
+              <hr/>
+              <h4>
+                <span id="shipInfoType" class="label">Outgoing Target Locks:</span>
+                <span id="shipInfoTypeVal" class="label label-default">0</span>
+              </h4>
+              <h4>
+                <span id="shipInfoType" class="label">Incoming Target Locks:</span>
+                <span id="shipInfoTypeVal" class="label label-default">0</span>
+              </h4>
+            </div>
+          </div>
+        </div>
+        
+        <div id="farRightPane">
+          <div id="statsRef" class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ship Ref</h3>
+            </div>
+            <img id="refCardImg" src="" style="display: none;"/>
+            <hr/>
+            <div id="stats" style="display: none;">
+              <h4>
+                <span id="shipRefAttackVal" class="label label-danger"></span>
+                <span id="shipRefAttack" class="label">Attack</span>
+              </h4>
+              <h4>
+                <span id="shipRefAgilityVal" class="label label-success"></span>
+                <span id="shipRefAgility" class="label">Agility</span>
+              </h4>
+              <h4>
+                <span id="shipRefHullVal" class="label label-warning"></span>
+                <span id="shipRefHull" class="label">Hull</span>
+              </h4>
+              <h4>
+                <span id="shipRefShieldVal" class="label label-info"></span>
+                <span id="shipRefShield" class="label">Shield</span>
+              </h4>
+            </div>
+            <hr/>
+            <div id="actions">
+            </div>
+          </div>
+        </div>
+        
         <div id="footer"/>
     </body>
 </html>

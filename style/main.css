@@ -4,10 +4,19 @@ body {
     background-repeat: no-repeat;
 }
 
-/* phases */
+/* left panel */
+
+#roundNumber {
+    position:absolute;
+    width: 95px;
+    margin-left:10px;
+    opacity: .8;
+    text-align:center;
+}
 
 .phases {
     position: absolute;
+    margin-top: 100px;
     margin-left: 10px;
     z-index: 2;
     opacity: .8;
@@ -44,4 +53,52 @@ body {
 /* TODO: doesnt work */
 .navbar-default {
     background: rgba(0,0,0,0.2);
+}
+
+/* right pane */
+
+#rightPane {
+    position:absolute;
+    left: 1160px;
+    opacity:0.9;
+    width:200px;
+}
+
+#shipInfo {
+    position:relative;
+    float:left;
+    width:100%;
+}
+
+#performMove, #performAttack, #util {
+    position:relative;
+    float:left;
+    clear:left;
+    width:100%;
+}
+
+#rightPane2 {
+    position:absolute;
+    left: 1380px;
+    opacity:0.9;
+    width:200px;
+}
+
+/* far right pane*/
+
+#farRightPane {
+    position:relative;
+    float:right;
+    opacity:0.9;
+    width:200px;
+    padding-right:20px;
+}
+
+#statsRef > #stats, #actions {
+    padding-left: 7px;
+}
+
+#statsRef img {
+    width: 100%;
+    padding-bottom: 2px;
 }
