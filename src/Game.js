@@ -49,7 +49,7 @@ Game.prototype.start = function() {
 Game.prototype.initialize = function() {
     console.log("initialize");
     
-    // add the first tie to the board
+    // add the ties to the board
     var tie1 = new Ship("tie-fo-fighter", "tie1");
     tie1.addToBoard(435, 860);
     
@@ -94,7 +94,6 @@ Game.prototype.addTemplateToBoard = function() {
     _this.moveTemplate.addToBoard(_this.selectedShip);
 }
 
-// TODO: this method needs to be on TieFighter.js
 Game.prototype.moveTieWithTemplate = function() {
     var _this = this;
     //alert("selected: " + _this.selectedShip.shipName);
