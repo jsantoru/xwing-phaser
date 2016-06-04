@@ -51,10 +51,18 @@ Game.prototype.initialize = function() {
     tie1.addToBoard(500, 850);
     
     var tie2 = new Ship("tie-fo-fighter", "tie2");
-    tie2.addToBoard(400, 850);
+    tie2.addToBoard(435, 860);
+    
+    var tie3 = new Ship("tie-fo-fighter", "tie3");
+    tie3.addToBoard(445, 920);
+    
+    var tie4 = new Ship("tie-fo-fighter", "tie4");
+    tie4.addToBoard(510, 910);
     
     this.ships.push(tie1);
     this.ships.push(tie2);
+    this.ships.push(tie3);
+    this.ships.push(tie4);
 }
 
 Game.prototype.addTemplateToBoard = function() {
