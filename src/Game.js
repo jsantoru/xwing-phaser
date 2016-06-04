@@ -48,10 +48,10 @@ Game.prototype.initialize = function() {
     
     // add the first tie to the board
     var tie1 = new Ship("tie-fo-fighter", "tie1");
-    tie1.addToBoard(500, 850);
+    tie1.addToBoard(435, 860);
     
     var tie2 = new Ship("tie-fo-fighter", "tie2");
-    tie2.addToBoard(435, 860);
+    tie2.addToBoard(500, 850);
     
     var tie3 = new Ship("tie-fo-fighter", "tie3");
     tie3.addToBoard(445, 920);
