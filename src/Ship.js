@@ -48,7 +48,13 @@ Ship.prototype.addToBoard = function(x, y) {
     // add the click handler when the ship is added to the board
     $('#shipDiv-' + _this.shipName).click(function() {
         var $ship = $(this);
-        $ship.toggleClass("shipSelected");
+        _this.toggleSelect($ship);
+    });
+}
+
+Ship.prototype.toggleSelect = function($ship) {
+    var _this = this;   
+    $ship.toggleClass("shipSelected");
         
         // setup the dial now that this ship is selected
         _this.dial.setupDial($ship.hasClass("shipSelected"));
@@ -91,7 +97,6 @@ Ship.prototype.addToBoard = function(x, y) {
             $('#actions').empty();
             $('#actions').hide();
         }
-    });
 }
 
 Ship.prototype.buildActionsValue = function(value, actionsList) {
