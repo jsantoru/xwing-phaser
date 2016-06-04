@@ -1,6 +1,6 @@
-var Ship = function(shipId) {
+var Ship = function(shipType, shipName) {
     // constructor
-    console.log("Ship.constructor(), shipId: " + shipId);
+    console.log("Ship.constructor(), shipType: " + shipType);
     
     // TODO: assign uuid to this ship and add to div id as well
     
@@ -15,7 +15,7 @@ var Ship = function(shipId) {
     /*
      * config
      */
-    var config = new Config().ships[shipId];
+    var config = new Config().ships[shipType];
 
     this.imagePath = config.imagePath;
     this.height = config.height;
@@ -25,11 +25,15 @@ var Ship = function(shipId) {
     this.dial = new Dial(config.dial);
     this.stats = config.stats;
     this.actions = config.actions;
+    
+    /*
+     * instance specific config
+     */
     this.pilot;
     this.upgradeCards;
     
-    console.log("Tie directions: " + this.dial.getDirections());
-    console.log("Tie straight distances: " + this.dial.getDistances("straight"));
+    this.isSelected = false;
+    this.shipName = shipName;
 }
 
 Ship.prototype.addToBoard = function(x, y) {
@@ -37,20 +41,30 @@ Ship.prototype.addToBoard = function(x, y) {
     var _this = this;
     
     // TODO: should this be an html template?
-    $('#board').prepend('<div id="shipDiv" class="shipDiv"><img id="ship" class="ship" src="' + this.imagePath + '"/></img>');
-    $('#shipDiv').height(this.height).width(this.width);
+    $('#board').prepend('<div id="shipDiv-' + _this.shipName + '" class="shipDiv"><img id="ship" class="ship" src="' + this.imagePath + '"/></img>');
+    $('#shipDiv-' + _this.shipName).height(this.height).width(this.width);
     this.move(x, y);
     
     // add the click handler when the ship is added to the board
-    $('#shipDiv').click(function() {
-        var $ship = $(this);
-        $ship.toggleClass("shipSelected");
+    $('#shipDiv-' + _this.shipName).click(function() {
+        _this.toggleSelect();
+    });
+}
+
+Ship.prototype.toggleSelect = function() {
+    var _this = this;   
+    var $ship = $('#shipDiv-' + _this.shipName)
+    $ship.toggleClass("shipSelected");
         
         // setup the dial now that this ship is selected
         _this.dial.setupDial($ship.hasClass("shipSelected"));
         
         // set ship ref
         if($ship.hasClass("shipSelected")) {
+            // set this ship as selected
+            _this.isSelected = true;
+            console.log("SELECTED: " + _this.shipName);
+            
             // setup the shipRef
             $('#refCardImg').attr('src', _this.refcardImagePath);
             $('#refCardImg').show();
@@ -69,6 +83,8 @@ Ship.prototype.addToBoard = function(x, y) {
         } 
         // ship is not selected, clear out the ship ref
         else {
+            _this.isSelected = false;
+            
             $('#refCardImg').hide();
             $('#refCardImg').attr('src', '');
             
@@ -81,7 +97,6 @@ Ship.prototype.addToBoard = function(x, y) {
             $('#actions').empty();
             $('#actions').hide();
         }
-    });
 }
 
 Ship.prototype.buildActionsValue = function(value, actionsList) {
@@ -93,15 +108,17 @@ Ship.prototype.buildActionsValue = function(value, actionsList) {
 
 Ship.prototype.move = function(x, y) {
     console.log("move()");
+    var _this = this;
     
-    this.x = x;
-    this.y = y;
+    _this.x = x;
+    _this.y = y;
     
     var xPixels = x + "px";
     var yPixels = y + "px";
     
-    $('#shipDiv').css("top", yPixels);
-    $('#shipDiv').css("left", xPixels);
+    // TODO: need to create the ships with the id
+    $('#shipDiv-' + _this.shipName).css("top", yPixels);
+    $('#shipDiv-' + _this.shipName).css("left", xPixels);
 }
 
 Ship.prototype.moveWithTemplate = function(moveTemplate) {
@@ -186,7 +203,7 @@ Ship.prototype.turn = function(degrees) {
         this.rotation = this.rotation - 360;
     }
     console.log("rotation: " + this.rotation);
-    $('#shipDiv').rotate(this.rotation);
+    $('#shipDiv-' + this.shipName).rotate(this.rotation);
     
     // set the direction based on the rotation
     if(this.rotation == 0) {

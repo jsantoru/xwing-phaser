@@ -1,0 +1,4 @@
+var ShipRef = function() {
+    // constructor
+}
+
