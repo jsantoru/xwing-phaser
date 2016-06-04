@@ -47,13 +47,13 @@ Ship.prototype.addToBoard = function(x, y) {
     
     // add the click handler when the ship is added to the board
     $('#shipDiv-' + _this.shipName).click(function() {
-        var $ship = $(this);
-        _this.toggleSelect($ship);
+        _this.toggleSelect();
     });
 }
 
-Ship.prototype.toggleSelect = function($ship) {
+Ship.prototype.toggleSelect = function() {
     var _this = this;   
+    var $ship = $('#shipDiv-' + _this.shipName)
     $ship.toggleClass("shipSelected");
         
         // setup the dial now that this ship is selected

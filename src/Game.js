@@ -30,6 +30,9 @@ var Game = function() {
     $('#moveOK').on('click', function(){
         console.log("moveOK");
         _this.moveTieWithTemplate();
+        
+        // after moving the ship it should no longer be selected
+        _this.selectedShip.toggleSelect();
     });
     
     $('#rotate').on('click', function(){
