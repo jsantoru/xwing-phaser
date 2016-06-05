@@ -21,6 +21,25 @@ var Config = function() {
                 {direction:"right", distance:3, color:"white"}
             ],
             refcardImagePath: "img/refcards/refcard-tie-fo-fighter.png"
+        },
+        "t70-xwing": {
+            type: "T-70 X-Wing",
+            imagePath: "img/ships/base-t70-xwing.png",
+            height: 50,
+            width: 50,
+            actions: ["focus", "target-lock", "boost"],
+            stats : { attack: 3, agility: 2, hull: 3, shield: 3 },
+            dial: [
+                {direction:"straight", distance:1, color:"green"},
+                {direction:"straight", distance:2, color:"green"},
+                {direction:"straight", distance:3, color:"green"},
+                {direction:"straight", distance:4, color:"white"},
+                {direction:"left", distance:2, color:"white"},
+                {direction:"left", distance:3, color:"white"},
+                {direction:"right", distance:2, color:"white"},
+                {direction:"right", distance:3, color:"white"}
+            ],
+            refcardImagePath: "img/refcards/refcard-t70-xwing.png"
         }
     }
     
