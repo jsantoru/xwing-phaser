@@ -104,15 +104,44 @@ body {
 }
 
 /* firing arc*/
-.firing-arc-up {
+.firing-arc-up-range-1 {
     width: 0; 
 	height: 0; 
-	border-left: 50px solid transparent;
-	border-right: 50px solid transparent;
-	border-top: 50px solid red;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-top: 100px solid red;
 	font-size: 0;
 	line-height: 0;
 	position: absolute;
-	margin-left:-25px;
-	margin-top:-75px;
+	margin-left:-75px;
+	margin-top:-125px;
+	opacity:.2;
+}
+
+.firing-arc-up-range-2 {
+    width: 0; 
+	height: 0; 
+	border-left: 200px solid transparent;
+	border-right: 200px solid transparent;
+	border-top: 200px solid red;
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	margin-left:-175px;
+	margin-top:-225px;
+	opacity:.2;
+}
+
+.firing-arc-up-range-3 {
+    width: 0; 
+	height: 0; 
+	border-left: 300px solid transparent;
+	border-right: 300px solid transparent;
+	border-top: 300px solid red;
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	margin-left:-275px;
+	margin-top:-325px;
+	opacity:.2;
 }

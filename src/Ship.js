@@ -80,8 +80,9 @@ Ship.prototype.toggleSelect = function() {
             });
             $('#actions').show();
             
-            // show the firing arc
-            $ship.append('<div id="firingArc" class="firing-arc-up"/>');
+            // for now show the firing arc on click
+            // TODO: this should be done when it's selected for attack
+            _this.renderFiringArc($ship);
             
         } 
         // ship is not selected, clear out the ship ref
@@ -99,7 +100,20 @@ Ship.prototype.toggleSelect = function() {
             
             $('#actions').empty();
             $('#actions').hide();
+            
+            _this.removeFiringArc();
         }
+}
+
+Ship.prototype.renderFiringArc = function($ship) {
+    // show the firing arc
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-up-range-3"/>');
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-up-range-2"/>');
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-up-range-1"/>');
+}
+
+Ship.prototype.removeFiringArc = function() {
+    $('.firing-arc').remove();
 }
 
 Ship.prototype.buildActionsValue = function(value, actionsList) {
