@@ -102,3 +102,17 @@ body {
     width: 100%;
     padding-bottom: 2px;
 }
+
+/* firing arc*/
+.firing-arc-up {
+    width: 0; 
+	height: 0; 
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 50px solid red;
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	margin-left:-25px;
+	margin-top:-75px;
+}

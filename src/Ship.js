@@ -80,6 +80,9 @@ Ship.prototype.toggleSelect = function() {
             });
             $('#actions').show();
             
+            // show the firing arc
+            $ship.append('<div id="firingArc" class="firing-arc-up"/>');
+            
         } 
         // ship is not selected, clear out the ship ref
         else {
