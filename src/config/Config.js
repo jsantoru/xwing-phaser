@@ -78,48 +78,48 @@ var Config = function() {
         },
         "right-1": {
             imagePath: "img/move-templates/turn-1-right.png",
-            height: 50,
-            width: 50,
+            height: 57.5,
+            width: 57.5,
             type: "right",
             distance: 1,
             endRotation: 90
         },
         "left-1": {
             imagePath: "img/move-templates/turn-1-left.png",
-            height: 50,
-            width: 50,
+            height: 57.5,
+            width: 57.5,
             type: "left",
             distance: 1,
             endRotation: 270
         },
         "right-2": {
             imagePath: "img/move-templates/turn-2-right.png",
-            height: 75,
-            width: 75,
+            height: 86.25,
+            width: 86.25,
             type: "right",
             distance: 2,
             endRotation: 90
         },
         "left-2": {
             imagePath: "img/move-templates/turn-2-left.png",
-            height: 75,
-            width: 75,
+            height: 86.25,
+            width: 86.25,
             type: "left",
             distance: 2,
             endRotation: 270
         },
         "right-3": {
             imagePath: "img/move-templates/turn-3-right.png",
-            height: 100,
-            width: 100,
+            height: 115,
+            width: 115,
             type: "right",
             distance: 3,
             endRotation: 90
         },
         "left-3": {
             imagePath: "img/move-templates/turn-3-left.png",
-            height: 100,
-            width: 100,
+            height: 115,
+            width: 115,
             type: "left",
             distance: 3,
             endRotation: 270
