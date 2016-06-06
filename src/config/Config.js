@@ -76,6 +76,7 @@ var Config = function() {
             distance: 5,
             endRotation: 0
         },
+        // turns are 15% more than originally (50 -> 57.5, 75 -> 86.25, 100 -> 115)
         "right-1": {
             imagePath: "img/move-templates/turn-1-right.png",
             height: 57.5,
