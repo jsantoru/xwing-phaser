@@ -113,6 +113,9 @@ Ship.prototype.renderFiringArc = function($ship) {
     $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-2"/>');
     $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-2-curve"/>');
     
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-3"/>');
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-3-curve"/>');
+    
     $ship.append('<div class="firing-arc-model"><img id="firingArc" src="../img/firing-arc-model-rough.png" height="100%" width="100%"/></div>');
     
 }

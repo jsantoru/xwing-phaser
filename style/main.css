@@ -150,6 +150,28 @@ body {
 	opacity:.2;
 }
 
+.firing-arc-range-3 {
+	position: absolute;
+	border-left: 325px solid transparent;
+	border-right: 325px solid transparent;
+	border-top: 325px solid red;
+	margin-left:-300px;
+	margin-top:-350px;
+	opacity:.2;
+}
+
+.firing-arc-range-3-curve {
+    position:absolute;
+    background-color: red;
+    width: 650px;
+    height: 100px;
+    border-radius: 50% / 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+	margin-left:-300px;
+	margin-top:-450px;
+	opacity:.2;
+}
 
 .firing-arc-model {
     height: 500px;
