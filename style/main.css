@@ -181,3 +181,39 @@ body {
     margin-top:-490px;
     position:absolute;
 }
+
+.arc-wrapper {
+    position:absolute;
+    opacity:.5;
+    margin-top:-25px;
+    margin-left:25px;
+    /* face up */
+    transform: rotate(315deg);
+}
+
+.range1 {
+    width: 150px;
+    height: 150px;
+    background: red;
+    border-top-right-radius: 150px;
+    position:absolute;
+    bottom:0;
+}
+
+.range2 {
+    width: 275px;
+    height: 275px;
+    background: yellow;
+    border-top-right-radius: 275px;
+    position:absolute;
+    bottom:0;
+}
+
+.range3 {
+    width: 400px;
+    height: 400px;
+    background: green;
+    border-top-right-radius: 400px;
+    position:absolute;
+    bottom:0;
+}
