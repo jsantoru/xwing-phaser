@@ -104,87 +104,9 @@ body {
 }
 
 /* firing arc*/
-.firing-arc-range-1 {
-	position: absolute;
-	border-left: 125px solid transparent;
-	border-right: 125px solid transparent;
-	border-top: 125px solid red;
-	margin-left:-100px;
-	margin-top:-150px;
-	opacity:.2;
-}
-
-.firing-arc-range-1-curve {
-    position:absolute;
-    background-color: red;
-    width: 250px;
-    height: 50px;
-    border-radius: 50% / 100%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-	margin-left:-100px;
-	margin-top:-200px;
-	opacity:.2;
-}
-
-.firing-arc-range-2 {
-	position: absolute;
-	border-left: 225px solid transparent;
-	border-right: 225px solid transparent;
-	border-top: 225px solid red;
-	margin-left:-200px;
-	margin-top:-250px;
-	opacity:.2;
-}
-
-.firing-arc-range-2-curve {
-    position:absolute;
-    background-color: red;
-    width: 450px;
-    height: 75px;
-    border-radius: 50% / 100%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-	margin-left:-200px;
-	margin-top:-325px;
-	opacity:.2;
-}
-
-.firing-arc-range-3 {
-	position: absolute;
-	border-left: 325px solid transparent;
-	border-right: 325px solid transparent;
-	border-top: 325px solid red;
-	margin-left:-300px;
-	margin-top:-350px;
-	opacity:.2;
-}
-
-.firing-arc-range-3-curve {
-    position:absolute;
-    background-color: red;
-    width: 650px;
-    height: 100px;
-    border-radius: 50% / 100%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-	margin-left:-300px;
-	margin-top:-450px;
-	opacity:.2;
-}
-
-.firing-arc-model {
-    height: 500px;
-    width: 700px;
-    opacity: .2;
-    margin-left:-320px;
-    margin-top:-490px;
-    position:absolute;
-}
-
 .arc-wrapper {
     position:absolute;
-    opacity:.5;
+    opacity:.3;
     margin-top:-25px;
     margin-left:25px;
     /* face up */
@@ -194,7 +116,7 @@ body {
 .range1 {
     width: 150px;
     height: 150px;
-    background: red;
+    background: #ff0000;
     border-top-right-radius: 150px;
     position:absolute;
     bottom:0;
@@ -203,7 +125,7 @@ body {
 .range2 {
     width: 275px;
     height: 275px;
-    background: yellow;
+    background: #ff1a1a;
     border-top-right-radius: 275px;
     position:absolute;
     bottom:0;
@@ -212,7 +134,7 @@ body {
 .range3 {
     width: 400px;
     height: 400px;
-    background: green;
+    background: #ff3333;
     border-top-right-radius: 400px;
     position:absolute;
     bottom:0;
