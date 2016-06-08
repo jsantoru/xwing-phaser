@@ -120,6 +120,8 @@ body {
     border-top-right-radius: 150px;
     position:absolute;
     bottom:0;
+    border-right:1px solid;
+    border-top:1px solid;
 }
 
 .range2 {
@@ -129,6 +131,8 @@ body {
     border-top-right-radius: 275px;
     position:absolute;
     bottom:0;
+    border-right:1px solid;
+    border-top:1px solid;
 }
 
 .range3 {
@@ -138,4 +142,6 @@ body {
     border-top-right-radius: 400px;
     position:absolute;
     bottom:0;
+    border-right:1px solid;
+    border-top:1px solid;
 }
