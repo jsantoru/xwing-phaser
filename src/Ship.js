@@ -107,12 +107,14 @@ Ship.prototype.toggleSelect = function() {
 
 Ship.prototype.renderFiringArc = function($ship) {
     // show the firing arc
-    $ship.append('<div id="firingArc" class="firing-arc firing-arc-up-range-3"/>');
-    $ship.append('<div id="firingArc" class="firing-arc firing-arc-up-range-2"/>');
-    $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-1-curve"/>')
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-1"/>');
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-1-curve"/>');
     
-    $ship.append('<div id="firingArc" class="firing-arc firing-arc-up-curve"/>');
-    $ship.append('<div id="firingArc" class="firing-arc firing-arc-up-range-1"/>');
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-2"/>');
+    $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-2-curve"/>');
+    
+    $ship.append('<div class="firing-arc-model"><img id="firingArc" src="../img/firing-arc-model-rough.png" height="100%" width="100%"/></div>');
+    
 }
 
 Ship.prototype.removeFiringArc = function() {

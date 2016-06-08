@@ -104,7 +104,7 @@ body {
 }
 
 /* firing arc*/
-.firing-arc-up-range-1 {
+.firing-arc-range-1 {
 	position: absolute;
 	border-left: 125px solid transparent;
 	border-right: 125px solid transparent;
@@ -115,17 +115,41 @@ body {
 }
 
 .firing-arc-range-1-curve {
+    position:absolute;
     background-color: red;
     width: 250px;
     height: 50px;
     border-radius: 50% / 100%;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-	opacity:.2;
 	margin-left:-100px;
 	margin-top:-200px;
-	position:absolute;
+	opacity:.2;
 }
+
+.firing-arc-range-2 {
+	position: absolute;
+	border-left: 225px solid transparent;
+	border-right: 225px solid transparent;
+	border-top: 225px solid red;
+	margin-left:-200px;
+	margin-top:-250px;
+	opacity:.2;
+}
+
+.firing-arc-range-2-curve {
+    position:absolute;
+    background-color: red;
+    width: 450px;
+    height: 75px;
+    border-radius: 50% / 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+	margin-left:-200px;
+	margin-top:-325px;
+	opacity:.2;
+}
+
 
 .firing-arc-model {
     height: 500px;
@@ -135,6 +159,7 @@ body {
     margin-top:-490px;
     position:absolute;
 }
+
 
 /*
 .firing-arc-up-range-2 {
