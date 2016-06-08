@@ -107,6 +107,9 @@ Ship.prototype.toggleSelect = function() {
 
 Ship.prototype.renderFiringArc = function($ship) {
     // show the firing arc
+    
+    // TODO: just use a good image of the firing arc instead of trying to create it with css borders
+    
     $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-1"/>');
     $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-1-curve"/>');
     
@@ -115,9 +118,9 @@ Ship.prototype.renderFiringArc = function($ship) {
     
     $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-3"/>');
     $ship.append('<div id="firingArc" class="firing-arc firing-arc-range-3-curve"/>');
-    
+    /*
     $ship.append('<div class="firing-arc-model"><img id="firingArc" src="../img/firing-arc-model-rough.png" height="100%" width="100%"/></div>');
-    
+    */
 }
 
 Ship.prototype.removeFiringArc = function() {
