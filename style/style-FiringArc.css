@@ -1,0 +1,42 @@
+/* firing arc*/
+.arc-wrapper {
+    position:absolute;
+    opacity:.3;
+    margin-top:-25px;
+    margin-left:25px;
+    /* face forward with the ship */
+    transform: rotate(315deg);
+}
+
+.range1 {
+    width: 150px;
+    height: 150px;
+    background: #ff0000;
+    border-top-right-radius: 150px;
+    position:absolute;
+    bottom:0;
+    border-right:1px solid;
+    border-top:1px solid;
+}
+
+.range2 {
+    width: 275px;
+    height: 275px;
+    background: #ff1a1a;
+    border-top-right-radius: 275px;
+    position:absolute;
+    bottom:0;
+    border-right:1px solid;
+    border-top:1px solid;
+}
+
+.range3 {
+    width: 400px;
+    height: 400px;
+    background: #ff3333;
+    border-top-right-radius: 400px;
+    position:absolute;
+    bottom:0;
+    border-right:1px solid;
+    border-top:1px solid;
+}
