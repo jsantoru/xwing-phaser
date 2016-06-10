@@ -49,6 +49,9 @@ Game.prototype.start = function() {
 Game.prototype.initialize = function() {
     console.log("initialize");
     
+    // setup the Phases component
+    new Phases();
+    
     // add the xwing to the board, facing down
     var xwing1 = new Ship("t70-xwing", "xwing1");
     xwing1.addToBoard(475, 100);

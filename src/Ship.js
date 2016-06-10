@@ -80,6 +80,7 @@ Ship.prototype.toggleSelect = function() {
             });
             $('#actions').show();
             
+            // TODO: if it's combat phase, render firing arc
             // for now show the firing arc on click
             // TODO: this should be done when it's selected for attack
             _this.renderFiringArc($ship);
