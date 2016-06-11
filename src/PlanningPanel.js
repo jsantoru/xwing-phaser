@@ -39,6 +39,11 @@ PlanningPanel.prototype.setupDialDropdowns = function(dial, isShipSelected) {
     if (isShipSelected) {
         _this.clearDropdowns();
         
+        // set the label values if the ship already had a dial set
+        // this will be used when moving is not executed directly after setting the dial
+        $('#selectedDirection').text(dial.direction);
+        $('#selectedDistance').text(dial.distance);
+        
         // populate directions dropdown
         $.each(dial.getDirections(), function(index, element) {
             $("#directionBS .dropdown-menu").append("<li><a href=\"#\">" + element + "</a></li>")
