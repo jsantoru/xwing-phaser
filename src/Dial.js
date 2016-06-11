@@ -97,4 +97,7 @@ Dial.prototype.clearSelectedValues = function() {
     // clear the selected values
     $('#selectedDirection').text("");
     $('#selectedDistance').text("");
+    
+    this.direction = "";
+    this.distance = "";
 }

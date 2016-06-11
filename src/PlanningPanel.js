@@ -19,6 +19,9 @@ PlanningPanel.prototype.addTemplateToBoard = function() {
         
     var game = window.game;
     
+    game.selectedShip.dial.direction = $('#selectedDirection').text();
+    game.selectedShip.dial.direction = $('#selectedDistance').text();
+    
     // if there's already a template out there, remove it
     if(game.moveTemplate != null) {
         game.moveTemplate.removeFromBoard();
