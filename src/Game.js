@@ -1,7 +1,11 @@
+// global Game object
+var game;
+
+// start the game
 $( document ).ready(function() {
     console.log( "ready!" );
     
-    var game = new Game();
+    game = new Game();
     game.start();
 });
 
@@ -17,28 +21,10 @@ var Game = function() {
     
     this.selectedShip;
     
-    // listeners
-    
-    // add a template to the board when the selected dial value changes
-    $("#selectedDirection, #selectedDistance").on('DOMSubtreeModified', function () {
-        // add a template to the board based on what's selected
-        if($('#selectedDirection').text() && $('#selectedDistance').text()) {
-            _this.addTemplateToBoard();
-        }
-    });
-    
-    $('#moveOK').on('click', function(){
-        console.log("moveOK");
-        _this.moveTieWithTemplate();
-        
-        // after moving the ship it should no longer be selected
-        _this.selectedShip.toggleSelect();
-    });
-    
-    $('#rotate').on('click', function(){
-        console.log("rotate");
-        _this._selectedShip.turn(90);
-    });
+    this.phases = new Phases();
+    this.activationPanel = new ActivationPanel();
+    this.planningPanel = new PlanningPanel();
+    this.utilityPanel = new UtilityPanel();
 }
 
 Game.prototype.start = function() {
@@ -71,42 +57,4 @@ Game.prototype.initialize = function() {
     var tie4 = new Ship("tie-fo-fighter", "tie4");
     tie4.addToBoard(510, 810);
     this.ships.push(tie4);
-}
-
-Game.prototype.addTemplateToBoard = function() {
-    var _this = this;
-    
-    // determine the selected ship
-    // TODO: better time to set selected? any way to do it when the ship is actually selected?
-    $.each(_this.ships, function(index, element) {
-        if(element.isSelected) {
-            _this.selectedShip = element;
-            //alert("SELECTED: " + _this.selectedShip.shipName);
-        }
-    });
-    
-    // TODO: these should be set on the dial on the ship object
-    var movementTemplateVal = $('#selectedDirection').text() + "-" + $('#selectedDistance').text();
-    console.log("templateVal: " + movementTemplateVal);
-        
-    // if there's already a template out there, remove it
-    if(_this.moveTemplate != null) {
-        _this.moveTemplate.removeFromBoard();
-        _this.moveTemplate = null;
-    }
-        
-    _this.moveTemplate = new MoveTemplate(movementTemplateVal);
-    _this.moveTemplate.addToBoard(_this.selectedShip);
-}
-
-Game.prototype.moveTieWithTemplate = function() {
-    var _this = this;
-    //alert("selected: " + _this.selectedShip.shipName);
-    // move the selectedShip
-    _this.selectedShip.moveWithTemplate(_this.moveTemplate);
-    
-    // clear the dial badges and remove the template
-    _this.selectedShip.dial.clearSelectedValues();
-    _this.moveTemplate.removeFromBoard();
-    _this.moveTemplate = null;
 }

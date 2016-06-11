@@ -19,12 +19,16 @@
         <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
         
         <!-- app javascript -->
+        <script src="src/config/Config.js"></script>
         <script src="src/Game.js"></script>
         <script src="src/Ship.js"></script>
         <script src="src/MoveTemplate.js"></script>
         <script src="src/Dial.js"></script>
         <script src="src/ShipRef.js"></script>
-        <script src="src/config/Config.js"></script>
+        <script src="src/Phases.js"></script>
+        <script src="src/ActivationPanel.js"></script>
+        <script src="src/PlanningPanel.js"></script>
+        <script src="src/UtilityPanel.js"></script>
         
         <!-- app style -->
         <link rel="stylesheet" type="text/css" href="style/main.css">
@@ -85,10 +89,10 @@
                   <h3 class="panel-title">phases</h3>
               </div>
              <ul class="nav nav-pills nav-stacked">
-              <li role="presentation"><a href="#">Planning</a></li>
-              <li role="presentation"><a href="#">Activation</a></li>
-              <li role="presentation"><a href="#">Combat</a></li>
-              <li role="presentation"><a href="#">End</a></li>
+              <li class="phase" role="presentation"><a href="#">Planning</a></li>
+              <li class="phase" role="presentation"><a href="#">Activation</a></li>
+              <li class="phase" role="presentation"><a href="#">Combat</a></li>
+              <li class="phase" role="presentation"><a href="#">End</a></li>
             </ul>
           </div>
         </div>
@@ -98,7 +102,7 @@
         <div id="rightPane">
           <div id="dial" class="dial panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Set Dial</h3>
+                <h3 class="panel-title">Planning</h3>
             </div>
             
             <div id="selectedTemplateVal">
@@ -125,7 +129,7 @@
           
           <div id="performMove" class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Perform Move</h3>
+                <h3 class="panel-title">Activation</h3>
             </div>
             <div class="btn-group-vertical btn-block" role="group" aria-label="...">
               <button id="moveOK" type="button" class="moveOK btn btn-default">Move</button>
@@ -146,7 +150,7 @@
           
           <div id="performAttack" class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Perform Attack</h3>
+                <h3 class="panel-title">Combat</h3>
             </div>
           </div>
           
@@ -226,7 +230,7 @@
         <div id="farRightPane">
           <div id="statsRef" class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Ship Ref</h3>
+                <h3 class="panel-title">Ship Reference</h3>
             </div>
             <img id="refCardImg" src="" style="display: none;"/>
             <hr/>
