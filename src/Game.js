@@ -1,7 +1,11 @@
+// global Game object
+var game;
+
+// start the game
 $( document ).ready(function() {
     console.log( "ready!" );
     
-    var game = new Game();
+    game = new Game();
     game.start();
 });
 
@@ -22,6 +26,8 @@ var Game = function() {
     // add a template to the board when the selected dial value changes
     $("#selectedDirection, #selectedDistance").on('DOMSubtreeModified', function () {
         // add a template to the board based on what's selected
+        
+        // TODO: should set these values on the dial object
         if($('#selectedDirection').text() && $('#selectedDistance').text()) {
             _this.addTemplateToBoard();
         }

@@ -55,7 +55,6 @@ Ship.prototype.toggleSelect = function() {
     var _this = this;   
     var $ship = $('#shipDiv-' + _this.shipName)
     $ship.toggleClass("shipSelected");
-        
         // setup the dial now that this ship is selected
         _this.dial.setupDial($ship.hasClass("shipSelected"));
         
