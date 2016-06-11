@@ -24,13 +24,7 @@ var Game = function() {
     this.phases = new Phases();
     this.activationPanel = new ActivationPanel();
     this.planningPanel = new PlanningPanel();
-    
-    // listeners
-    
-    $('#rotate').on('click', function(){
-        console.log("rotate");
-        _this.selectedShip.turn(90);
-    });
+    this.utilityPanel = new UtilityPanel();
 }
 
 Game.prototype.start = function() {
