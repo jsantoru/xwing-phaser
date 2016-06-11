@@ -57,56 +57,55 @@ Ship.prototype.toggleSelect = function() {
     var _this = this;   
     var $ship = $('#shipDiv-' + _this.shipName)
     $ship.toggleClass("shipSelected");
-        // setup the dial now that this ship is selected
-        _this.dial.setupDial($ship.hasClass("shipSelected"));
+    // setup the dial now that this ship is selected
+    window.game.planningPanel.setupDialDropdowns(_this.dial, $ship.hasClass("shipSelected"));
+
+    // set ship ref
+    if ($ship.hasClass("shipSelected")) {
+        // set this ship as selected
+        _this.isSelected = true;
+        window.game.selectedShip = _this;
+        console.log("SELECTED: " + _this.shipName);
+
+        // setup the shipRef
+        $('#refCardImg').attr('src', _this.refcardImagePath);
+        $('#refCardImg').show();
+
+        $('#shipRefAttackVal').text(_this.stats.attack);
+        $('#shipRefAgilityVal').text(_this.stats.agility);
+        $('#shipRefHullVal').text(_this.stats.hull);
+        $('#shipRefShieldVal').text(_this.stats.shield);
+        $('#stats').show();
+
+        $.each(_this.actions, function(index, element) {
+            $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
+        });
+        $('#actions').show();
+
+        // TODO: if it's combat phase, render firing arc
+        // for now show the firing arc on click
+        // TODO: this should be done when it's selected for attack
+        _this.renderFiringArc($ship);
+
+    }
+    // ship is not selected, clear out the ship ref
+    else {
+        _this.isSelected = false;
+
+        $('#refCardImg').hide();
+        $('#refCardImg').attr('src', '');
+
+        $('#shipRefAttackVal').text("");
+        $('#shipRefAgilityVal').text("");
+        $('#shipRefHullVal').text("");
+        $('#shipRefShieldVal').text("");
+        $('#stats').hide();
+
+        $('#actions').empty();
+        $('#actions').hide();
         
-        // set ship ref
-        if($ship.hasClass("shipSelected")) {
-            // set this ship as selected
-            _this.isSelected = true;
-            window.game.selectedShip = _this;
-            console.log("SELECTED: " + _this.shipName);
-            
-            
-            // setup the shipRef
-            $('#refCardImg').attr('src', _this.refcardImagePath);
-            $('#refCardImg').show();
-            
-            $('#shipRefAttackVal').text(_this.stats.attack);
-            $('#shipRefAgilityVal').text(_this.stats.agility);
-            $('#shipRefHullVal').text(_this.stats.hull);
-            $('#shipRefShieldVal').text(_this.stats.shield);
-            $('#stats').show();
-            
-            $.each(_this.actions, function(index, element) {
-                $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
-            });
-            $('#actions').show();
-            
-            // TODO: if it's combat phase, render firing arc
-            // for now show the firing arc on click
-            // TODO: this should be done when it's selected for attack
-            _this.renderFiringArc($ship);
-            
-        } 
-        // ship is not selected, clear out the ship ref
-        else {
-            _this.isSelected = false;
-            
-            $('#refCardImg').hide();
-            $('#refCardImg').attr('src', '');
-            
-            $('#shipRefAttackVal').text("");
-            $('#shipRefAgilityVal').text("");
-            $('#shipRefHullVal').text("");
-            $('#shipRefShieldVal').text("");
-            $('#stats').hide();
-            
-            $('#actions').empty();
-            $('#actions').hide();
-            
-            _this.removeFiringArc();
-        }
+        _this.removeFiringArc();
+    }
 }
 
 Ship.prototype.renderFiringArc = function($ship) {
@@ -212,16 +211,6 @@ Ship.prototype.moveWithTemplate = function(moveTemplate) {
     
     // turn the ship (if necessary -- rotation will be 0 for straight moves)
     this.turn(moveTemplate.endRotation);
-    
-    // update the game state
-    this.updateStateAfterMove(this.dial, moveTemplate);
-}
-
-Ship.prototype.updateStateAfterMove = function(dial, moveTemplate) {
-    // clear the dial badges and remove the template
-    dial.clearSelectedValues();
-    moveTemplate.removeFromBoard();
-    window.game.moveTemplate = null;
 }
 
 Ship.prototype.turn = function(degrees) {
