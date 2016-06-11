@@ -23,18 +23,9 @@ var Game = function() {
     
     this.phases = new Phases();
     this.activationPanel = new ActivationPanel();
+    this.planningPanel = new PlanningPanel();
     
     // listeners
-    
-    // add a template to the board when the selected dial value changes
-    $("#selectedDirection, #selectedDistance").on('DOMSubtreeModified', function () {
-        // add a template to the board based on what's selected
-        
-        // TODO: should set these values on the dial object
-        if($('#selectedDirection').text() && $('#selectedDistance').text()) {
-            _this.addTemplateToBoard();
-        }
-    });
     
     $('#rotate').on('click', function(){
         console.log("rotate");
@@ -72,21 +63,4 @@ Game.prototype.initialize = function() {
     var tie4 = new Ship("tie-fo-fighter", "tie4");
     tie4.addToBoard(510, 810);
     this.ships.push(tie4);
-}
-
-Game.prototype.addTemplateToBoard = function() {
-    var _this = this;
-    
-    // TODO: these should be set on the dial on the ship object
-    var movementTemplateVal = $('#selectedDirection').text() + "-" + $('#selectedDistance').text();
-    console.log("templateVal: " + movementTemplateVal);
-        
-    // if there's already a template out there, remove it
-    if(_this.moveTemplate != null) {
-        _this.moveTemplate.removeFromBoard();
-        _this.moveTemplate = null;
-    }
-        
-    _this.moveTemplate = new MoveTemplate(movementTemplateVal);
-    _this.moveTemplate.addToBoard(_this.selectedShip);
 }
