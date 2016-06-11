@@ -2,7 +2,7 @@ var Phases = function() {
     
     var selectedPhase = "";
     
-    this.setDefaultPhase();
+    this.init();
     
     $('.phase').click( function() {
         $('.phase').removeClass("active");
@@ -12,7 +12,7 @@ var Phases = function() {
     });
 }
 
-Phases.prototype.setDefaultPhase = function() {
+Phases.prototype.init = function() {
     var $planningPhase = $('#planningPhase');
     $planningPhase.addClass("active");
     this.selectedPhase = $planningPhase.text();
