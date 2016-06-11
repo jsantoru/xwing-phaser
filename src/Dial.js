@@ -24,6 +24,10 @@ Dial.prototype.getDistances = function(direction) {
     return distanceList;
 }
 
+Dial.prototype.buildMoveTemplateId = function() {
+    return this.direction + "-" + this.distance
+}
+
 Dial.prototype.setupDial = function(isShipSelected) {
     var _this = this;
     

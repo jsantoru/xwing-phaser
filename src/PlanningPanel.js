@@ -17,18 +17,17 @@ var PlanningPanel = function() {
 }
 
 PlanningPanel.prototype.addTemplateToBoard = function() {
-    var game = window.game;
-    var dial = game.selectedShip.dial;
-    var moveTemplateVal = dial.direction + "-" + dial.distance;
+    var selectedShip = window.game.selectedShip;
+    var moveTemplateVal = selectedShip.dial.buildMoveTemplateId();
     
     console.log("templateVal: " + moveTemplateVal);
         
     // if there's already a template out there, remove it
-    if(game.moveTemplate != null) {
-        game.moveTemplate.removeFromBoard();
-        game.moveTemplate = null;
+    if(window.game.moveTemplate != null) {
+        window.game.moveTemplate.removeFromBoard();
+        window.game.moveTemplate = null;
     }
         
-    game.moveTemplate = new MoveTemplate(moveTemplateVal);
-    game.moveTemplate.addToBoard(game.selectedShip);
+    window.game.moveTemplate = new MoveTemplate(moveTemplateVal);
+    window.game.moveTemplate.addToBoard(selectedShip);
 }
