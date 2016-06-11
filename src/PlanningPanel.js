@@ -5,29 +5,30 @@ var PlanningPanel = function() {
     $("#selectedDirection, #selectedDistance").on('DOMSubtreeModified', function () {
         // add a template to the board based on what's selected
         
-        // TODO: should set these values on the dial object
-        if($('#selectedDirection').text() && $('#selectedDistance').text()) {
+        var dial = window.game.selectedShip.dial;
+        
+        dial.direction = $('#selectedDirection').text();
+        dial.distance = $('#selectedDistance').text();
+        
+        if(dial.distance && dial.direction) {
             _this.addTemplateToBoard();
         }
     });
 }
 
 PlanningPanel.prototype.addTemplateToBoard = function() {
-    // TODO: these should be set on the dial on the ship object
-    var movementTemplateVal = $('#selectedDirection').text() + "-" + $('#selectedDistance').text();
-    console.log("templateVal: " + movementTemplateVal);
-        
     var game = window.game;
+    var dial = game.selectedShip.dial;
+    var moveTemplateVal = dial.direction + "-" + dial.distance;
     
-    game.selectedShip.dial.direction = $('#selectedDirection').text();
-    game.selectedShip.dial.direction = $('#selectedDistance').text();
-    
+    console.log("templateVal: " + moveTemplateVal);
+        
     // if there's already a template out there, remove it
     if(game.moveTemplate != null) {
         game.moveTemplate.removeFromBoard();
         game.moveTemplate = null;
     }
         
-    game.moveTemplate = new MoveTemplate(movementTemplateVal);
+    game.moveTemplate = new MoveTemplate(moveTemplateVal);
     game.moveTemplate.addToBoard(game.selectedShip);
 }
