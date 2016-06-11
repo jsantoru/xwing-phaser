@@ -1,4 +1,6 @@
 var Ship = function(shipType, shipName) {
+    var _this = this;
+    
     // constructor
     console.log("Ship.constructor(), shipType: " + shipType);
     
@@ -62,7 +64,9 @@ Ship.prototype.toggleSelect = function() {
         if($ship.hasClass("shipSelected")) {
             // set this ship as selected
             _this.isSelected = true;
+            window.game.selectedShip = _this;
             console.log("SELECTED: " + _this.shipName);
+            
             
             // setup the shipRef
             $('#refCardImg').attr('src', _this.refcardImagePath);
@@ -208,6 +212,16 @@ Ship.prototype.moveWithTemplate = function(moveTemplate) {
     
     // turn the ship (if necessary -- rotation will be 0 for straight moves)
     this.turn(moveTemplate.endRotation);
+    
+    // update the game state
+    this.updateStateAfterMove(this.dial, moveTemplate);
+}
+
+Ship.prototype.updateStateAfterMove = function(dial, moveTemplate) {
+    // clear the dial badges and remove the template
+    dial.clearSelectedValues();
+    moveTemplate.removeFromBoard();
+    window.game.moveTemplate = null;
 }
 
 Ship.prototype.turn = function(degrees) {

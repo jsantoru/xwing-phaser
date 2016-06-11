@@ -21,6 +21,9 @@ var Game = function() {
     
     this.selectedShip;
     
+    this.phases = new Phases();
+    this.activationPanel = new ActivationPanel();
+    
     // listeners
     
     // add a template to the board when the selected dial value changes
@@ -33,17 +36,9 @@ var Game = function() {
         }
     });
     
-    $('#moveOK').on('click', function(){
-        console.log("moveOK");
-        _this.moveTieWithTemplate();
-        
-        // after moving the ship it should no longer be selected
-        _this.selectedShip.toggleSelect();
-    });
-    
     $('#rotate').on('click', function(){
         console.log("rotate");
-        _this._selectedShip.turn(90);
+        _this.selectedShip.turn(90);
     });
 }
 
@@ -54,9 +49,6 @@ Game.prototype.start = function() {
 
 Game.prototype.initialize = function() {
     console.log("initialize");
-    
-    // setup the Phases component
-    new Phases();
     
     // add the xwing to the board, facing down
     var xwing1 = new Ship("t70-xwing", "xwing1");
@@ -85,15 +77,6 @@ Game.prototype.initialize = function() {
 Game.prototype.addTemplateToBoard = function() {
     var _this = this;
     
-    // determine the selected ship
-    // TODO: better time to set selected? any way to do it when the ship is actually selected?
-    $.each(_this.ships, function(index, element) {
-        if(element.isSelected) {
-            _this.selectedShip = element;
-            //alert("SELECTED: " + _this.selectedShip.shipName);
-        }
-    });
-    
     // TODO: these should be set on the dial on the ship object
     var movementTemplateVal = $('#selectedDirection').text() + "-" + $('#selectedDistance').text();
     console.log("templateVal: " + movementTemplateVal);
@@ -106,16 +89,4 @@ Game.prototype.addTemplateToBoard = function() {
         
     _this.moveTemplate = new MoveTemplate(movementTemplateVal);
     _this.moveTemplate.addToBoard(_this.selectedShip);
-}
-
-Game.prototype.moveTieWithTemplate = function() {
-    var _this = this;
-    //alert("selected: " + _this.selectedShip.shipName);
-    // move the selectedShip
-    _this.selectedShip.moveWithTemplate(_this.moveTemplate);
-    
-    // clear the dial badges and remove the template
-    _this.selectedShip.dial.clearSelectedValues();
-    _this.moveTemplate.removeFromBoard();
-    _this.moveTemplate = null;
 }

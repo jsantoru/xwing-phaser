@@ -1,5 +1,7 @@
 var Dial = function(dialConfig) {
     this.config = dialConfig;
+    this.direction = "";
+    this.distance = "";
 }
 
 Dial.prototype.getDirections = function() {
