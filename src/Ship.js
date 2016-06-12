@@ -77,7 +77,7 @@ Ship.prototype.toggleSelect = function() {
             _this.renderFiringArc($ship);
         }
     }
-    // ship is not selected, clear out the ship ref
+    // ship is not selected, clear out and remove stuff
     else {
         window.game.planningPanel.tearDown();
 
@@ -96,6 +96,8 @@ Ship.prototype.toggleSelect = function() {
         $('#actions').hide();
         
         _this.removeFiringArc();
+        
+        window.game.moveTemplate.removeFromBoard();
     }
 }
 

@@ -19,5 +19,4 @@ ActivationPanel.prototype.updateStateAfterMove = function() {
     
     // remove the template
     window.game.moveTemplate.removeFromBoard();
-    window.game.moveTemplate = null;
 }

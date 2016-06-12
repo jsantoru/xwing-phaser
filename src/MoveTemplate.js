@@ -100,6 +100,8 @@ MoveTemplate.prototype.removeFromBoard = function() {
     console.log("MoveTemplate.removeFromBoard()");
     $("#moveTemplateDiv").remove();
     this.selectedTemplateConfig = null;
+    
+    window.game.moveTemplate = null;
 }
 
 MoveTemplate.prototype.move = function(x, y) {
