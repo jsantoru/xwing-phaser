@@ -63,17 +63,21 @@ Ship.prototype.toggleSelect = function() {
 
     // set ship ref
     if ($ship.hasClass("shipSelected")) {
+        // regardless of phase, show the ship and refcard info
+        _this.onSelect();
+        
+        // if it's planning, setup the planning panel
         if(window.game.phases.selectedPhase == "Planning") {
-            window.game.planningPanel.setupDialDropdowns(_this.dial, $ship.hasClass("shipSelected"));
-            _this.planningToggleSelect();
+            window.game.planningPanel.setup(_this.dial, $ship.hasClass("shipSelected"));
         }
+        // if it's combat, render the firing arc and TODO: setup the combat panel
         else if (window.game.phases.selectedPhase == "Combat") {
             _this.renderFiringArc($ship);
         }
     }
     // ship is not selected, clear out the ship ref
     else {
-        window.game.planningPanel.setupDialDropdowns(_this.dial, $ship.hasClass("shipSelected"));
+        window.game.planningPanel.tearDown();
 
         _this.isSelected = false;
 
@@ -93,7 +97,7 @@ Ship.prototype.toggleSelect = function() {
     }
 }
 
-Ship.prototype.planningToggleSelect = function() {
+Ship.prototype.onSelect = function() {
     var _this = this;
     // set this ship as selected
     _this.isSelected = true;
@@ -109,7 +113,7 @@ Ship.prototype.planningToggleSelect = function() {
     $('#shipRefHullVal').text(_this.stats.hull);
     $('#shipRefShieldVal').text(_this.stats.shield);
     $('#stats').show();
-
+    
     $.each(_this.actions, function(index, element) {
         $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
     });

@@ -13,8 +13,7 @@ ActivationPanel.prototype.updateStateAfterMove = function() {
     // after moving the ship it should no longer be selected
     window.game.selectedShip.toggleSelect();
         
-    // clear the values and remove the template
-    window.game.planningPanel.clearSelectedValues();
+    // remove the template
     window.game.moveTemplate.removeFromBoard();
     window.game.moveTemplate = null;
 }

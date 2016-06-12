@@ -32,59 +32,58 @@ PlanningPanel.prototype.addTemplateToBoard = function() {
     window.game.moveTemplate.addToBoard(selectedShip);
 }
 
-PlanningPanel.prototype.setupDialDropdowns = function(dial, isShipSelected) {
+PlanningPanel.prototype.setup = function(dial, isShipSelected) {
     var _this = this;
-    
-    // if the ship is selected, set the dial values and listeners
-    if (isShipSelected) {
-        _this.clearDropdowns();
+
+    _this.clearDropdowns();
         
-        // set the label values if the ship already had a dial set
-        // this will be used when moving is not executed directly after setting the dial
-        $('#selectedDirection').text(dial.direction);
-        $('#selectedDistance').text(dial.distance);
+    // set the label values if the ship already had a dial set
+    // this will be used when moving is not executed directly after setting the dial
+    $('#selectedDirection').text(dial.direction);
+    $('#selectedDistance').text(dial.distance);
         
-        // populate directions dropdown
-        $.each(dial.getDirections(), function(index, element) {
-            $("#directionBS .dropdown-menu").append("<li><a href=\"#\">" + element + "</a></li>")
+    // populate directions dropdown
+    $.each(dial.getDirections(), function(index, element) {
+        $("#directionBS .dropdown-menu").append("<li><a href=\"#\">" + element + "</a></li>")
+    });
+        
+    // when a direction is selected handler
+    $('#directionBS li').on('click', function(){
+        var direction = $(this).text()
+        console.log("selected: " + direction);
+        // update the value
+        $('#selectedDirection').text(direction);
+            
+        // clear out existing distances
+        $("#dialDistanceBS .dropdown-menu").empty();
+            
+        // populate distances based on which direction is set
+        var distances = dial.getDistances(direction);
+        $.each(distances, function(index, element) {
+            $("#dialDistanceBS .dropdown-menu").append("<li><a href=\"#\">" + element + "</a></li>")
         });
-        
-        // when a direction is selected handler
-        $('#directionBS li').on('click', function(){
-            var direction = $(this).text()
-            console.log("selected: " + direction);
+            
+        // when a distance is selected
+        $('#dialDistanceBS li').on('click', function(){
+            console.log("selected: " + $(this).text());
             // update the value
-            $('#selectedDirection').text(direction);
-            
-            // clear out existing distances
-            $("#dialDistanceBS .dropdown-menu").empty();
-            
-            // populate distances based on which direction is set
-            var distances = dial.getDistances(direction);
-            $.each(distances, function(index, element) {
-                $("#dialDistanceBS .dropdown-menu").append("<li><a href=\"#\">" + element + "</a></li>")
-            });
-            
-            // when a distance is selected
-            $('#dialDistanceBS li').on('click', function(){
-                console.log("selected: " + $(this).text());
-                // update the value
-                $('#selectedDistance').text($(this).text());
-            });
+            $('#selectedDistance').text($(this).text());
         });
+    });
         
-        // enable the dropdowns
-        _this.enableDropdowns();
-    }
-    // ship is not selected, empty out the values
-    else {
-        _this.clearDropdowns();
-        _this.clearSelectedValues();
-        
-        // disable the dropdowns
-        _this.disableDropdowns();
-    }
+    // enable the dropdowns
+    _this.enableDropdowns();
 }
+
+PlanningPanel.prototype.tearDown = function() {
+    this.clearDropdowns();
+    this.clearSelectedValues();
+        
+    // disable the dropdowns
+    this.disableDropdowns();
+}
+
+// helpers
 
 PlanningPanel.prototype.enableDropdowns = function() {
     this.enableDisableDropdowns(false);
