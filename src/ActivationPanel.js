@@ -12,7 +12,11 @@ var ActivationPanel = function() {
 ActivationPanel.prototype.updateStateAfterMove = function() {
     // after moving the ship it should no longer be selected
     window.game.selectedShip.toggleSelect();
-        
+    
+    // the ships dial vals should now be reset
+    window.game.selectedShip.dial.direction = "";
+    window.game.selectedShip.dial.distance = "";
+    
     // remove the template
     window.game.moveTemplate.removeFromBoard();
     window.game.moveTemplate = null;

@@ -61,6 +61,8 @@ Ship.prototype.toggleSelect = function() {
 
     console.log("PHASE: " + window.game.phases.selectedPhase);
 
+    console.log("dir" + _this.dial.direction); 
+
     // set ship ref
     if ($ship.hasClass("shipSelected")) {
         // regardless of phase, show the ship and refcard info

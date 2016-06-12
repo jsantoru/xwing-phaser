@@ -7,10 +7,12 @@ var PlanningPanel = function() {
         
         var dial = window.game.selectedShip.dial;
         
-        dial.direction = $('#selectedDirection').text();
-        dial.distance = $('#selectedDistance').text();
+        var direction = $('#selectedDirection').text();
+        var distance = $('#selectedDistance').text();
         
-        if(dial.distance && dial.direction) {
+        if(distance && direction) {
+            dial.direction = direction;
+            dial.distance = distance;
             _this.addTemplateToBoard();
         }
     });
@@ -36,7 +38,7 @@ PlanningPanel.prototype.setup = function(dial, isShipSelected) {
     var _this = this;
 
     _this.clearDropdowns();
-        
+    
     // set the label values if the ship already had a dial set
     // this will be used when moving is not executed directly after setting the dial
     $('#selectedDirection').text(dial.direction);
@@ -109,7 +111,4 @@ PlanningPanel.prototype.clearSelectedValues = function() {
     // clear the selected values
     $('#selectedDirection').text("");
     $('#selectedDistance').text("");
-    
-    window.game.selectedShip.dial.direction = "";
-    window.game.selectedShip.dial.distance = "";
 }
