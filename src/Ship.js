@@ -58,38 +58,29 @@ Ship.prototype.toggleSelect = function() {
     var $ship = $('#shipDiv-' + _this.shipName)
     $ship.toggleClass("shipSelected");
     // setup the dial now that this ship is selected
-    window.game.planningPanel.setupDialDropdowns(_this.dial, $ship.hasClass("shipSelected"));
+
+    console.log("PHASE: " + window.game.phases.selectedPhase);
+
+    console.log("dir" + _this.dial.direction); 
 
     // set ship ref
     if ($ship.hasClass("shipSelected")) {
-        // set this ship as selected
-        _this.isSelected = true;
-        window.game.selectedShip = _this;
-        console.log("SELECTED: " + _this.shipName);
-
-        // setup the shipRef
-        $('#refCardImg').attr('src', _this.refcardImagePath);
-        $('#refCardImg').show();
-
-        $('#shipRefAttackVal').text(_this.stats.attack);
-        $('#shipRefAgilityVal').text(_this.stats.agility);
-        $('#shipRefHullVal').text(_this.stats.hull);
-        $('#shipRefShieldVal').text(_this.stats.shield);
-        $('#stats').show();
-
-        $.each(_this.actions, function(index, element) {
-            $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
-        });
-        $('#actions').show();
-
-        // TODO: if it's combat phase, render firing arc
-        // for now show the firing arc on click
-        // TODO: this should be done when it's selected for attack
-        _this.renderFiringArc($ship);
-
+        // regardless of phase, show the ship and refcard info
+        _this.onSelect();
+        
+        // if it's planning, setup the planning panel
+        if(window.game.phases.selectedPhase == "Planning") {
+            window.game.planningPanel.setup(_this.dial, $ship.hasClass("shipSelected"));
+        }
+        // if it's combat, render the firing arc and TODO: setup the combat panel
+        else if (window.game.phases.selectedPhase == "Combat") {
+            _this.renderFiringArc($ship);
+        }
     }
-    // ship is not selected, clear out the ship ref
+    // ship is not selected, clear out and remove stuff
     else {
+        window.game.planningPanel.tearDown();
+
         _this.isSelected = false;
 
         $('#refCardImg').hide();
@@ -105,7 +96,32 @@ Ship.prototype.toggleSelect = function() {
         $('#actions').hide();
         
         _this.removeFiringArc();
+        
+        window.game.moveTemplate.removeFromBoard();
     }
+}
+
+Ship.prototype.onSelect = function() {
+    var _this = this;
+    // set this ship as selected
+    _this.isSelected = true;
+    window.game.selectedShip = _this;
+    console.log("SELECTED: " + _this.shipName);
+
+    // setup the shipRef
+    $('#refCardImg').attr('src', _this.refcardImagePath);
+    $('#refCardImg').show();
+
+    $('#shipRefAttackVal').text(_this.stats.attack);
+    $('#shipRefAgilityVal').text(_this.stats.agility);
+    $('#shipRefHullVal').text(_this.stats.hull);
+    $('#shipRefShieldVal').text(_this.stats.shield);
+    $('#stats').show();
+    
+    $.each(_this.actions, function(index, element) {
+        $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
+    });
+    $('#actions').show();
 }
 
 Ship.prototype.renderFiringArc = function($ship) {
