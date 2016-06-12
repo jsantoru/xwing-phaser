@@ -1,6 +1,6 @@
 var Phases = function() {
-    
-    var selectedPhase = "";
+    var _this = this;
+    this.selectedPhase = "";
     
     this.init();
     
@@ -8,7 +8,7 @@ var Phases = function() {
         $('.phase').removeClass("active");
         $(this).addClass("active");
         
-        selectedPhase = $(this).text();
+        _this.selectedPhase = $(this).text();
     });
 }
 
