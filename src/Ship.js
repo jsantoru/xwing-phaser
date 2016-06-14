@@ -1,18 +1,6 @@
 var Ship = function(shipType, shipName) {
-    var _this = this;
-    
     // constructor
-    console.log("Ship.constructor(), shipType: " + shipType);
-    
-    // TODO: assign uuid to this ship and add to div id as well
-    
-    /* 
-     * state
-     */
-    this.x = 0;
-    this.y = 0;
-    this.rotation = 0;
-    this.direction = "up";
+    console.log("Ship.constructor(), shipType: " + shipType + ", shipName: " + shipName);
     
     /*
      * config
@@ -36,8 +24,27 @@ var Ship = function(shipType, shipName) {
     this.pilot;
     this.upgradeCards;
     
-    this.isSelected = false;
     this.shipName = shipName;
+    this.shipType = shipType;
+    
+    /* 
+     * state
+     */
+    this.isSelected = false;
+    this.x = 0;
+    this.y = 0;
+    this.rotation = 0;
+    this.direction = "up";
+    
+    this.movedThisRound = false;
+    this.attackedThisRound = false;
+    this.shieldRemaining = config.stats.shield;
+    this.hullRemaining = config.stats.hull;
+    this.numFocusTokens = 0;
+    this.numStressTokens = 0;
+    this.numEvadeTokens = 0;
+    this.outgoingTargetLocks = [];
+    this.incomingTargetLocks = [];
 }
 
 Ship.prototype.addToBoard = function(x, y) {
@@ -77,6 +84,7 @@ Ship.prototype.shipSelected = function($ship) {
     console.log("SELECTED: " + this.shipName);
     
     window.game.shipReferencePanel.setup(this);
+    window.game.shipInfoPanel.setup(this);
     
     // if it's planning, setup the planning panel
     if(window.game.phases.selectedPhase == "Planning") {
@@ -93,6 +101,7 @@ Ship.prototype.shipUnselected = function() {
     
     window.game.planningPanel.tearDown();
     window.game.shipReferencePanel.tearDown();
+    window.game.shipInfoPanel.tearDown();
     
     if(window.game.moveTemplate) {
         window.game.moveTemplate.removeFromBoard();

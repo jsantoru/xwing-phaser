@@ -26,6 +26,7 @@ var Game = function() {
     this.planningPanel = new PlanningPanel();
     this.utilityPanel = new UtilityPanel();
     this.shipReferencePanel = new ShipReferencePanel();
+    this.shipInfoPanel = new ShipInfoPanel();
 }
 
 Game.prototype.start = function() {
