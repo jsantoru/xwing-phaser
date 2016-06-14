@@ -1,18 +1,6 @@
 var Ship = function(shipType, shipName) {
-    var _this = this;
-    
     // constructor
-    console.log("Ship.constructor(), shipType: " + shipType);
-    
-    // TODO: assign uuid to this ship and add to div id as well
-    
-    /* 
-     * state
-     */
-    this.x = 0;
-    this.y = 0;
-    this.rotation = 0;
-    this.direction = "up";
+    console.log("Ship.constructor(), shipType: " + shipType + ", shipName: " + shipName);
     
     /*
      * config
@@ -28,21 +16,42 @@ var Ship = function(shipType, shipName) {
     this.stats = config.stats;
     this.actions = config.actions;
     
+    this.firingArc = new FiringArc();
+    
     /*
      * instance specific config
      */
     this.pilot;
+    this.pilotSkill;
     this.upgradeCards;
     
-    this.isSelected = false;
     this.shipName = shipName;
+    this.shipType = shipType;
+    
+    /* 
+     * state
+     */
+    this.isSelected = false;
+    this.x = 0;
+    this.y = 0;
+    this.rotation = 0;
+    this.direction = "up";
+    
+    this.movedThisRound = false;
+    this.attackedThisRound = false;
+    this.shieldRemaining = config.stats.shield;
+    this.hullRemaining = config.stats.hull;
+    this.numFocusTokens = 0;
+    this.numStressTokens = 0;
+    this.numEvadeTokens = 0;
+    this.outgoingTargetLocks = [];
+    this.incomingTargetLocks = [];
 }
 
 Ship.prototype.addToBoard = function(x, y) {
     console.log("addToBoard()");
     var _this = this;
     
-    // TODO: should this be an html template?
     $('#board').prepend('<div id="shipDiv-' + _this.shipName + '" class="shipDiv"><img id="ship" class="ship" src="' + this.imagePath + '"/></img>');
     $('#shipDiv-' + _this.shipName).height(this.height).width(this.width);
     this.move(x, y);
@@ -54,83 +63,54 @@ Ship.prototype.addToBoard = function(x, y) {
 }
 
 Ship.prototype.toggleSelect = function() {
-    var _this = this;   
-    var $ship = $('#shipDiv-' + _this.shipName)
+    var $ship = $('#shipDiv-' + this.shipName);
     $ship.toggleClass("shipSelected");
-    // setup the dial now that this ship is selected
-
+    
     console.log("PHASE: " + window.game.phases.selectedPhase);
 
-    console.log("dir" + _this.dial.direction); 
-
-    // set ship ref
+    // populate panels and change whats rendered based on if the ship is selected
     if ($ship.hasClass("shipSelected")) {
-        // regardless of phase, show the ship and refcard info
-        _this.onSelect();
-        
-        // if it's planning, setup the planning panel
-        if(window.game.phases.selectedPhase == "Planning") {
-            window.game.planningPanel.setup(_this.dial, $ship.hasClass("shipSelected"));
-        }
-        // if it's combat, render the firing arc and TODO: setup the combat panel
-        else if (window.game.phases.selectedPhase == "Combat") {
-            _this.renderFiringArc($ship);
-        }
+        this.shipSelected($ship);
     }
     // ship is not selected, clear out and remove stuff
     else {
-        window.game.planningPanel.tearDown();
-
-        _this.isSelected = false;
-
-        $('#refCardImg').hide();
-        $('#refCardImg').attr('src', '');
-
-        $('#shipRefAttackVal').text("");
-        $('#shipRefAgilityVal').text("");
-        $('#shipRefHullVal').text("");
-        $('#shipRefShieldVal').text("");
-        $('#stats').hide();
-
-        $('#actions').empty();
-        $('#actions').hide();
-        
-        _this.removeFiringArc();
-        
-        window.game.moveTemplate.removeFromBoard();
+        this.shipUnselected();
     }
 }
 
-Ship.prototype.onSelect = function() {
-    var _this = this;
+Ship.prototype.shipSelected = function($ship) {
     // set this ship as selected
-    _this.isSelected = true;
-    window.game.selectedShip = _this;
-    console.log("SELECTED: " + _this.shipName);
-
-    // setup the shipRef
-    $('#refCardImg').attr('src', _this.refcardImagePath);
-    $('#refCardImg').show();
-
-    $('#shipRefAttackVal').text(_this.stats.attack);
-    $('#shipRefAgilityVal').text(_this.stats.agility);
-    $('#shipRefHullVal').text(_this.stats.hull);
-    $('#shipRefShieldVal').text(_this.stats.shield);
-    $('#stats').show();
+    this.isSelected = true;
+    window.game.selectedShip = this;
+    console.log("SELECTED: " + this.shipName);
     
-    $.each(_this.actions, function(index, element) {
-        $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
-    });
-    $('#actions').show();
+    window.game.shipReferencePanel.setup(this);
+    window.game.shipInfoPanel.setup(this);
+    
+    // if it's planning, setup the planning panel
+    if(window.game.phases.selectedPhase == "Planning") {
+        window.game.planningPanel.setup(this.dial);
+    }
+    // if it's combat, render the firing arc and TODO: setup the combat panel
+    else if (window.game.phases.selectedPhase == "Combat") {
+        this.firingArc.render($ship);
+    }
 }
 
-Ship.prototype.renderFiringArc = function($ship) {
-    // show the firing arc
-    $ship.append('<div class="firing-arc arc-wrapper"><div class="range3"><div class="range2"><div class="range1"></div></div></div></div>')
-}
-
-Ship.prototype.removeFiringArc = function() {
-    $('.firing-arc').remove();
+Ship.prototype.shipUnselected = function() {
+    this.isSelected = false;
+    
+    window.game.planningPanel.tearDown();
+    window.game.shipInfoPanel.tearDown();
+    window.game.shipReferencePanel.tearDown();
+    
+    if(window.game.moveTemplate) {
+        window.game.moveTemplate.removeFromBoard();
+    }
+    
+    this.firingArc.remove();
+    
+    window.game.selectedShip = null;
 }
 
 Ship.prototype.buildActionsValue = function(value, actionsList) {

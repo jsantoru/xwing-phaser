@@ -25,10 +25,13 @@
         <script src="src/MoveTemplate.js"></script>
         <script src="src/Dial.js"></script>
         <script src="src/ShipRef.js"></script>
+        <script src="src/FiringArc.js"></script>
         <script src="src/Phases.js"></script>
-        <script src="src/ActivationPanel.js"></script>
-        <script src="src/PlanningPanel.js"></script>
-        <script src="src/UtilityPanel.js"></script>
+        <script src="src/panels/ActivationPanel.js"></script>
+        <script src="src/panels/PlanningPanel.js"></script>
+        <script src="src/panels/UtilityPanel.js"></script>
+        <script src="src/panels/ShipInfoPanel.js"></script>
+        <script src="src/panels/ShipReferencePanel.js"></script>
         
         <!-- app style -->
         <link rel="stylesheet" type="text/css" href="style/main.css">
@@ -173,55 +176,55 @@
             <div id="shipInfoCollapse">
               <h4>
                 <span id="shipInfoId" class="label">Id:</span>
-                <span id="shipInfoIdVal" class="label label-default">I1234</span>
+                <span id="shipInfoIdVal" class="label label-default"></span>
               </h4>
               <h4>
                 <span id="shipInfoType" class="label">Type:</span>
-                <span id="shipInfoTypeVal" class="label label-default">Tie Fighter</span>
+                <span id="shipInfoTypeVal" class="label label-default"></span>
               </h4>
               <h4>
-                <span id="shipInfoType" class="label">Pilot:</span>
-                <span id="shipInfoTypeVal" class="label label-default">Bad Ass Tie Dude</span>
-              </h4>
-              <hr/>
-              <h4>
-                <span id="shipInfoId" class="label">Moved this round:</span>
-                <span id="shipInfoIdVal" class="label label-default">No</span>
-              </h4>
-              <h4>
-                <span id="shipInfoType" class="label">Attacked this round:</span>
-                <span id="shipInfoTypeVal" class="label label-default">No</span>
+                <span id="shipInfoPilotSkill" class="label">Pilot Skill:</span>
+                <span id="shipInfoPilotSkillVal" class="label label-default"></span>
               </h4>
               <hr/>
               <h4>
-                <span id="shipInfoType" class="label">Shield Remaining:</span>
-                <span id="shipInfoTypeVal" class="label label-default">1</span>
+                <span id="shipInfoMovedThisRound" class="label">Moved this round:</span>
+                <span id="shipInfoMovedThisRoundVal" class="label label-default"></span>
               </h4>
               <h4>
-                <span id="shipInfoType" class="label">Hull Remaining:</span>
-                <span id="shipInfoTypeVal" class="label label-default">3</span>
-              </h4>
-              <hr/>
-              <h4>
-                <span id="shipInfoType" class="label">Focus Tokens:</span>
-                <span id="shipInfoTypeVal" class="label label-default">0</span>
-              </h4>
-              <h4>
-                <span id="shipInfoType" class="label">Stress Tokens:</span>
-                <span id="shipInfoTypeVal" class="label label-default">0</span>
-              </h4>
-              <h4>
-                <span id="shipInfoType" class="label">Evade Tokens:</span>
-                <span id="shipInfoTypeVal" class="label label-default">0</span>
+                <span id="shipInfoAttackedThisRound" class="label">Attacked this round:</span>
+                <span id="shipInfoAttackedThisRoundVal" class="label label-default"></span>
               </h4>
               <hr/>
               <h4>
-                <span id="shipInfoType" class="label">Outgoing Target Locks:</span>
-                <span id="shipInfoTypeVal" class="label label-default">0</span>
+                <span id="shipInfoShieldRemaining" class="label">Shield Remaining:</span>
+                <span id="shipInfoShieldRemainingVal" class="label label-default"></span>
               </h4>
               <h4>
-                <span id="shipInfoType" class="label">Incoming Target Locks:</span>
-                <span id="shipInfoTypeVal" class="label label-default">0</span>
+                <span id="shipInfoHullRemaining" class="label">Hull Remaining:</span>
+                <span id="shipInfoHullRemainingVal" class="label label-default"></span>
+              </h4>
+              <hr/>
+              <h4>
+                <span id="shipInfoFocusTokens" class="label">Focus Tokens:</span>
+                <span id="shipInfoFocusTokensVal" class="label label-default"></span>
+              </h4>
+              <h4>
+                <span id="shipInfoStressTokens" class="label">Stress Tokens:</span>
+                <span id="shipInfoStressTokensVal" class="label label-default"></span>
+              </h4>
+              <h4>
+                <span id="shipInfoEvadeTokens" class="label">Evade Tokens:</span>
+                <span id="shipInfoEvadeTokensVal" class="label label-default"></span>
+              </h4>
+              <hr/>
+              <h4>
+                <span id="shipInfoOutTargetLocks" class="label">Outgoing Target Locks:</span>
+                <span id="shipInfoOutTargetLocksVal" class="label label-default"></span>
+              </h4>
+              <h4>
+                <span id="shipInfoInTargetLocks" class="label">Incoming Target Locks:</span>
+                <span id="shipInfoInTargetLocksVal" class="label label-default"></span>
               </h4>
             </div>
           </div>
