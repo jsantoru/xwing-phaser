@@ -4,9 +4,10 @@ var ShipInfoPanel = function() {
 ShipInfoPanel.prototype.setup = function(ship) {
     $('#shipInfoIdVal').text(ship.shipName);
     $('#shipInfoTypeVal').text(ship.shipType);
+    $('#shipInfoPilotSkillVal').text(ship.pilotSkill);
     
-    $('#shipInfoMovedThisRoundVal').text(ship.movedThisRound);
-    $('#shipInfoAttackedThisRoundVal').text(ship.attackedThisRound);
+    $('#shipInfoMovedThisRoundVal').text(this.booleanToYesNo(ship.movedThisRound));
+    $('#shipInfoAttackedThisRoundVal').text(this.booleanToYesNo(ship.attackedThisRound));
     
     $('#shipInfoShieldRemainingVal').text(ship.shieldRemaining);
     $('#shipInfoHullRemainingVal').text(ship.hullRemaining);
@@ -24,6 +25,7 @@ ShipInfoPanel.prototype.setup = function(ship) {
 ShipInfoPanel.prototype.tearDown = function() {
     $('#shipInfoIdVal').text('');
     $('#shipInfoTypeVal').text('');
+    $('#shipInfoPilotSkillVal').text('');
     
     $('#shipInfoMovedThisRoundVal').text('');
     $('#shipInfoAttackedThisRoundVal').text('');
@@ -39,4 +41,11 @@ ShipInfoPanel.prototype.tearDown = function() {
     $('#shipInfoInTargetLocksVal').text('');
     
     $('#shipInfoCollapse').hide();
+}
+
+ShipInfoPanel.prototype.booleanToYesNo = function(val) {
+    if(val) {
+        return "Yes";
+    }
+    return "No";
 }

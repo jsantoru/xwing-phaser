@@ -22,6 +22,7 @@ var Ship = function(shipType, shipName) {
      * instance specific config
      */
     this.pilot;
+    this.pilotSkill;
     this.upgradeCards;
     
     this.shipName = shipName;
@@ -100,14 +101,16 @@ Ship.prototype.shipUnselected = function() {
     this.isSelected = false;
     
     window.game.planningPanel.tearDown();
-    window.game.shipReferencePanel.tearDown();
     window.game.shipInfoPanel.tearDown();
+    window.game.shipReferencePanel.tearDown();
     
     if(window.game.moveTemplate) {
         window.game.moveTemplate.removeFromBoard();
     }
     
     this.firingArc.remove();
+    
+    window.game.selectedShip = null;
 }
 
 Ship.prototype.buildActionsValue = function(value, actionsList) {

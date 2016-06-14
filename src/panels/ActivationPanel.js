@@ -10,8 +10,8 @@ var ActivationPanel = function() {
 }
 
 ActivationPanel.prototype.updateStateAfterMove = function() {
-    // after moving the ship it should no longer be selected
-    window.game.selectedShip.toggleSelect();
+    // set the ship moved this round to true
+    window.game.selectedShip.movedThisRound = true;
     
     // the ships dial vals should now be reset
     window.game.selectedShip.dial.direction = "";
@@ -19,4 +19,7 @@ ActivationPanel.prototype.updateStateAfterMove = function() {
     
     // remove the template
     window.game.moveTemplate.removeFromBoard();
+    
+    // after moving the ship it should no longer be selected
+    window.game.selectedShip.toggleSelect();
 }
