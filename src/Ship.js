@@ -66,34 +66,14 @@ Ship.prototype.toggleSelect = function() {
     // set ship ref
     if ($ship.hasClass("shipSelected")) {
         // regardless of phase, show the ship and refcard info
-        _this.onSelect();
-        
-        // if it's planning, setup the planning panel
-        if(window.game.phases.selectedPhase == "Planning") {
-            window.game.planningPanel.setup(_this.dial, $ship.hasClass("shipSelected"));
-        }
-        // if it's combat, render the firing arc and TODO: setup the combat panel
-        else if (window.game.phases.selectedPhase == "Combat") {
-            _this.renderFiringArc($ship);
-        }
+        _this.onSelect($ship);
     }
     // ship is not selected, clear out and remove stuff
     else {
         window.game.planningPanel.tearDown();
-
+        window.game.shipReferencePanel.tearDown();
+        
         _this.isSelected = false;
-
-        $('#refCardImg').hide();
-        $('#refCardImg').attr('src', '');
-
-        $('#shipRefAttackVal').text("");
-        $('#shipRefAgilityVal').text("");
-        $('#shipRefHullVal').text("");
-        $('#shipRefShieldVal').text("");
-        $('#stats').hide();
-
-        $('#actions').empty();
-        $('#actions').hide();
         
         _this.removeFiringArc();
         
@@ -101,27 +81,23 @@ Ship.prototype.toggleSelect = function() {
     }
 }
 
-Ship.prototype.onSelect = function() {
+Ship.prototype.onSelect = function($ship) {
     var _this = this;
     // set this ship as selected
     _this.isSelected = true;
     window.game.selectedShip = _this;
     console.log("SELECTED: " + _this.shipName);
-
-    // setup the shipRef
-    $('#refCardImg').attr('src', _this.refcardImagePath);
-    $('#refCardImg').show();
-
-    $('#shipRefAttackVal').text(_this.stats.attack);
-    $('#shipRefAgilityVal').text(_this.stats.agility);
-    $('#shipRefHullVal').text(_this.stats.hull);
-    $('#shipRefShieldVal').text(_this.stats.shield);
-    $('#stats').show();
     
-    $.each(_this.actions, function(index, element) {
-        $('#actions').append("<h4><span class=\"label label-default\">" + element + "</span></h4>")
-    });
-    $('#actions').show();
+    window.game.shipReferencePanel.setup(_this);
+    
+    // if it's planning, setup the planning panel
+    if(window.game.phases.selectedPhase == "Planning") {
+        window.game.planningPanel.setup(_this.dial);
+    }
+    // if it's combat, render the firing arc and TODO: setup the combat panel
+    else if (window.game.phases.selectedPhase == "Combat") {
+        _this.renderFiringArc($ship);
+    }
 }
 
 Ship.prototype.renderFiringArc = function($ship) {

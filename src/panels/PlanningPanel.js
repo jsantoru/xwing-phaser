@@ -34,7 +34,7 @@ PlanningPanel.prototype.addTemplateToBoard = function() {
     window.game.moveTemplate.addToBoard(selectedShip);
 }
 
-PlanningPanel.prototype.setup = function(dial, isShipSelected) {
+PlanningPanel.prototype.setup = function(dial) {
     var _this = this;
 
     _this.clearDropdowns();
