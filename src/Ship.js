@@ -91,9 +91,21 @@ Ship.prototype.shipSelected = function($ship) {
     if(window.game.phases.selectedPhase == "Planning") {
         window.game.planningPanel.setup(this.dial);
     }
+    // if it's activation, render a move template if one's set
+    else if(window.game.phases.selectedPhase == "Activation") {
+        this.activationOnSelect();
+    }
     // if it's combat, render the firing arc and TODO: setup the combat panel
     else if (window.game.phases.selectedPhase == "Combat") {
         this.firingArc.render($ship);
+    }
+}
+
+Ship.prototype.activationOnSelect = function() {
+    var moveTemplateId = this.dial.buildMoveTemplateId();
+    if(moveTemplateId != "-") {
+        window.game.moveTemplate = new MoveTemplate(moveTemplateId);
+        window.game.moveTemplate.addToBoard(this);
     }
 }
 
