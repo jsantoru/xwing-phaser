@@ -92,10 +92,12 @@ Ship.prototype.shipSelected = function($ship) {
         window.game.planningPanel.setup(this.dial);
     }
     // if it's activation, render a move template if one's set
+    // TODO: setup the activation panel
     else if(window.game.phases.selectedPhase == "Activation") {
         this.activationOnSelect();
     }
-    // if it's combat, render the firing arc and TODO: setup the combat panel
+    // if it's combat, render the firing arc
+    // TODO: setup the combat panel
     else if (window.game.phases.selectedPhase == "Combat") {
         this.firingArc.render($ship);
     }
