@@ -50,10 +50,6 @@ body {
 
 .navbar-inverse { min-height:30px; height: 30px; }
 
-/* TODO: doesnt work */
-.navbar-default {
-    background: rgba(0,0,0,0.2);
-}
 
 /* right pane */
 
