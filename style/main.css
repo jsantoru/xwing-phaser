@@ -77,21 +77,30 @@ body {
     width:100%;
 }
 
-#rightPane2 {
-    position:absolute;
-    left: 1380px;
-    opacity:0.9;
-    width:200px;
-}
+/* far right selected ship group */
 
-/* far right pane*/
-
-#farRightPane {
+#selectedShipGroup {
     position:relative;
     float:right;
     opacity:0.9;
+    margin-right:20px;
+}
+
+#rightPane2 {
+    position:relative;
+    float:left;
+    opacity:0.9;
     width:200px;
-    padding-right:20px;
+    margin-right:5px;
+}
+
+/* reference */
+
+#farRightPane {
+    position:relative;
+    float:left;
+    opacity:0.9;
+    width:200px;
 }
 
 #statsRef > #stats, #actions {
