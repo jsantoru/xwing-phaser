@@ -129,9 +129,8 @@ Ship.prototype.shipSelected = function($ship) {
         
         var thisShipDivId = "shipDiv-" + _this.shipName;
         
-        // TODO: move all other ships to the top so that they can be clicked as targets
+        // move all other ships to the top so that they can be clicked as targets
         $(".shipDiv").each( function(index) {
-            console.log("ship: " + this.id);
             if(this.id != thisShipDivId) {
                 $(this).parent().append($(this));
             }
