@@ -58,8 +58,24 @@ Ship.prototype.addToBoard = function(x, y) {
     
     // add the click handler when the ship is added to the board
     $('#shipDiv-' + _this.shipName).click(function() {
-        _this.toggleSelect();
+        console.log("selected phase: " + window.game.phases.selectedPhase);
+        console.log("selected ship: " + window.game.selectedShip);
+        
+        // handle selecting a target
+        if(window.game.phases.selectedPhase == "Combat" && window.game.selectedShip != null) {
+            console.log("TARGET SELECTED");
+            _this.toggleTargetSelect();
+        }
+        // else its a normal select
+        else {
+            _this.toggleSelect();
+        }
     });
+}
+
+Ship.prototype.toggleTargetSelect = function() {
+    var $ship = $('#shipDiv-' + this.shipName);
+    $ship.toggleClass("targetShipSelected");
 }
 
 Ship.prototype.toggleSelect = function() {
