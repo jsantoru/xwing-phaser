@@ -103,6 +103,8 @@ Ship.prototype.toggleSelect = function() {
 }
 
 Ship.prototype.shipSelected = function($ship) {
+    var _this = this;
+    
     // set this ship as selected
     this.isSelected = true;
     window.game.selectedShip = this;
@@ -124,6 +126,16 @@ Ship.prototype.shipSelected = function($ship) {
     // TODO: setup the combat panel
     else if (window.game.phases.selectedPhase == "Combat") {
         this.firingArc.render($ship);
+        
+        var thisShipDivId = "shipDiv-" + _this.shipName;
+        
+        // TODO: move all other ships to the top so that they can be clicked as targets
+        $(".shipDiv").each( function(index) {
+            console.log("ship: " + this.id);
+            if(this.id != thisShipDivId) {
+                $(this).parent().append($(this));
+            }
+        });
     }
 }
 
