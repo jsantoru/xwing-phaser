@@ -62,7 +62,7 @@ Ship.prototype.addToBoard = function(x, y) {
         console.log("selected ship: " + window.game.selectedShip);
         
         // handle selecting a target
-        if(window.game.phases.selectedPhase == "Combat" && window.game.selectedShip != null) {
+        if(window.game.phases.selectedPhase == "Combat" && window.game.selectedShip != null && window.game.selectedShip != _this) {
             console.log("TARGET SELECTED");
             _this.toggleTargetSelect();
         }
@@ -76,6 +76,14 @@ Ship.prototype.addToBoard = function(x, y) {
 Ship.prototype.toggleTargetSelect = function() {
     var $ship = $('#shipDiv-' + this.shipName);
     $ship.toggleClass("targetShipSelected");
+    
+    if ($ship.hasClass("targetShipSelected")) {
+        window.game.selectedTargetShip = this;
+    }
+    // target is unselected
+    else {
+        window.game.selectedTargetShip = null;
+    }
 }
 
 Ship.prototype.toggleSelect = function() {

@@ -20,6 +20,7 @@ var Game = function() {
     this.moveTemplate = null;
     
     this.selectedShip;
+    this.selectedTargetShip;
     
     this.phases = new Phases();
     this.activationPanel = new ActivationPanel();
