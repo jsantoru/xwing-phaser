@@ -24,6 +24,7 @@ var Game = function() {
     this.phases = new Phases();
     this.activationPanel = new ActivationPanel();
     this.planningPanel = new PlanningPanel();
+    this.combatPanel = new CombatPanel();
     this.utilityPanel = new UtilityPanel();
     this.shipReferencePanel = new ShipReferencePanel();
     this.shipInfoPanel = new ShipInfoPanel();

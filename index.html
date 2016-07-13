@@ -27,8 +27,11 @@
         <script src="src/ShipRef.js"></script>
         <script src="src/FiringArc.js"></script>
         <script src="src/Phases.js"></script>
+        
         <script src="src/panels/ActivationPanel.js"></script>
         <script src="src/panels/PlanningPanel.js"></script>
+        <script src="src/panels/CombatPanel.js"></script>
+        
         <script src="src/panels/UtilityPanel.js"></script>
         <script src="src/panels/ShipInfoPanel.js"></script>
         <script src="src/panels/ShipReferencePanel.js"></script>
@@ -151,10 +154,18 @@
             </div>
           </div>
           
-          <div id="performAttack" class="panel">
+            <div id="combatPanel" class="combatSteps panel" role="group" aria-label="...">
             <div class="panel-heading">
-                <h3 class="panel-title">Combat</h3>
-            </div>
+                  <h3 class="panel-title">Combat</h3>
+              </div>
+             <ul class="nav nav-pills nav-stacked">
+              <li id="selectTarget" class="combatStep" role="presentation"><a href="#">Select Target</a></li>
+              <li id="rollAttackDie" class="combatStep" role="presentation"><a href="#">Roll Attack Die</a></li>
+              <li id="modifyAttackDie" class="combatStep" role="presentation"><a href="#">Modify Attack Die</a></li>
+              <li id="rollDefenseDie" class="combatStep" role="presentation"><a href="#">Roll Defense Die</a></li>
+              <li id="modifyDefenseDie" class="combatStep" role="presentation"><a href="#">Modify Defense Die</a></li>
+              <li id="Resolve" class="combatStep" role="presentation"><a href="#">Resolve</a></li>
+            </ul>
           </div>
           
           <div id="util" class="panel">
